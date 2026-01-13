@@ -5,39 +5,39 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Rhino Bridge — Fast Cross-Chain Transfers, Fees, Security, Routes & Best Practices</title>
-<meta name="description" content="Rhino Bridge guide: how cross-chain routing works, fees, slippage, confirmation times, bridge safety checklist, approvals hygiene, and troubleshooting. Step-by-step bridging workflow + KPIs.">
+<title>Rhino Bridge — Fees, Security, Routes, Finality, Slippage & Troubleshooting Guide</title>
+<meta name="description" content="Rhino Bridge guide: how bridging works, routing, confirmations/finality, fees, slippage, approvals hygiene, safety checklist, tracking, and troubleshooting. Includes KPIs, runbook, and FAQ.">
 <meta name="author" content="Crypto Finance Experts">
 <link rel="canonical" href="https://rhino-bridge.example.com/">
 
-<link rel="icon" type="image/png" href="rhinofi_logo.jpg">
+<link rel="icon" type="image/png" href="rhino-bridge-icon.png">
 
 <!-- Open Graph -->
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://rhino-bridge.example.com/">
-<meta property="og:title" content="Rhino Bridge — Fast Cross-Chain Transfers, Fees, Security, Routes & Best Practices">
-<meta property="og:description" content="Practical Rhino Bridge guide: bridging workflow, costs, safety checklist, approvals, and troubleshooting.">
-<meta property="og:image" content="rhino2.png">
+<meta property="og:title" content="Rhino Bridge — Fees, Security, Routes, Finality, Slippage & Troubleshooting Guide">
+<meta property="og:description" content="Practical Rhino Bridge guide: bridging workflow, costs, safety checklist, approvals hygiene, tracking, and troubleshooting.">
+<meta property="og:image" content="cover.png">
 
 <!-- Twitter Card -->
 <meta property="twitter:card" content="summary_large_image">
 <meta property="twitter:url" content="https://rhino-bridge.example.com/">
-<meta property="twitter:title" content="Rhino Bridge — Fast Cross-Chain Transfers, Fees, Security, Routes & Best Practices">
-<meta property="twitter:description" content="Max information about Rhino Bridge: routes, fees, confirmations, approvals hygiene, safety checklist, and KPIs.">
-<meta property="twitter:image" content="rhino.png">
+<meta property="twitter:title" content="Rhino Bridge — Fees, Security, Routes, Finality, Slippage & Troubleshooting Guide">
+<meta property="twitter:description" content="Max info about Rhino Bridge: routing, fees, confirmations, approvals hygiene, safety checklist, KPIs, and deep FAQ.">
+<meta property="twitter:image" content="cover.png">
 
 <!-- schema.org -->
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",
   "@type":"Article",
-  "headline":"Rhino Bridge — Fast Cross-Chain Transfers, Fees, Security, Routes & Best Practices",
-  "description":"Rhino Bridge guide covering routing, fees, confirmations, slippage, approvals hygiene, and operational security.",
+  "headline":"Rhino Bridge — Fees, Security, Routes, Finality, Slippage & Troubleshooting Guide",
+  "description":"Rhino Bridge guide covering routing, fees, confirmations/finality, slippage, approvals hygiene, and operational security.",
   "author":{"@type":"Organization","name":"Crypto Finance Experts"},
   "mainEntityOfPage":{"@type":"WebPage","@id":"https://rhino-bridge.example.com/"},
   "image":"cover.png",
   "datePublished":"2025-01-01",
-  "dateModified":"2026-01-12"
+  "dateModified":"2026-01-13"
 }
 </script>
 
@@ -46,23 +46,22 @@
      THEME (White + Orange)
      ========================= */
   :root{
-    --primary:#F97316;            /* Orange */
+    --primary:#F97316;
     --primary-600:#EA580C;
     --primary-700:#C2410C;
 
-    --ink:#0f172a;                /* Text */
+    --ink:#0f172a;
     --muted:#475569;
 
-    --bg:#ffffff;                 /* White canvas */
-    --panel:#ffffff;              /* Cards */
-    --panel-2:#fff7ed;            /* Soft orange tint */
+    --bg:#ffffff;
+    --panel:#ffffff;
+    --panel-2:#fff7ed;
     --line:#e5e7eb;
 
     --ok:#16a34a;
     --warn:#f59e0b;
     --error:#ef4444;
 
-    --white:#0f172a;
     --shadow: 0 14px 35px rgba(2,6,23,.10);
     --radius:14px;
     --radius-sm:10px;
@@ -71,7 +70,6 @@
     --gap-lg:2rem;
   }
 
-  /* Base */
   *{box-sizing:border-box}
   html,body{height:100%}
   body{
@@ -93,13 +91,17 @@
 
   h1,h2,h3,h4{color:var(--ink); line-height:1.25; margin:0 0 .6rem}
   h1{font-size:clamp(2rem,4.5vw,3.1rem); font-weight:950; letter-spacing:.2px}
-  h2{font-size:clamp(1.35rem,2.8vw,2rem); margin-top:2.2rem; padding-top:.6rem; border-top:1px solid var(--line)}
+  h2{
+    font-size:clamp(1.35rem,2.8vw,2rem);
+    margin-top:2.2rem;
+    padding-top:.6rem;
+    border-top:1px solid var(--line);
+  }
   h3{font-size:clamp(1.05rem,2.2vw,1.3rem); color:#111827}
 
   p,li,td,th{font-size:1rem}
   .lead{font-size:1.125rem; color:#334155}
 
-  /* Hero */
   header.hero{
     padding: clamp(2rem,6vw,4rem) 0;
     background:
@@ -120,6 +122,13 @@
     box-shadow:var(--shadow);
     backdrop-filter: blur(6px);
   }
+  .brand-row{display:flex; align-items:center; gap:.9rem; margin-bottom:.75rem}
+  .brand-logo{
+    width:54px; height:54px; border-radius:14px;
+    border:1px solid var(--line); background:#fff;
+    padding:.35rem; object-fit:contain;
+    box-shadow: 0 10px 22px rgba(2,6,23,.06);
+  }
   .cta{
     display:inline-block;
     margin-top:1rem;
@@ -132,14 +141,9 @@
   .cta.secondary{
     background:transparent; border:1px solid var(--line); color:var(--ink); margin-left:.75rem;
   }
-  .hero-visual{display:none;}
 
-  /* Steps */
   section.step-guide{padding: clamp(2rem,6vw,3.5rem) 0}
-  .steps{
-    display:grid; gap:var(--gap);
-    grid-template-columns:1fr;
-  }
+  .steps{display:grid; gap:var(--gap); grid-template-columns:1fr;}
   .step{
     background:var(--panel);
     border:1px solid var(--line);
@@ -155,7 +159,6 @@
     background:rgba(249,115,22,.14); margin-bottom:.6rem; color:#9a3412; font-weight:900;
   }
 
-  /* Main content cards & tables */
   main .card{
     background:var(--panel);
     border:1px solid var(--line);
@@ -164,13 +167,16 @@
     margin:1.25rem 0;
     box-shadow: 0 10px 22px rgba(2,6,23,.06);
   }
+
+  .grid-2{display:grid; gap:var(--gap); grid-template-columns:1fr;}
+  @media (min-width: 860px){ .grid-2{grid-template-columns: 1fr 1fr} }
+
   table{width:100%; border-collapse:collapse; overflow:hidden; border-radius:12px}
   th,td{padding:.9rem; border-bottom:1px solid var(--line)}
   th{background:var(--panel-2); color:var(--ink); text-align:left}
   tr.highlight{background:rgba(249,115,22,.08)}
   tr:hover{background:rgba(2,6,23,.02)}
 
-  /* EEAT / Author */
   .eeat{
     background:linear-gradient(180deg, rgba(249,115,22,.08), rgba(255,255,255,0));
     border:1px solid var(--line);
@@ -179,7 +185,6 @@
     box-shadow: 0 10px 22px rgba(2,6,23,.06);
   }
 
-  /* FAQ (Accordion) */
   .faq-item{border-bottom:1px solid var(--line); padding: .9rem 0}
   .faq-button{
     all:unset; display:flex; justify-content:space-between; align-items:center;
@@ -190,78 +195,94 @@
   .faq-content{max-height:0; overflow:hidden; transition:max-height .25s ease}
   .faq-content.open{padding-top:.6rem}
 
-  /* Utility */
-  .note{border-left:3px solid var(--primary); padding:.75rem 1rem; background:rgba(249,115,22,.10); border-radius:10px}
+  .note{
+    border-left:3px solid var(--primary);
+    padding:.75rem 1rem;
+    background:rgba(249,115,22,.10);
+    border-radius:10px
+  }
   .ok{color:var(--ok)} .warn{color:var(--warn)} .err{color:var(--error)}
-  .center{text-align:center}
   .muted{color:#64748b}
 
-  /* Responsive */
   @media (min-width: 860px){
     .hero-grid{grid-template-columns: 1.1fr .9fr}
-    .hero-visual{display:block}
     .steps{grid-template-columns: repeat(4, 1fr)}
   }
 </style>
 </head>
 <body>
 
-<!-- =======================
-     Hero
-     ======================= -->
 <header class="hero" role="banner">
   <div class="container hero-grid">
     <div class="hero-card" aria-label="Intro">
+      <div class="brand-row">
+        <img class="brand-logo" src="rhinofi_logo.jpg" alt="Rhino Bridge logo">
+        <div>
+          <div class="muted" style="font-weight:800; letter-spacing:.2px;">Operational Guide</div>
+          <div class="muted" style="font-size:.95rem;">Fees • Security • Routes • Tracking • Troubleshooting</div>
+        </div>
+      </div>
+
       <h1>Rhino Bridge</h1>
       <p class="lead">
-        A security-first guide to <strong>Rhino Bridge</strong>: how cross-chain routing works, fees and execution costs,
-        confirmations, approval hygiene, and a practical troubleshooting playbook. Use this page as an operational checklist.
+        This is a practical, security-first page about <strong>Rhino Bridge</strong>: routing logic, confirmations/finality,
+        fees and slippage, approvals hygiene, and a detailed troubleshooting runbook. The goal is simple:
+        bridge safely and predictably, not “hope it works”.
       </p>
+
       <div>
         <a href="#" class="cta" aria-label="Open Rhino Bridge (placeholder)">Open Rhino Bridge</a>
-        <a href="#" class="cta secondary" aria-label="Bridge Docs (placeholder)">Bridge Docs</a>
+        <a href="#" class="cta secondary" aria-label="Rhino Bridge Docs (placeholder)">Rhino Bridge Docs</a>
+      </div>
+
+      <div class="note" style="margin-top:1rem;">
+        <strong>Quick safety rule:</strong> For large transfers on <em>Rhino Bridge</em>, split into tranches,
+        verify destination receipt between tranches, and keep gas buffers on both origin and destination chains.
       </div>
     </div>
-    <div class="hero-visual" aria-hidden="true">
-      <img src="cover.png" alt="Rhino Bridge interface preview">
+
+    <div aria-hidden="true">
+      <img src="rhino2.png" alt="Rhino Bridge cross-chain transfer overview">
     </div>
   </div>
 </header>
 
-<!-- =======================
-     Step-by-Step Guide
-     ======================= -->
 <section class="step-guide" aria-labelledby="how-works">
   <div class="container">
-    <h2 id="how-works">How <span class="muted">Rhino Bridge</span> Works (Routing, Confirmations &amp; Delivery)</h2>
+    <h2 id="how-works">Rhino Bridge: How the Bridging Workflow Works (Routing → Finality → Delivery)</h2>
     <div class="steps" role="list">
       <article class="step" role="listitem">
         <div class="icon">①</div>
-        <h3>1) Pick Route &amp; Token</h3>
+        <h3>Route selection (token, chains, and delivery expectation)</h3>
         <p>
-          Choose source and destination networks, token, and amount. A good bridge UX shows expected costs, estimated delivery time,
-          and what “min received” means for your transfer.
+          A bridge session starts by selecting source/destination networks, token and amount. A good
+          <strong>Rhino Bridge</strong> workflow should clearly surface: expected costs, estimated delivery time,
+          and any additional “finalize/claim” step if the route requires it.
         </p>
       </article>
       <article class="step" role="listitem">
         <div class="icon">②</div>
-        <h3>2) Approve (If Needed) &amp; Send</h3>
+        <h3>Approval hygiene (reduce exposure before the send)</h3>
         <p>
-          Approvals are often the biggest user-risk point. Prefer exact approvals when possible, avoid unknown UIs, and sign only what you understand.
+          Approvals are a top risk vector. Prefer minimal or exact approvals when available,
+          avoid unknown interfaces, and periodically revoke old allowances.
+          This is a core part of safe usage of <strong>Rhino Bridge</strong>.
         </p>
       </article>
       <article class="step" role="listitem">
         <div class="icon">③</div>
-        <h3>3) Track Confirmations</h3>
+        <h3>Confirmations &amp; finality (why “time-to-receive” changes)</h3>
         <p>
-          Cross-chain delivery depends on confirmations/finality. During congestion, expect time variance; don’t spam retries without verifying state.
+          Delivery depends on network confirmation/finality and route mechanics. Congestion increases variance.
+          The best practice is to track the status rather than repeatedly resubmitting.
         </p>
       </article>
       <article class="step" role="listitem">
         <div class="icon">④</div>
-        <h3>4) Verify Receipt &amp; Post-Bridge Actions</h3>
+        <h3>Receipt verification (swap/unwrap only after funds are final)</h3>
         <p>
-          Verify destination balance, then swap/unwrap only after funds are final. If you plan to swap, protect with sane slippage.
+          Confirm destination receipt, then do swaps/unwraps. If you swap, set conservative slippage
+          and prefer deep-liquidity pairs to avoid unnecessary losses.
         </p>
       </article>
     </div>
@@ -271,109 +292,129 @@
 <main class="container" role="main">
 
   <section class="card">
-    <p>
-      <strong>Rhino Bridge</strong> is designed for practical cross-chain transfers: you select origin/destination, token and amount, and receive a route that
-      aims to balance speed, cost, and predictability. In real usage, the biggest drivers of outcome are network congestion, token liquidity
-      on the destination, and your approval / signing hygiene.
-    </p>
-    <div class="note">
-      <strong>Operator rule:</strong> For large transfers, split into multiple tranches, verify receipt on the destination between tranches,
-      and keep a small buffer for gas on both sides.
+    <h2>Rhino Bridge: What You Should Know Before You Send a Transfer</h2>
+    <div class="grid-2">
+      <div>
+        <p>
+          <strong>Rhino Bridge</strong> is used for cross-chain transfers where predictability matters:
+          you want the asset to arrive on the target chain with a known cost envelope and a clear workflow.
+          In practice, “bridging problems” are usually not protocol mysteries — they’re operational issues:
+          wrong destination network, insufficient gas buffer, stale approvals, or confusion about finality steps.
+        </p>
+        <ul>
+          <li><strong>Always keep gas</strong> on the origin chain for the send and on the destination chain for post-actions.</li>
+          <li><strong>Don’t bridge 100%</strong> of your funds; keep a liquid buffer in case you need to react.</li>
+          <li><strong>Split large transfers</strong> to reduce tail-risk and make incident recovery easier.</li>
+          <li><strong>Stablecoin-first strategy</strong> often reduces complexity and cost variance.</li>
+        </ul>
+      </div>
+      <div>
+        <img src="rhino.png" alt="Rhino Bridge routing and security checklist visual">
+      </div>
     </div>
   </section>
 
   <section class="card" aria-labelledby="fees">
-    <h2 id="fees">Fees &amp; Costs on Rhino Bridge</h2>
+    <h2 id="fees">Rhino Bridge: Fees, Slippage, and the Real Cost Model</h2>
     <p>
-      Total bridging cost is not “one fee”. It’s the sum of origin gas + destination gas + any routing/relayer cost + (optional) swap costs if you
-      swap before/after bridging. During spikes, gas dominates. During illiquid conditions, swaps dominate.
+      The real cost of <strong>Rhino Bridge</strong> usage is multi-component: origin gas + destination gas + route/relayer costs + (optional)
+      swap costs if you swap before or after bridging. Most “unexpected losses” come from swap slippage and poor execution timing,
+      not the bridge fee itself.
     </p>
 
-    <h3>Cost components</h3>
+    <h3>Fee components you should estimate every time</h3>
     <ul>
-      <li><strong>Origin network gas:</strong> approvals + bridge transaction.</li>
-      <li><strong>Destination network gas:</strong> any finalize/claim step if the route requires it.</li>
-      <li><strong>Routing/relayer:</strong> depends on bridge architecture and route.</li>
-      <li><strong>Swap slippage:</strong> only if you swap; manage with min-received logic and avoid low-liquidity pairs.</li>
+      <li><strong>Approval gas:</strong> first-time token approvals can be a hidden cost.</li>
+      <li><strong>Bridge transaction gas:</strong> varies with congestion and priority fees.</li>
+      <li><strong>Destination actions:</strong> some routes require a claim/finalize step.</li>
+      <li><strong>Swap slippage:</strong> only if swapping; controlled by liquidity depth + volatility + your slippage tolerance.</li>
     </ul>
 
-    <table aria-label="Fee and cost table">
+    <table aria-label="Rhino Bridge cost table">
       <thead>
         <tr>
-          <th>Component</th>
-          <th>What moves it</th>
-          <th>How to reduce it</th>
+          <th>Cost Driver</th>
+          <th>What makes it worse</th>
+          <th>Optimization</th>
         </tr>
       </thead>
       <tbody>
         <tr class="highlight">
-          <td>Gas</td>
-          <td>Congestion / priority fees</td>
-          <td>Bridge off-peak, use sensible priority fees, avoid repeated retries</td>
+          <td>Gas spikes</td>
+          <td>Congestion / high priority fee markets</td>
+          <td>Bridge off-peak, avoid repeated cancels/retries, set sane priority fees</td>
         </tr>
         <tr>
-          <td>Routing / relayer</td>
-          <td>Route type / liquidity</td>
-          <td>Prefer stablecoins for transfers, compare routes, avoid exotic tokens</td>
+          <td>Swap slippage</td>
+          <td>Illiquid pairs, high volatility, large size</td>
+          <td>Swap after finality, split size, prefer deep liquidity and stable pairs</td>
         </tr>
         <tr>
-          <td>Swap cost</td>
-          <td>Liquidity depth / volatility</td>
-          <td>Swap after finality, split trades, set conservative slippage</td>
+          <td>Route variance</td>
+          <td>Complex routes / congestion / finality requirements</td>
+          <td>Prefer simpler routes and avoid “exotic token” bridges for size</td>
         </tr>
       </tbody>
     </table>
+
+    <div class="note">
+      <strong>Rule:</strong> If you need to swap, do it <em>after</em> the bridge completes on the destination chain.
+      Swapping before bridging can compound failure modes (slippage + bridging delay + price movement).
+    </div>
   </section>
 
   <section class="card" aria-labelledby="security">
-    <h2 id="security">Rhino Bridge Safety Checklist</h2>
+    <h2 id="security">Rhino Bridge: Security Model, User Risks, and Safety Checklist</h2>
     <p>
-      The #1 avoidable loss vector in bridging is signing the wrong transaction on a fake UI or leaving unlimited approvals.
-      Treat bridging like a security workflow.
+      Safe usage of <strong>Rhino Bridge</strong> is less about “trusting a bridge” and more about eliminating common user mistakes:
+      fake UIs, bad approvals, signing unknown payloads, bridging to the wrong network, and not tracking status correctly.
     </p>
 
-    <h3>Safety checklist</h3>
+    <h3>High-impact safety checklist</h3>
     <ul>
       <li>Use a hardware wallet for meaningful amounts.</li>
-      <li>Verify domain carefully (bookmarks help).</li>
-      <li>Prefer exact approvals; revoke old approvals periodically.</li>
-      <li>Bridge in tranches and verify destination balances between steps.</li>
-      <li>Avoid swapping during extreme volatility; use conservative slippage.</li>
-      <li>Keep gas buffers on both origin and destination networks.</li>
+      <li>Verify the exact domain (bookmark the official app).</li>
+      <li>Prefer minimal approvals; revoke old allowances regularly.</li>
+      <li>Bridge stablecoins for size; avoid thin-liquidity tokens.</li>
+      <li>Split transfers; verify receipt after each tranche.</li>
+      <li>Keep gas buffers on both origin and destination chains.</li>
+      <li>Track status; don’t spam retries without verifying state.</li>
     </ul>
 
     <div class="note">
-      <strong>Best practice:</strong> If you must move size fast, reduce complexity: transfer stablecoins, avoid cross-chain swap routes unless necessary,
-      and do swaps only after finality on the destination.
+      <strong>Common failure mode:</strong> user bridges “everything”, lands on the destination with 0 gas, can’t do any post-actions,
+      and then mistakes it as a bridge failure. Keep a small gas reserve.
     </div>
   </section>
 
   <section class="card" aria-labelledby="kpi">
-    <h2 id="kpi">KPIs: Measuring Rhino Bridge Outcomes (Quoted vs Realized)</h2>
-    <p class="muted">Track these metrics to detect route issues, congestion, and underperformance.</p>
-    <table aria-label="KPI table">
+    <h2 id="kpi">Rhino Bridge: KPIs to Measure Performance (Quoted vs Realized)</h2>
+    <p class="muted">
+      Track outcomes — not vibes. KPIs let you spot route issues, congestion effects, and hidden slippage.
+    </p>
+    <table aria-label="Rhino Bridge KPI table">
       <thead>
         <tr>
           <th>Metric</th>
           <th>Target</th>
-          <th>Meaning</th>
+          <th>Interpretation</th>
         </tr>
       </thead>
       <tbody>
         <tr class="highlight">
           <td>Delivery time</td>
-          <td>Consistent per route</td>
-          <td>Outliers often indicate congestion or finality delays</td>
+          <td>Stable for chosen route</td>
+          <td>Outliers often mean congestion/finality delays or destination issues</td>
         </tr>
         <tr>
           <td>Net received vs quote</td>
           <td>Within expected band</td>
-          <td>Large drift can indicate fees, swaps, or route volatility</td>
+          <td>Large drift suggests extra fees, swap slippage, or route variance</td>
         </tr>
         <tr>
           <td>Failure / revert rate</td>
           <td>&lt; 1%</td>
-          <td>Persistent failures suggest wrong gas strategy or route instability</td>
+          <td>Persistent failure suggests wrong gas strategy or problematic route</td>
         </tr>
         <tr>
           <td>Approval exposure</td>
@@ -385,105 +426,205 @@
   </section>
 
   <section class="card" aria-labelledby="runbook">
-    <h2 id="runbook">Runbook: Rhino Bridge Step-by-Step</h2>
+    <h2 id="runbook">Rhino Bridge: Runbook (Step-by-Step Operational Workflow)</h2>
 
     <h3>Standard bridging workflow</h3>
     <ol>
-      <li>Verify Rhino Bridge URL (use bookmarks).</li>
+      <li>Verify URL (bookmark the official app).</li>
       <li>Pick origin/destination chain; choose token and amount.</li>
-      <li>Review fees, ETA, and any finalize/claim step.</li>
-      <li>Approve (if needed) with minimal allowance; then bridge.</li>
-      <li>Wait for confirmations; track status; avoid duplicate submits.</li>
-      <li>Verify destination receipt; only then swap/unwrap if required.</li>
+      <li>Review fee estimate, ETA, and whether a finalize/claim step exists.</li>
+      <li>Approve with minimal allowance (if needed), then send bridge transaction.</li>
+      <li>Track status; wait for confirmations/finality.</li>
+      <li>Verify destination receipt; then swap/unwrap only after final.</li>
     </ol>
 
-    <h3>Troubleshooting</h3>
+    <h3>Incident playbook (what to do when something looks wrong)</h3>
     <ul>
-      <li class="warn"><strong>Pending tx:</strong> bump priority fee; don’t “spam” retries without checking state.</li>
-      <li class="err"><strong>Wrong approval:</strong> revoke approvals immediately and scan for other allowances.</li>
-      <li><strong>No funds on destination:</strong> check finality/claim requirement; verify correct destination chain.</li>
-      <li><strong>Slippage issues:</strong> reduce trade size, avoid illiquid pairs, and swap after finality.</li>
+      <li class="warn"><strong>Pending tx:</strong> speed up (higher priority fee) or cancel if safe; don’t send duplicates blindly.</li>
+      <li class="warn"><strong>Wrong network selected:</strong> stop and verify chain IDs; confirm destination chain in your wallet.</li>
+      <li class="err"><strong>Approval risk:</strong> if you approved unlimited or suspect phishing, revoke allowances immediately.</li>
+      <li><strong>No funds visible:</strong> check bridge status, confirmations, and whether a claim step exists.</li>
+      <li><strong>Swap loss:</strong> reduce size, use deeper pairs, and set tighter slippage next time.</li>
     </ul>
   </section>
 
-  <!-- EEAT: 10 authoritative external links (noopener nofollow) -->
+  <!-- EEAT: 10 external authoritative links -->
   <section class="eeat" aria-labelledby="eeat">
-    <h2 id="eeat">Authoritative Notes &amp; External References</h2>
+    <h2 id="eeat">Rhino Bridge: Authoritative Notes &amp; External References</h2>
     <p>
-      These external resources support core concepts around <strong>Rhino Bridge</strong>, cross-chain risk, approvals hygiene,
-      and bridge market analytics. Always verify URLs and prefer audited, well-documented routes.
+      Use these references to validate concepts around <strong>Rhino Bridge</strong>, cross-chain risk, approvals hygiene, and bridge analytics.
+      Links are external and provided for research and operational safety.
     </p>
 
-    <h3>Rhino Bridge / Rhino.fi References</h3>
+    <h3>Rhino Bridge / Rhino.fi</h3>
     <ul>
-      <li><a href="https://app.rhino.fi/" target="_blank" rel="noopener nofollow">Rhino Bridge — App</a></li>
       <li><a href="https://rhino.fi/" target="_blank" rel="noopener nofollow">Rhino.fi — Official Site</a></li>
-      <li><a href="https://docs.rhino.fi/" target="_blank" rel="noopener nofollow">Rhino.fi — Developer Docs</a></li>
-      <li><a href="https://support.rhino.fi/en/article/bridges-on-rhinofi-iq3je1/" target="_blank" rel="noopener nofollow">Rhino.fi Support — Bridges on Rhino.fi</a></li>
-      <li><a href="https://rhino.fi/legal/audit" target="_blank" rel="noopener nofollow">Rhino.fi — Audits Page</a></li>
-      <li><a href="https://github.com/rhinofi/contracts_public" target="_blank" rel="noopener nofollow">Rhino.fi — Public Contracts Repo (Audit Reference)</a></li>
-      <li><a href="https://certificate.quantstamp.com/full/rhino-fi/6529d3d8-4906-43c9-bfe0-601ec83647cb/index.html" target="_blank" rel="noopener nofollow">Quantstamp — Rhino.fi Audit Report</a></li>
+      <li><a href="https://app.rhino.fi/" target="_blank" rel="noopener nofollow">Rhino Bridge — App</a></li>
+      <li><a href="https://docs.rhino.fi/" target="_blank" rel="noopener nofollow">Rhino.fi — Documentation</a></li>
+      <li><a href="https://github.com/rhinofi/contracts_public" target="_blank" rel="noopener nofollow">Rhino.fi — Contracts (Public Repo)</a></li>
     </ul>
 
-    <h3>Bridge Security &amp; Safety Hygiene</h3>
+    <h3>Bridge Analytics &amp; Safety Hygiene</h3>
     <ul>
-      <li><a href="https://chain.link/education-hub/cross-chain-bridge-vulnerabilities" target="_blank" rel="noopener nofollow">Chainlink — Cross-Chain Bridge Vulnerabilities</a></li>
-      <li><a href="https://ethereum.org/guides/how-to-revoke-token-access/" target="_blank" rel="noopener nofollow">Ethereum.org — Revoke Token Approvals (Safety Guide)</a></li>
-      <li><a href="https://defillama.com/bridges" target="_blank" rel="noopener nofollow">DeFiLlama — Bridges Volume Dashboard</a></li>
+      <li><a href="https://defillama.com/bridges" target="_blank" rel="noopener nofollow">DeFiLlama — Bridges Dashboard</a></li>
+      <li><a href="https://chain.link/education-hub/cross-chain-bridge-vulnerabilities" target="_blank" rel="noopener nofollow">Chainlink — Bridge Vulnerabilities Overview</a></li>
+      <li><a href="https://ethereum.org/guides/how-to-revoke-token-access/" target="_blank" rel="noopener nofollow">Ethereum.org — Revoke Token Approvals</a></li>
+      <li><a href="https://revoke.cash/" target="_blank" rel="noopener nofollow">Revoke.cash — Allowance Management Tool</a></li>
+      <li><a href="https://consensys.io/blog" target="_blank" rel="noopener nofollow">Consensys — Security Research &amp; Wallet Safety</a></li>
+      <li><a href="https://blog.openzeppelin.com/" target="_blank" rel="noopener nofollow">OpenZeppelin — Smart Contract Security</a></li>
     </ul>
 
     <div class="note">
-      <strong>About:</strong> Prepared by Crypto Finance Experts as an operational guide for <em>Rhino Bridge</em> focusing on fees, routing, risk controls,
-      approvals hygiene, and troubleshooting.
+      <strong>About:</strong> Prepared by Crypto Finance Experts as a practical SEO-oriented knowledge base for <em>Rhino Bridge</em>:
+      routing, fees, slippage, confirmations, security hygiene, and troubleshooting.
     </div>
   </section>
 
   <!-- FAQ -->
   <section class="card faq-section" aria-labelledby="faq">
-    <h2 id="faq">Frequently Asked Questions — Rhino Bridge</h2>
+    <h2 id="faq">Rhino Bridge: Frequently Asked Questions</h2>
 
     <div class="faq-item">
       <button class="faq-button" aria-expanded="false" aria-controls="f1" id="b1">
-        <h3>What is Rhino Bridge used for?</h3><span class="muted">+</span>
+        <h3>What is Rhino Bridge and how does it work?</h3><span class="muted">+</span>
       </button>
       <div id="f1" class="faq-content" role="region" aria-labelledby="b1">
-        <p><strong>Rhino Bridge</strong> is used to transfer assets across chains. The main goals are predictable delivery, low total cost, and a clear workflow for confirmations and receipt verification.</p>
+        <p><strong>Rhino Bridge</strong> enables cross-chain transfers by routing assets from an origin network to a destination network. The workflow typically includes route selection, approvals (if needed), confirmations/finality, and receipt verification.</p>
       </div>
     </div>
 
     <div class="faq-item">
       <button class="faq-button" aria-expanded="false" aria-controls="f2" id="b2">
-        <h3>Why do I need an approval before bridging?</h3><span class="muted">+</span>
+        <h3>Is Rhino Bridge safe to use?</h3><span class="muted">+</span>
       </button>
       <div id="f2" class="faq-content" role="region" aria-labelledby="b2">
-        <p>Approvals allow a contract to move your token. Prefer minimal approvals and revoke old allowances to reduce tail risk.</p>
+        <p>Safety depends on both the route and user practices. Use official URLs, hardware wallets, minimal approvals, and bridge in tranches. Most losses come from phishing/approvals, not “bridging math”.</p>
       </div>
     </div>
 
     <div class="faq-item">
       <button class="faq-button" aria-expanded="false" aria-controls="f3" id="b3">
-        <h3>What affects Rhino Bridge fees the most?</h3><span class="muted">+</span>
+        <h3>What fees does Rhino Bridge charge?</h3><span class="muted">+</span>
       </button>
       <div id="f3" class="faq-content" role="region" aria-labelledby="b3">
-        <p>Network congestion (gas), route type, and whether you are swapping. For stable transfers, moving stablecoins often reduces complexity and cost variance.</p>
+        <p>Bridging costs usually include origin gas, potential routing/relayer costs, and destination gas. If you swap before/after bridging, swap fees and slippage can dominate total cost.</p>
       </div>
     </div>
 
     <div class="faq-item">
       <button class="faq-button" aria-expanded="false" aria-controls="f4" id="b4">
-        <h3>How do I bridge safely with Rhino Bridge?</h3><span class="muted">+</span>
+        <h3>Why is my Rhino Bridge transaction pending?</h3><span class="muted">+</span>
       </button>
       <div id="f4" class="faq-content" role="region" aria-labelledby="b4">
-        <p>Use a hardware wallet, verify URLs, bridge in tranches, keep gas buffers, and revoke approvals periodically.</p>
+        <p>Pending status is often gas-related. Consider speeding up with a higher priority fee. Don’t submit duplicates without checking nonce and state.</p>
       </div>
     </div>
 
     <div class="faq-item">
       <button class="faq-button" aria-expanded="false" aria-controls="f5" id="b5">
-        <h3>What should I do if a transaction is stuck?</h3><span class="muted">+</span>
+        <h3>Rhino Bridge funds not showing on destination — what to check?</h3><span class="muted">+</span>
       </button>
       <div id="f5" class="faq-content" role="region" aria-labelledby="b5">
-        <p>Speed up with a higher priority fee, verify nonce/state, and avoid submitting duplicates until you confirm the bridge status.</p>
+        <p>Check you selected the correct destination chain, confirm finality/confirmations, and verify whether a claim/finalize step is required. Also ensure your wallet is on the correct network.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-button" aria-expanded="false" aria-controls="f6" id="b6">
+        <h3>Do I need token approval to use Rhino Bridge?</h3><span class="muted">+</span>
+      </button>
+      <div id="f6" class="faq-content" role="region" aria-labelledby="b6">
+        <p>Often yes, for ERC-20 transfers. Prefer minimal approvals and revoke old allowances to reduce tail risk. Approvals are a major security surface in bridging.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-button" aria-expanded="false" aria-controls="f7" id="b7">
+        <h3>What is slippage and does Rhino Bridge have slippage?</h3><span class="muted">+</span>
+      </button>
+      <div id="f7" class="faq-content" role="region" aria-labelledby="b7">
+        <p>Pure bridging doesn’t have DEX slippage, but any swap performed before/after bridging does. If a route includes a swap step, control it with conservative slippage settings and avoid illiquid pairs.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-button" aria-expanded="false" aria-controls="f8" id="b8">
+        <h3>How long does Rhino Bridge take?</h3><span class="muted">+</span>
+      </button>
+      <div id="f8" class="faq-content" role="region" aria-labelledby="b8">
+        <p>Time depends on confirmations/finality and network congestion. Expect variance during spikes. Track status rather than repeatedly resubmitting.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-button" aria-expanded="false" aria-controls="f9" id="b9">
+        <h3>Can Rhino Bridge fail or revert?</h3><span class="muted">+</span>
+      </button>
+      <div id="f9" class="faq-content" role="region" aria-labelledby="b9">
+        <p>Yes. Failures can happen due to gas settings, network congestion, route constraints, or user-side issues. Reduce failures by bridging stablecoins, splitting size, and avoiding peak congestion windows.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-button" aria-expanded="false" aria-controls="f10" id="b10">
+        <h3>How do I track a Rhino Bridge transfer?</h3><span class="muted">+</span>
+      </button>
+      <div id="f10" class="faq-content" role="region" aria-labelledby="b10">
+        <p>Use the bridge status page (if available), your wallet activity, and block explorers for both origin and destination networks. Always verify the chain and transaction hash.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-button" aria-expanded="false" aria-controls="f11" id="b11">
+        <h3>What is the safest token to bridge with Rhino Bridge?</h3><span class="muted">+</span>
+      </button>
+      <div id="f11" class="faq-content" role="region" aria-labelledby="b11">
+        <p>For large transfers, stablecoins are often safer operationally because they reduce volatility and swap pressure. Always consider liquidity on the destination chain.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-button" aria-expanded="false" aria-controls="f12" id="b12">
+        <h3>Should I swap before or after using Rhino Bridge?</h3><span class="muted">+</span>
+      </button>
+      <div id="f12" class="faq-content" role="region" aria-labelledby="b12">
+        <p>Usually after. Swapping before bridging compounds risks (slippage + bridging delay + price moves). Swap after finality on the destination for better control.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-button" aria-expanded="false" aria-controls="f13" id="b13">
+        <h3>What happens if I have no gas on the destination chain after Rhino Bridge?</h3><span class="muted">+</span>
+      </button>
+      <div id="f13" class="faq-content" role="region" aria-labelledby="b13">
+        <p>You may not be able to perform post-actions (swaps, unwraps, claims). Keep a small gas reserve on destination chains before bridging significant funds.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-button" aria-expanded="false" aria-controls="f14" id="b14">
+        <h3>How can I reduce risk when using Rhino Bridge for large amounts?</h3><span class="muted">+</span>
+      </button>
+      <div id="f14" class="faq-content" role="region" aria-labelledby="b14">
+        <p>Split into tranches, verify receipt each time, use minimal approvals, prefer stable tokens, and avoid complex routes during volatile congestion periods.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-button" aria-expanded="false" aria-controls="f15" id="b15">
+        <h3>Can I revoke token approvals used with Rhino Bridge?</h3><span class="muted">+</span>
+      </button>
+      <div id="f15" class="faq-content" role="region" aria-labelledby="b15">
+        <p>Yes. Revoking approvals is a strong security habit. Reduce unlimited approvals, revoke old allowances, and keep exposure minimal.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-button" aria-expanded="false" aria-controls="f16" id="b16">
+        <h3>Why does Rhino Bridge show a different received amount than expected?</h3><span class="muted">+</span>
+      </button>
+      <div id="f16" class="faq-content" role="region" aria-labelledby="b16">
+        <p>Differences can come from fees, route variance, and swap slippage if swapping is involved. Measure net received vs quote and adjust strategy (split size, swap after finality, use deeper liquidity).</p>
       </div>
     </div>
 
@@ -492,11 +633,10 @@
 </main>
 
 <footer class="container" role="contentinfo" style="padding:2rem 0; border-top:1px solid var(--line); margin-top:2rem">
-  <p class="muted">© 2026 Rhino Bridge Guide. External links provided for research and operational safety reference.</p>
+  <p class="muted">© 2026 Rhino Bridge Guide. Educational content with safety-first operational focus.</p>
 </footer>
 
 <script>
-  // FAQ accordion (kept minimal)
   document.querySelectorAll('.faq-button').forEach(btn=>{
     btn.addEventListener('click', ()=>{
       const expanded = btn.getAttribute('aria-expanded') === 'true';
@@ -512,14 +652,3 @@
     });
   });
 </script>
-
-  
-
-
-
-
-
-
-
-
-</body></html>
