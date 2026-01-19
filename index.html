@@ -297,6 +297,18 @@
       .steps{grid-template-columns: repeat(4, 1fr)}
       .grid-2{grid-template-columns: 1fr 1fr}
     }
+
+      /* Center ONLY the primary CTA button */
+.cta-center{
+  display:flex;
+  justify-content:center;
+  margin-top: 1rem;
+}
+
+/* optional: keep the button same width behavior */
+.cta-center .cta{
+  margin-top: 0; /* because wrapper already has margin */
+}
   </style>
 </head>
 
@@ -328,10 +340,13 @@
         <span class="pill">Rhino Bridge troubleshooting</span>
       </div>
 
-      <div>
-        <a href="#" class="cta" aria-label="Open Rhino Bridge (placeholder)">Open Rhino Bridge</a>
-        <a href="#" class="cta secondary" aria-label="Rhino Bridge Docs (placeholder)">Rhino Bridge Docs</a>
-      </div>
+      <div class="cta-center">
+  <a href="#" class="cta" aria-label="Open Rhino Bridge (placeholder)">Open Rhino Bridge</a>
+</div>
+
+<div>
+  <a href="#" class="cta secondary" aria-label="Rhino Bridge Docs (placeholder)">Rhino Bridge Docs</a>
+</div>
 
       <div class="note" style="margin-top:1rem;">
         <strong>Quick safety rule:</strong> For large transfers on <em>Rhino Bridge</em>, split into tranches,
