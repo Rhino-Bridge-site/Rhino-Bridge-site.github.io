@@ -4,9 +4,6 @@
  <!doctype html>
 <html lang="en">
 <head>
-  <!doctype html>
-<html lang="en">
-<head>
   <!-- SEO / EEAT Meta Tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -117,6 +114,7 @@
       border-bottom:1px solid var(--line);
     }
 
+    /* ✅ CHANGE: always one-column layout (hero text full width, image below) */
     .hero-grid{
       display:grid;
       gap:var(--gap-lg);
@@ -178,6 +176,7 @@
       display:flex;
       align-items:center;
       justify-content:center;
+      margin-top: 18px; /* ✅ image below text block */
     }
     .hero-img{
       width:100%;
@@ -292,8 +291,9 @@
     .faq-content.open{padding-top:.6rem}
     .faq-plus{font-weight:900; color:#9a3412}
 
+    /* ✅ CHANGE: keep hero 1-col even on desktop, but keep steps & grid-2 responsive */
     @media (min-width: 860px){
-      .hero-grid{grid-template-columns: 1.1fr .9fr}
+      .hero-grid{grid-template-columns: 1fr;}
       .steps{grid-template-columns: repeat(4, 1fr)}
       .grid-2{grid-template-columns: 1fr 1fr}
     }
@@ -339,6 +339,7 @@
       </div>
     </div>
 
+    <!-- ✅ IMAGE MOVED BELOW THE LEFT BLOCK -->
     <div class="hero-media" aria-hidden="true">
       <img class="hero-img" src="rhino2.png" alt="Rhino Bridge cross-chain transfer overview">
     </div>
@@ -893,5 +894,6 @@
 
 </body>
 </html>
+
 
 
