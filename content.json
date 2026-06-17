@@ -1,0 +1,103 @@
+{
+  "key_facts": {
+    "Category": "Cross-chain bridge and swap app",
+    "Network": "20+ supported chains",
+    "Custody": "Wallet-signed app flow",
+    "Core assets": "USDC, USDT, ETH, WBTC, and supported route assets"
+  },
+  "intent": [
+    {
+      "q": "Rhino.fi bridge fees and minimums",
+      "a": "Rhino.fi bridge cost depends on the selected token, source chain, destination chain, liquidity path, gas, and any route-specific fee shown in the app. Users should not rely on a fixed fee copied from an old guide because bridge pricing can change with network congestion and provider liquidity. Minimum and maximum transfer amounts can also vary by token and chain. Before signing, review the quote, expected received amount, gas token requirement, and whether the route is a simple bridge or a bridge plus swap."
+    },
+    {
+      "q": "Rhino.fi supported chains and assets",
+      "a": "Rhino.fi documentation maintains the practical source of truth for supported chains and assets. The app is commonly searched for moving stablecoins and major assets such as USDC, USDT, ETH, and WBTC across supported networks, but individual routes can still be unavailable. The important distinction is that a chain may be supported while a specific token pair is not. Check the live route before sending, and make sure the destination wallet can receive the asset on that network."
+    },
+    {
+      "q": "Rhino.fi bridge plus swap routes",
+      "a": "Rhino.fi can support routes where the user bridges the same asset and routes where the app combines bridging with a swap into a different destination asset. That is useful when a direct same-token path has poor liquidity or when the user wants a stablecoin on the destination chain. It also adds more variables: price impact, slippage, route provider, and destination-token contract. Before signing a bridge plus swap route, check both the bridge direction and the final token you will receive."
+    },
+    {
+      "q": "Rhino.fi withdrawal or transfer time",
+      "a": "Rhino.fi transfer time is route-specific. A transaction can require source-chain confirmation, route execution, and destination settlement, and delays can come from chain congestion or provider conditions. If a transfer appears delayed, first verify whether the source transaction succeeded, then check the route status in the app and destination explorer. A pending route should not be treated the same as a reverted transaction. Keep the transaction hash and recipient address available for official support."
+    },
+    {
+      "q": "Rhino.fi vs Orbiter or Across bridge",
+      "a": "Rhino.fi, Orbiter, and Across all address cross-chain transfer demand, but they are not interchangeable for every token and network. Rhino.fi is useful when its app offers a supported route and clear bridge or bridge-plus-swap output. Across is known for fast intent-style bridging on selected routes, while Orbiter is often used for L2 transfers. The best choice depends on the exact token, route, fee, estimated arrival, destination liquidity, and whether the app supports the wallet and chain pair you need."
+    }
+  ],
+  "compare": {
+    "title": "Rhino.fi vs other cross-chain bridges",
+    "rows": [
+      ["Dimension", "Rhino.fi", "Alternative"],
+      ["Primary fit", "Bridge and bridge-plus-swap routes from one app", "Single-purpose bridges may focus on fewer chains or one route type"],
+      ["Asset focus", "Stablecoins and major assets such as USDC, USDT, ETH, and WBTC", "Coverage depends on each bridge's liquidity model"],
+      ["Route review", "Shows route details before wallet signing", "Some bridges expose less routing detail"],
+      ["Best user", "Users who want one interface for supported cross-chain transfers", "Users optimizing for one specific bridge provider or chain"]
+    ]
+  },
+  "faq": [
+    {
+      "q": "What is Rhino.fi bridge?",
+      "a": "Rhino.fi bridge is the cross-chain transfer flow inside Rhino.fi's app. Users connect a wallet, choose a source chain, destination chain, token, and amount, then review a route before signing. Depending on the path, the route can be a same-asset bridge or a bridge plus swap into a destination asset."
+    },
+    {
+      "q": "Which assets can I bridge with Rhino.fi?",
+      "a": "Rhino.fi documentation and app routes commonly cover major assets such as USDC, USDT, ETH, WBTC, and selected stablecoins or ecosystem tokens. Availability depends on the source chain, destination chain, route liquidity, and current provider status. Always use the live app quote as the final route source."
+    },
+    {
+      "q": "Does Rhino.fi support bridge and swap in one transaction flow?",
+      "a": "Yes, Rhino.fi documentation describes both bridge and bridge plus swap route types. That means a user may move an asset to another chain as the same token, or bridge and receive a different supported token. The final token, amount, slippage, and route should be reviewed carefully before signing."
+    },
+    {
+      "q": "Why is my Rhino.fi transfer delayed?",
+      "a": "Delays can come from source-chain confirmations, route provider processing, liquidity conditions, or destination-chain settlement. Check the source transaction hash first. If it succeeded, use the app status and destination explorer before retrying. If it reverted, the transfer did not execute even though gas may have been spent."
+    },
+    {
+      "q": "Is Rhino.fi non-custodial?",
+      "a": "Rhino.fi is used through a wallet-connected flow where users sign transactions themselves. That reduces centralized account custody, but bridge users still face smart-contract, routing, liquidity, approval, and user-error risk. Verify the app domain, route details, token contracts, and wallet prompts before approving a transfer."
+    },
+    {
+      "q": "What is the official Rhino.fi app URL?",
+      "a": "The app route in this page points to app.rhino.fi. Users should verify the browser domain before connecting a wallet and should avoid lookalike links from ads, social posts, or direct messages. A legitimate bridge flow never needs a seed phrase or private key."
+    }
+  ],
+  "niche": {
+    "type": "bridge",
+    "asset": "USDT",
+    "receive": "USDT",
+    "supported_networks": ["Ethereum", "Polygon", "Arbitrum", "Optimism", "Base", "BNB Smart Chain", "Scroll", "Starknet", "ZKsync"]
+  },
+  "authority": [
+    {
+      "text": "Rhino.fi documentation",
+      "url": "https://docs.rhino.fi/get-started/introduction"
+    },
+    {
+      "text": "What is Rhino.fi",
+      "url": "https://docs.rhino.fi/get-started/what-is-rhino"
+    },
+    {
+      "text": "Rhino.fi supported chains",
+      "url": "https://docs.rhino.fi/get-started/supported-chains"
+    },
+    {
+      "text": "Rhino.fi app",
+      "url": "https://app.rhino.fi/bridge"
+    },
+    {
+      "text": "Rhino.fi GitHub",
+      "url": "https://github.com/rhinofi"
+    },
+    {
+      "text": "Ethereum bridge overview",
+      "url": "https://ethereum.org/bridges/"
+    }
+  ],
+  "sameAs": [
+    "https://x.com/rhinofi",
+    "https://github.com/rhinofi",
+    "https://defillama.com/protocol/rhino.fi"
+  ]
+}
