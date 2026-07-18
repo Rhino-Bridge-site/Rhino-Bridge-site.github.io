@@ -3,1333 +3,308 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Rhino Bridge: Premium DeFi Transfers Engine</title>
-  <meta name="description" content="Rhino Bridge provides seamless, low-latency token transfers on Rhino.fi Network. Trade with optimized routing, minimal slippage, and institutional-grade security.">
+  <title>Rhino Bridge — Cross-chain stablecoin bridge</title>
+  <meta name="description" content="Rhino Bridge is Rhino.fi’s cross-chain bridge and liquidity-routing product for moving supported assets, especially stablecoins, between blockchains.">
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1">
+  <meta name="theme-color" content="#eef0f3">
   <link rel="canonical" href="https://rhino-bridge-site.github.io/">
-  <meta name="robots" content="index,follow,max-image-preview:large">
-  <meta name="theme-color" content="#F6FAFF">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Rhino Bridge: Premium DeFi Transfers Engine">
-  <meta property="og:description" content="Rhino Bridge provides seamless, low-latency token transfers on Rhino.fi Network. Trade with optimized routing, minimal slippage, and institutional-grade security.">
-  <meta property="og:url" content="https://rhino-bridge-site.github.io/">
-  <meta property="og:image" content="https://rhino-bridge-site.github.io/og-cover.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Rhino Bridge: Premium DeFi Transfers Engine">
-  <meta name="twitter:description" content="Rhino Bridge provides seamless, low-latency token transfers on Rhino.fi Network. Trade with optimized routing, minimal slippage, and institutional-grade security.">
-  <meta name="twitter:image" content="https://rhino-bridge-site.github.io/og-cover.png">
-  <link rel="icon" type="image/png" sizes="256x256" href="favicon.png">
-  <link rel="apple-touch-icon" href="favicon.png">
-  <link rel="manifest" href="site.webmanifest">
-  <link rel="sitemap" type="application/xml" href="sitemap.xml">
-  
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="prefetch" href="dashboard/index.html">
+  <link rel="preconnect" href="https://defillama.com/" crossorigin>
+  <link rel="preconnect" href="https://coins.llama.fi" crossorigin>
+  <meta property="og:type" content="website"><meta property="og:url" content="https://rhino-bridge-site.github.io/">
+  <meta property="og:title" content="Rhino Bridge — Cross-chain stablecoin bridge">
+  <meta property="og:description" content="Rhino Bridge is Rhino.fi’s cross-chain bridge and liquidity-routing product for moving supported assets, especially stablecoins, between blockchains.">
+  <meta property="og:site_name" content="Rhino Bridge dashboard"><meta property="og:image" content="https://rhino-bridge-site.github.io/og-cover.png">
+  <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Rhino Bridge — Cross-chain stablecoin bridge"><meta name="twitter:description" content="Rhino Bridge is Rhino.fi’s cross-chain bridge and liquidity-routing product for moving supported assets, especially stablecoins, between blockchains."><meta name="twitter:image" content="https://rhino-bridge-site.github.io/og-cover.png">
   <script type="application/ld+json">
   {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebSite",
-        "@id": "https://rhino-bridge-site.github.io/#website",
-        "url": "https://rhino-bridge-site.github.io/",
-        "name": "Rhino Bridge",
-        "description": "Rhino Bridge is a decentralized exchange and native bridge engine on Rhino.fi Network.",
-        "inLanguage": "en"
-      },
-      {
-        "@type": "WebApplication",
-        "@id": "https://rhino-bridge-site.github.io/#app",
-        "name": "Rhino Bridge",
-        "applicationCategory": "FinanceApplication",
-        "operatingSystem": "Web",
-        "url": "https://rhino-bridge-site.github.io/",
-        "description": "Rhino Bridge is a decentralized exchange and native bridge engine on Rhino.fi Network."
-      },
-      {
-        "@type": "Organization",
-        "@id": "https://rhino-bridge-site.github.io/#organization",
-        "name": "Rhino Bridge",
-        "url": "https://rhino-bridge.xyz/",
-        "logo": "https://rhino-bridge-site.github.io/favicon.png"
-      }
+    "@context":"https://schema.org",
+    "@graph":[
+      {"@type":"WebSite","@id":"https://rhino-bridge-site.github.io/#website","url":"https://rhino-bridge-site.github.io/","name":"Rhino Bridge dashboard","inLanguage":"en-US"},
+      {"@type":"Thing","@id":"https://rhino-bridge-site.github.io/#brand","name":"Rhino Bridge",
+       "description":"Rhino Bridge is Rhino.fi\u2019s cross-chain bridge and liquidity-routing product for moving supported assets, especially stablecoins, between blockchains.",
+       "sameAs":["https://rhino.fi/", "https://docs.rhino.fi/", "https://github.com/rhinofi", "https://x.com/rhinofi"]},
+      {"@type":"WebApplication","@id":"https://rhino-bridge-site.github.io/#widget","name":"Rhino Bridge preview","applicationCategory":"FinanceApplication","operatingSystem":"Any","url":"https://rhino-bridge-site.github.io/#route-preview","isPartOf":{"@id":"https://rhino-bridge-site.github.io/#webpage"},"featureList":["Preview the route","Reverse the direction","Open the app"]},
+      {"@type":"WebPage","@id":"https://rhino-bridge-site.github.io/#webpage","url":"https://rhino-bridge-site.github.io/","name":"Rhino Bridge \u2014 Cross-chain stablecoin bridge","description":"Rhino Bridge is Rhino.fi\u2019s cross-chain bridge and liquidity-routing product for moving supported assets, especially stablecoins, between blockchains.","isPartOf":{"@id":"https://rhino-bridge-site.github.io/#website"},"about":{"@id":"https://rhino-bridge-site.github.io/#brand"},"mainEntity":{"@id":"https://rhino-bridge-site.github.io/#brand"},"inLanguage":"en-US","mentions":[{"@type":"Thing","name":"Ethereum","sameAs":"https://ethereum.org/"},{"@type":"Thing","name":"Stablecoin","sameAs":"https://en.wikipedia.org/wiki/Stablecoin"},{"@type":"Thing","name":"USDC","sameAs":"https://www.circle.com/usdc"},{"@type":"Thing","name":"USDT","sameAs":"https://tether.to/en/transparency/"}]},
+      {"@type":"ItemList","@id":"https://rhino-bridge-site.github.io/#resources","name":"Rhino Bridge \u2014 resources & references","itemListElement":[{"@type":"ListItem","position":1,"name":"What is Rhino.fi?","url":"https://docs.rhino.fi/get-started/what-is-rhino"},{"@type":"ListItem","position":2,"name":"About Rhino.fi","url":"https://rhino.fi/about"},{"@type":"ListItem","position":3,"name":"Bridge SDK concepts","url":"https://docs.rhino.fi/sdk/concepts"},{"@type":"ListItem","position":4,"name":"Blockchain bridges","url":"https://ethereum.org/bridges"},{"@type":"ListItem","position":5,"name":"Stablecoins","url":"https://en.wikipedia.org/wiki/Stablecoin"},{"@type":"ListItem","position":6,"name":"Rhino.fi TVL","url":"https://defillama.com/protocol/rhino.fi"},{"@type":"ListItem","position":7,"name":"Rhino.fi bridge volume","url":"https://defillama.com/bridge/rhino.fi"},{"@type":"ListItem","position":8,"name":"Bridge rankings","url":"https://defillama.com/bridges"},{"@type":"ListItem","position":9,"name":"Base bridge contract","url":"https://base.blockscout.com/address/0x2f59e9086ec8130e21bd052065a9e6b2497bb102"},{"@type":"ListItem","position":10,"name":"Rhino.fi DVF market","url":"https://coinmarketcap.com/currencies/deversifi/"},{"@type":"ListItem","position":11,"name":"Rhino Bridge app","url":"https://app.rhino.fi/bridge"},{"@type":"ListItem","position":12,"name":"Supported chains","url":"https://docs.rhino.fi/get-started/supported-chains"},{"@type":"ListItem","position":13,"name":"Fees and limits","url":"https://docs.rhino.fi/get-started/fees-and-limits"},{"@type":"ListItem","position":14,"name":"Bridge status API","url":"https://docs.rhino.fi/api-reference/bridge/history/bridge-status"},{"@type":"ListItem","position":15,"name":"Bridge tokens to L2","url":"https://ethereum.org/guides/how-to-use-a-bridge/"},{"@type":"ListItem","position":16,"name":"Rhino.fi audits","url":"https://rhino.fi/legal-policies-and-documentation/audit"},{"@type":"ListItem","position":17,"name":"CrossSwap audit","url":"https://github.com/rhinofi/contracts_public/blob/master/PeckShield-Audit-Report-CrossSwap-v1.0.pdf"},{"@type":"ListItem","position":18,"name":"Public contracts","url":"https://github.com/rhinofi/contracts_public"},{"@type":"ListItem","position":19,"name":"Rhino.fi bug bounty","url":"https://immunefi.com/bounty/rhinofi/"},{"@type":"ListItem","position":20,"name":"Rhino.fi on L2BEAT","url":"https://l2beat.com/scaling/projects/rhinofi"}]}
     ]
   }
   </script>
-
-  <link rel="prefetch" href="dashboard/">
-  <link rel="prerender" href="dashboard/">
-
-  <link rel="prefetch" href="dashboard/">
-  <link rel="prerender" href="dashboard/">
   <style>
-@charset "UTF-8";
-
-:root {
-  --bg: #faf9f6;
-  --surface: #ffffff;
-  --surface-soft: #fdfdfb;
-  --ink: #1a1614;
-  --muted: #6a625e;
-  --faint: #928a85;
-  --line: rgba(26, 22, 20, 0.09);
-  --line-strong: rgba(26, 22, 20, 0.15);
-  --accent: #ff6b00;
-  --accent-dark: #d85600;
-  --accent-soft: rgba(255, 107, 0, 0.11);
-  --accent-glow: rgba(255, 107, 0, 0.24);
-  --accent-gradient: linear-gradient(135deg, #ff8c00 0%, #ff5500 100%);
-  --accent-gradient-hover: linear-gradient(135deg, #d85600 0%, #b84500 100%);
-  --shadow: 0 30px 80px -44px rgba(26, 22, 20, 0.35);
-  --shadow-soft: 0 18px 48px -34px rgba(26, 22, 20, 0.30);
+:root{
+  --bg:#eef0f3; --bg-2:#e7eaef; --panel:#ffffff; --field:#f1f3f7; --field-2:#e9edf2;
+  --ink:#151a21; --text:#414954; --muted:#6a727d; --faint:#9aa2ad;
+  --line:rgba(20,26,33,.09); --line-2:rgba(20,26,33,.14);
+  --accent:#ff6b00; --accent-ink:#6c2c00; --accent-soft:rgba(255,107,0,0.13); --accent-glow:rgba(255,107,0,0.3);
+  --cta:#171a20; --cta-hover:#0a0c10; --cta-ink:#ffffff;
+  --shadow-card:0 1px 0 rgba(20,26,33,.02), 0 40px 80px -42px rgba(24,32,48,.40), 0 14px 30px -22px rgba(24,32,48,.24);
+  --shadow-pop:0 24px 60px -26px rgba(24,32,48,.38), 0 8px 20px -12px rgba(24,32,48,.22);
+  --mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+  --font: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --ease: cubic-bezier(0.22, 0.7, 0.24, 1);
   color-scheme: light;
 }
-
-* {
-  box-sizing: border-box;
-}
-
-html,
-body {
-  width: 100%;
-  min-height: 100%;
-  overflow-x: hidden;
-}
-
-body {
-  margin: 0;
-  min-height: 100vh;
-  min-height: 100dvh;
-  background:
-    radial-gradient(circle at 16% 18%, rgba(255, 107, 0, 0.11), transparent 28%),
-    linear-gradient(180deg, var(--bg) 0%, #ffffff 64%, var(--bg) 100%);
-  color: var(--ink);
-  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-  display: grid;
-  grid-template-rows: auto 1fr;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-img {
-  display: block;
-  max-width: 100%;
-}
-
-h1,
-p {
-  margin: 0;
-}
-
-button {
-  font: inherit;
-}
-
-.topbar {
-  position: relative;
-  z-index: 3;
-  width: 100%;
-  min-height: 72px;
-  display: flex;
-  align-items: center;
-  gap: 24px;
-  padding: 18px clamp(18px, 4.2vw, 56px) 10px;
-}
-
-.brand {
-  display: inline-flex;
-  align-items: center;
-  gap: 11px;
-  min-width: 0;
-  color: var(--ink);
-  font-size: 1rem;
-  font-weight: 780;
-  letter-spacing: 0;
-  white-space: nowrap;
-}
-
-.brand img {
-  width: 28px;
-  height: 28px;
-  flex: none;
-  border-radius: 50%;
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.85), 0 8px 18px -12px var(--accent-glow);
-}
-
-.spacer {
-  flex: 1 1 auto;
-}
-
-.nav {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: clamp(18px, 2.8vw, 34px);
-}
-
-.nav a {
-  color: var(--muted);
-  font-size: 0.93rem;
-  font-weight: 640;
-  letter-spacing: 0;
-  transition: color 160ms ease;
-}
-
-.nav a:hover {
-  color: var(--accent-dark);
-}
-
-.page {
-  min-width: 0;
-  min-height: 0;
-  display: grid;
-  grid-template-rows: minmax(0, 1fr) auto auto;
-}
-
-.hero {
-  width: min(100%, 1210px);
-  min-width: 0;
-  margin: 0 auto;
-  padding: clamp(18px, 3.6vh, 46px) clamp(18px, 4.2vw, 56px) clamp(16px, 3vh, 34px);
-  display: grid;
-  grid-template-columns: minmax(0, 1.02fr) minmax(370px, 0.76fr);
-  align-items: center;
-  gap: clamp(34px, 6vw, 82px);
-}
-
-.copy {
-  min-width: 0;
-  display: flex;
-  align-items: center;
-}
-
-.copy-inner {
-  width: min(100%, 650px);
-}
-
-h1 {
-  color: var(--ink);
-  font-size: clamp(2.9rem, 6.25vw, 5.1rem);
-  line-height: 0.98;
-  font-weight: 830;
-  letter-spacing: 0;
-}
-
-.deck {
-  max-width: 48ch;
-  margin-top: 22px;
-  color: var(--muted);
-  font-size: clamp(1.04rem, 1.35vw, 1.19rem);
-  line-height: 1.62;
-}
-
-.deck strong {
-  color: var(--ink);
-  font-weight: 800;
-  box-shadow: inset 0 -0.38em 0 var(--accent-soft);
-}
-
-.chips {
-  list-style: none;
-  max-width: 650px;
-  margin: 28px 0 0;
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.chips li {
-  min-height: 40px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 9px 15px;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.78);
-  color: #34475d;
-  font-size: 0.92rem;
-  font-weight: 700;
-  box-shadow: var(--shadow-soft);
-  white-space: nowrap;
-}
-
-.primary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 56px;
-  border-radius: 17px;
-  background: var(--accent-gradient);
-  color: #ffffff;
-  font-weight: 800;
-  letter-spacing: 0;
-  box-shadow: 0 18px 36px -24px rgba(31, 199, 212, 0.5);
-  transition: transform 180ms ease, box-shadow 180ms ease;
-}
-
-.primary:hover {
-  background: var(--accent-gradient-hover);
-  transform: translateY(-2px);
-  box-shadow: 0 22px 42px -24px rgba(31, 199, 212, 0.6);
-}
-
-.hero-cta {
-  margin-top: 30px;
-  min-width: 176px;
-  padding: 0 28px;
-}
-
-/* ---------- swap card ---------- */
-.card {
-  width: min(100%, 392px);
-  margin: 20px auto 0;
-  padding: 12px;
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: 22px;
-  box-shadow: var(--shadow);
-  text-align: left;
-  position: relative;
-  z-index: 2;
-}
-.card-head {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 12px;
-}
-.selector,
-.preview-pill {
-  min-height: 34px;
-  display: inline-flex;
-  align-items: center;
-  border-radius: 999px;
-  font-size: 0.82rem;
-  font-weight: 760;
-}
-.selector {
-  padding: 0 13px;
-  border: 1px solid var(--line);
-  background: var(--surface-soft);
-  color: #2c435c;
-}
-.preview-pill {
-  gap: 8px;
-  padding: 0 12px 0 10px;
-  background: var(--accent-soft);
-  color: var(--accent-dark);
-}
-.preview-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--accent);
-  box-shadow: 0 0 0 0 var(--accent-glow);
-  animation: pulse 2.4s ease-out infinite;
-}
-.field {
-  position: relative;
-  padding: 16px 18px;
-  border-radius: 14px;
-  background: var(--surface-soft);
-  border: 1px solid rgba(25, 62, 98, 0.05);
-}
-.field + .field {
-  margin-top: 6px;
-}
-.flabel {
-  display: block;
-  color: var(--muted);
-  font-size: 0.86rem;
-  font-weight: 500;
-  margin-bottom: 12px;
-}
-.frow {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 12px;
-}
-.fleft {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  min-width: 0;
-}
-.tokpill {
-  align-self: flex-start;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 10px 6px 6px;
-  border-radius: 999px;
-  background: var(--surface);
-  border: 1px solid var(--line);
-  font-family: Inter, sans-serif;
-  font-weight: 600;
-  font-size: 0.96rem;
-  box-shadow: 0 1px 0 rgba(20, 16, 8, 0.02);
-  transition: 0.16s;
-  cursor: pointer;
-  color: var(--ink);
-}
-.tokpill:hover {
-  border-color: rgba(255, 107, 0, 0.24);
-  background: var(--surface-soft);
-}
-.tokpill img {
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-}
-.tokpill .cv {
-  color: var(--faint);
-  font-size: 0.8em;
-  margin-left: 1px;
-}
-.amt {
-  font-weight: 600;
-  font-size: 2rem;
-  line-height: 1;
-  letter-spacing: -0.02em;
-  color: var(--ink);
-  font-variant-numeric: tabular-nums;
-}
-.usd {
-  color: var(--faint);
-  font-size: 0.95rem;
-  white-space: nowrap;
-  font-variant-numeric: tabular-nums;
-}
-.switch {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  z-index: 3;
-  background: var(--surface);
-  border: 4px solid var(--surface);
-  box-shadow: 0 0 0 1px var(--line), 0 8px 18px -10px rgba(16, 32, 51, 0.5);
-  display: grid;
-  place-items: center;
-  color: var(--ink);
-  transition: transform 0.25s ease, box-shadow 0.2s ease;
-  cursor: pointer;
-}
-.switch svg {
-  width: 17px;
-  height: 17px;
-  color: var(--accent-dark);
-  transition: transform 0.25s ease;
-  display: block;
-}
-.switch:hover {
-  transform: translate(-50%, -50%) rotate(180deg);
-  box-shadow: 0 0 0 1px rgba(255, 107, 0, 0.24), 0 12px 22px -10px rgba(16, 32, 51, 0.55);
-}
-.switch.is-swapped svg {
-  transform: rotate(180deg);
-}
-.route {
-  position: relative;
-  height: 0;
-}
-.cta {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  width: 100%;
-  margin-top: 10px;
-  min-height: 54px;
-  border-radius: 14px;
-  background: var(--accent-gradient);
-  color: #fff;
-  font-weight: 600;
-  font-size: 1.02rem;
-  letter-spacing: -0.01em;
-  box-shadow: 0 14px 28px -16px rgba(31, 199, 212, 0.45);
-  transition: transform 0.18s ease, box-shadow 0.18s ease;
-}
-.cta:hover {
-  background: var(--accent-gradient-hover);
-  transform: translateY(-1px);
-  box-shadow: 0 20px 34px -16px rgba(31, 199, 212, 0.55);
-}
-
-.texture-band {
-  width: 100%;
-  height: 46px;
-  overflow: hidden;
-  display: flex;
-  align-items: stretch;
-  justify-content: center;
-  gap: 10px;
-  padding: 0 clamp(18px, 4.2vw, 56px);
-  opacity: 0.88;
-}
-
-.texture-band span {
-  width: min(31vw, 390px);
-  border: 1px solid rgba(255, 107, 0, 0.12);
-  border-bottom: 0;
-  border-radius: 22px 22px 0 0;
-  background:
-    linear-gradient(135deg, rgba(255, 107, 0, 0.12) 25%, transparent 25%) 0 0 / 22px 22px,
-    linear-gradient(225deg, rgba(255, 107, 0, 0.06) 25%, transparent 25%) 0 0 / 22px 22px,
-    rgba(255, 255, 255, 0.68);
-}
-
-.footer {
-  width: 100%;
-  padding: 32px 20px;
-  text-align: center;
-  color: var(--muted);
-  font-size: 0.86rem;
-  z-index: 2;
-  position: relative;
-}
-.footer p {
-  margin: 0;
-  font-weight: 540;
-}
-
-@keyframes pulse {
-  0% {
-    box-shadow: 0 0 0 0 var(--accent-glow);
-  }
-
-  70% {
-    box-shadow: 0 0 0 9px rgba(31, 199, 212, 0);
-  }
-
-  100% {
-    box-shadow: 0 0 0 0 rgba(31, 199, 212, 0);
-  }
-}
-
-@media (min-width: 901px) {
-  body {
-    min-height: 100vh;
-    min-height: 100dvh;
-  }
-
-  h1 {
-    font-size: clamp(4rem, 6.25vw, 5.1rem);
-  }
-}
-
-@media (min-width: 901px) and (max-height: 760px) {
-  .topbar {
-    min-height: 60px;
-    padding-top: 12px;
-  }
-
-  .hero {
-    padding-top: 14px;
-    padding-bottom: 12px;
-    gap: clamp(28px, 5vw, 64px);
-  }
-
-  .deck {
-    margin-top: 16px;
-    line-height: 1.52;
-  }
-
-  .chips {
-    margin-top: 20px;
-  }
-
-  .hero-cta {
-    margin-top: 22px;
-  }
-
-  .token-panel {
-    min-height: 108px;
-    padding: 15px 17px;
-  }
-
-  .token-row {
-    margin-top: 16px;
-  }
-
-  .texture-band {
-    height: 34px;
-  }
-
-  .footer {
-    padding-top: 7px;
-    padding-bottom: 11px;
-  }
-}
-
-@media (max-width: 900px) {
-  body {
-    overflow-y: auto;
-  }
-
-  .topbar {
-    min-height: 64px;
-    padding: 15px 18px 8px;
-    gap: 12px;
-  }
-
-  .nav {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    clip: rect(0 0 0 0);
-    white-space: nowrap;
-  }
-
-  .page {
-    display: block;
-  }
-
-  .hero {
-    padding: 22px 18px 24px;
-    grid-template-columns: 1fr;
-    gap: 30px;
-  }
-
-  .copy-inner,
-  .deck {
-    max-width: none;
-  }
-
-  h1 {
-    font-size: clamp(3.05rem, 16vw, 4.4rem);
-  }
-
-  .deck {
-    margin-top: 16px;
-    font-size: 1.02rem;
-    line-height: 1.58;
-  }
-
-  .chips {
-    margin-top: 22px;
-    gap: 8px;
-  }
-
-  .chips li {
-    min-height: 38px;
-    padding: 8px 12px;
-    font-size: 0.86rem;
-  }
-
-  .hero-cta {
-    width: 100%;
-    margin-top: 24px;
-  }
-
-  .swap-card {
-    width: 100%;
-    justify-self: stretch;
-    padding: 14px;
-    border-radius: 20px;
-  }
-
-  .route {
-    grid-template-columns: 1fr;
-  }
-
-  .token-panel {
-    min-height: 108px;
-    padding: 16px;
-  }
-
-  .token-panel:first-child {
-    border-radius: 18px 18px 12px 12px;
-  }
-
-  .token-panel:last-child {
-    border-radius: 12px 12px 18px 18px;
-  }
-
-  .switch {
-    width: 46px;
-    height: 46px;
-  }
-
-  .switch span {
-    transform: rotate(90deg);
-  }
-
-  .switch.is-swapped span {
-    transform: rotate(270deg);
-  }
-
-  .route-meta {
-    grid-template-columns: auto 1fr auto;
-    gap: 8px;
-    font-size: 0.78rem;
-  }
-
-  .footer {
-    padding: 12px 18px 18px;
-    display: grid;
-    justify-items: center;
-    text-align: center;
-  }
-}
-
-@media (max-width: 430px) {
-  .topbar {
-    padding-left: 16px;
-    padding-right: 16px;
-  }
-
-  .hero {
-    padding-left: 16px;
-    padding-right: 16px;
-  }
-
-  h1 {
-    font-size: clamp(2.75rem, 15vw, 3.55rem);
-  }
-
-  .chips {
-    display: grid;
-    grid-template-columns: 1fr;
-  }
-
-  .chips li {
-    justify-content: flex-start;
-  }
-
-  .card-head {
-    align-items: flex-start;
-  }
-
-  .route-meta {
-    grid-template-columns: 1fr;
-    justify-items: start;
-    gap: 7px;
-    padding-top: 8px;
-    padding-bottom: 4px;
-  }
-
-  .hop-line {
-    width: 100%;
-  }
-
-  .texture-band {
-    height: 34px;
-    gap: 8px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    scroll-behavior: auto !important;
-    transition-duration: 0.01ms !important;
-  }
-}
-
-/* ---------- PREMIUM CENTERING, OVERLAYS AND DECORATIVE FLOWS ---------- */
-
-a.inline, a.inline:hover, a.inline:focus, a.inline:active {
-  color: inherit !important;
-  text-decoration: none !important;
-  font-weight: inherit !important;
-  cursor: inherit !important;
-}
-
-.bg {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  overflow: hidden;
-}
-.bg .glow {
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(700px 500px at 50% 42%, rgba(255, 107, 0, 0.12), transparent 65%),
-    radial-gradient(1000px 600px at 85% -5%, rgba(255, 140, 0, 0.08), transparent 60%),
-    radial-gradient(800px 500px at -5% 5%, rgba(255, 107, 0, 0.06), transparent 60%);
-}
-.bg .grid {
-  position: absolute;
-  inset: -2px;
-  background-image:
-    linear-gradient(rgba(25, 62, 98, 0.038) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(25, 62, 98, 0.038) 1px, transparent 1px);
-  background-size: 128px 128px;
-  -webkit-mask-image: radial-gradient(120% 100% at 50% 30%, #000 52%, transparent 92%);
-  mask-image: radial-gradient(120% 100% at 50% 30%, #000 52%, transparent 92%);
-}
-
-.centered-hero {
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: center !important;
-  text-align: center !important;
-  grid-template-columns: none !important;
-  width: min(100%, 780px) !important;
-  margin: 0 auto !important;
-  padding-top: clamp(16px, 3.2vh, 32px) !important;
-  gap: 0 !important;
-}
-.centered-hero h1 {
-  font-size: clamp(2.2rem, 4.5vw, 3.2rem) !important;
-  line-height: 1.05 !important;
-  font-weight: 800 !important;
-  letter-spacing: -0.025em !important;
-  margin: 0 !important;
-}
-.centered-hero .sub {
-  margin-top: 10px !important;
-  max-width: 52ch !important;
-  color: var(--muted) !important;
-  font-size: clamp(0.95rem, 1.2vw, 1.08rem) !important;
-  line-height: 1.5 !important;
-}
-.centered-hero .sub strong {
-  color: var(--ink) !important;
-  font-weight: 700 !important;
-}
-.centered-hero .avail {
-  display: inline-flex !important;
-  align-items: center !important;
-  gap: 8px !important;
-  margin: 12px 0 0 !important;
-  font-size: 0.88rem !important;
-  color: var(--faint) !important;
-}
-.centered-hero .avail .dot {
-  width: 7px !important;
-  height: 7px !important;
-  border-radius: 50% !important;
-  background: #16A34A !important;
-  box-shadow: 0 0 0 4px rgba(22, 163, 74, 0.14) !important;
-}
-.centered-hero .avail b {
-  color: var(--ink) !important;
-  font-weight: 600 !important;
-}
-.centered-hero .swap-card {
-  width: min(100%, 420px) !important;
-  margin: 20px auto 0 !important;
-  justify-self: center !important;
-}
-
-/* ---------- SEO DETAILS WRAPPER ---------- */
-
-/* ---------- COLLAPSIBLE FAQ ACCORDIONS ---------- */
-.faq-container {
-  margin-top: 24px;
-  width: min(100%, 540px);
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  position: relative;
-  z-index: 2;
-}
-.faq-item {
-  width: 100%;
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  text-align: left;
-  overflow: hidden;
-  box-shadow: var(--shadow-soft);
-  transition: border-color 0.16s ease, box-shadow 0.16s ease;
-}
-.faq-item:hover {
-  border-color: rgba(25, 62, 98, 0.22);
-  box-shadow: 0 4px 12px -8px rgba(20, 64, 105, 0.2);
-}
-.faq-item summary::-webkit-details-marker {
-  display: none;
-}
-.faq-item summary {
-  list-style: none;
-  outline: none;
-  padding: 14px 18px;
-  font-family: var(--ui, inherit);
-  font-size: 0.94rem;
-  font-weight: 700;
-  color: var(--ink);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.faq-item summary::after {
-  content: "+";
-  font-size: 1.15rem;
-  color: var(--accent);
-  transition: transform 0.2s ease;
-  font-weight: 500;
-}
-.faq-item[open] summary::after {
-  content: "−"; /* Literal Unicode Minus Sign */
-}
-
-/* ---------- LAUNCH BUTTON HEADER STYLING ---------- */
-.launch-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 38px;
-  padding: 0 16px;
-  border-radius: 11px;
-  background: var(--accent-gradient) !important;
-  color: #ffffff !important;
-  font-size: 0.88rem;
-  font-weight: 600;
-  transition: all 180ms ease;
-  margin-left: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 4px 12px -4px rgba(255, 107, 0, 0.24);
-}
-.launch-btn:hover {
-  background: var(--accent-gradient-hover) !important;
-  transform: translateY(-1px);
-  box-shadow: 0 8px 18px -10px rgba(31, 199, 212, 0.55);
-}
-.faq-answer {
-  padding: 0 18px 16px;
-  cursor: default;
-}
-.faq-answer p {
-  margin: 0;
-  font-size: 0.92rem;
-  line-height: 1.6;
-  color: var(--muted);
-}
-.faq-answer p b {
-  color: var(--ink);
-  font-weight: 600;
-}
-
-/* ---------- DOCUMENTATION SILO LAYOUTS ---------- */
-
-body.doc-body {
-  height: auto;
-  overflow: auto;
-  grid-template-rows: auto 1fr auto;
-  background:
-    radial-gradient(700px 500px at 80% -10%, rgba(255, 107, 0, 0.11), transparent 60%),
-    linear-gradient(180deg, var(--bg) 0%, #ffffff 64%, var(--bg) 100%);
-}
-.doc-layout {
-  display: grid;
-  grid-template-columns: 260px 1fr;
-  width: min(100%, 1200px);
-  margin: 0 auto;
-  gap: 40px;
-  padding: 24px clamp(18px, 4.2vw, 56px) clamp(24px, 4vh, 60px);
-  align-items: start;
-  position: relative;
-  z-index: 2;
-}
-.sidebar {
-  position: sticky;
-  top: 30px;
-  display: flex;
-  flex-direction: column;
-  gap: 22px;
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: 20px;
-  padding: 22px;
-  box-shadow: var(--shadow-soft);
-}
-.sidebar-title {
-  font-size: 0.74rem;
-  font-weight: 700;
-  color: var(--faint);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
-.sidebar-menu {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-.sidebar-menu a {
-  display: flex;
-  align-items: center;
-  font-size: 0.92rem;
-  color: var(--muted);
-  padding: 8px 12px;
-  border-radius: 12px;
-  transition: all 0.16s ease;
-  font-weight: 550;
-}
-.sidebar-menu a:hover {
-  color: var(--ink);
-  background: var(--surface-soft);
-}
-.sidebar-menu a.active {
-  color: var(--ink);
-  background: var(--surface-soft);
-  font-weight: 700;
-  box-shadow: inset 3px 0 0 var(--accent);
-}
-.doc-content {
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: 22px;
-  padding: clamp(24px, 5vw, 44px);
-  box-shadow: var(--shadow);
-  text-align: left;
-}
-.doc-content h1 {
-  font-size: clamp(2rem, 4.5vw, 2.8rem);
-  line-height: 1.05;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  margin-top: 0;
-  margin-bottom: 22px;
-  color: var(--ink);
-}
-.doc-content h2 {
-  font-size: clamp(1.3rem, 2.5vw, 1.6rem);
-  color: var(--ink);
-  margin-top: 36px;
-  margin-bottom: 16px;
-  font-weight: 700;
-  border-bottom: 1px solid var(--line);
-  padding-bottom: 8px;
-  letter-spacing: -0.01em;
-}
-.doc-content p {
-  color: var(--muted);
-  font-size: 0.98rem;
-  line-height: 1.6;
-  margin-top: 0;
-  margin-bottom: 18px;
-}
-.doc-content p b {
-  color: var(--ink);
-  font-weight: 600;
-}
-.doc-content ul, .doc-content ol {
-  margin-top: 0;
-  margin-bottom: 18px;
-  padding-left: 20px;
-}
-.doc-content li {
-  color: var(--muted);
-  font-size: 0.94rem;
-  line-height: 1.55;
-  margin-bottom: 8px;
-  list-style: disc;
-}
-.doc-cta {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  min-height: 48px;
-  padding: 0 24px;
-  border-radius: 12px;
-  background: var(--accent-gradient);
-  color: #fff;
-  font-size: 0.96rem;
-  font-weight: 600;
-  box-shadow: 0 10px 20px -10px rgba(31, 199, 212, 0.4);
-  transition: transform .16s ease, box-shadow .16s ease;
-  margin-top: 24px;
-}
-.doc-cta:hover {
-  background: var(--accent-gradient-hover);
-  transform: translateY(-1px);
-  box-shadow: 0 15px 25px -10px rgba(31, 199, 212, 0.5);
-}
-.doc-table-wrap {
-  overflow-x: auto;
-  margin: 22px 0;
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  background: var(--surface-soft);
-}
-.doc-table {
-  width: 100%;
-  border-collapse: collapse;
-  text-align: left;
-  font-size: 0.92rem;
-}
-.doc-table th, .doc-table td {
-  padding: 12px 16px;
-  border-bottom: 1px solid var(--line);
-}
-.doc-table th {
-  background: rgba(25, 62, 98, 0.05);
-  color: var(--ink);
-  font-weight: 600;
-  font-size: 0.82rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-.doc-table tr:last-child td {
-  border-bottom: none;
-}
-.doc-table td {
-  color: var(--muted);
-}
-.doc-table td strong {
-  color: var(--ink);
-}
-
-@media (max-width: 900px) {
-  .doc-layout {
-    grid-template-columns: 1fr;
-    gap: 24px;
-    padding-top: 20px;
-  }
-  .sidebar {
-    position: static;
-  }
-}
-
-/* ---------- FEATURES GRID ---------- */
-.section-title {
-  font-size: 1.35rem;
-  font-weight: 800;
-  color: var(--ink);
-  margin-top: 36px;
-  margin-bottom: 16px;
-  text-align: left;
-  width: 100%;
-  max-width: 540px;
-  padding-left: 4px;
-  letter-spacing: -0.01em;
-}
-.features-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 12px;
-  width: min(100%, 540px);
-  margin-bottom: 28px;
-  text-align: left;
-  position: relative;
-  z-index: 2;
-}
-.feature-card {
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: 16px;
-  padding: 16px 20px;
-  box-shadow: var(--shadow-soft);
-  transition: border-color 0.16s ease, box-shadow 0.16s ease;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-.feature-card:hover {
-  border-color: rgba(25, 62, 98, 0.22);
-  box-shadow: 0 4px 12px -8px rgba(20, 64, 105, 0.2);
-}
-.feature-icon {
-  font-size: 1.4rem;
-  margin-bottom: 2px;
-}
-.feature-card h3 {
-  font-size: 1.02rem;
-  font-weight: 750;
-  color: var(--ink);
-  margin: 0;
-}
-.feature-card p {
-  font-size: 0.88rem;
-  line-height: 1.5;
-  color: var(--muted);
-  margin: 0;
-}
-.feature-card p b {
-  color: var(--ink);
-  font-weight: 600;
-}
-
-
-
-  .footer {
-    text-align: center !important;
-  }
+html[data-theme="dark"]{
+  --bg:#0b0e13; --bg-2:#0e131b; --panel:#141a24; --field:#1b2230; --field-2:#232c3d;
+  --ink:#e9eef7; --text:#bcc5d6; --muted:#8b95a8; --faint:#606a7e;
+  --line:rgba(226,234,250,.10); --line-2:rgba(226,234,250,.18);
+  --accent:#ff9447; --accent-ink:#ffb57f; --accent-soft:rgba(255,148,71,0.16); --accent-glow:rgba(255,148,71,0.34);
+  --cta:#ff9447; --cta-hover:#db7f3d; --cta-ink:#12161c;
+  --shadow-card:0 30px 70px -34px rgba(0,0,0,.66), 0 6px 18px -10px rgba(0,0,0,.5);
+  --shadow-pop:0 24px 60px -26px rgba(0,0,0,.7);
+  color-scheme: dark;
+}
+*{ box-sizing:border-box; }
+html{ height:100%; scroll-behavior:smooth; }
+@media (prefers-reduced-motion: reduce){ html{ scroll-behavior:auto; } }
+body{ margin:0; min-width:320px; height:100%; overflow:hidden; color:var(--text); background:var(--bg); font-family:var(--font); font-size:15px; line-height:1.55; -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; }
+a{ color:inherit; text-decoration:none; }
+button{ font:inherit; color:inherit; background:none; border:none; cursor:pointer; }
+img{ display:block; max-width:100%; }
+h1,h2,h3,p{ margin:0; }
+a:focus-visible, button:focus-visible, summary:focus-visible{ outline:2px solid var(--accent); outline-offset:3px; border-radius:10px; }
+.skip{ position:absolute; left:-999px; }
+.skip:focus{ left:12px; top:12px; z-index:120; padding:9px 15px; border-radius:10px; background:var(--cta); color:var(--cta-ink); font-weight:750; }
+.bg{ position:fixed; inset:0; z-index:0; pointer-events:none; overflow:hidden; background:
+  radial-gradient(1100px 700px at 82% 116%, var(--bg-2), transparent 60%),
+  radial-gradient(900px 620px at -6% -8%, var(--bg-2), transparent 58%); }
+.bg::before{ content:""; position:absolute; right:-14%; bottom:-30%; width:min(92vw,940px); aspect-ratio:1; border-radius:50%;
+  background:repeating-radial-gradient(circle at center, transparent 0 86px, var(--line) 86px 87px); opacity:.5; mask:radial-gradient(circle at center, #000 62%, transparent 72%); }
+.bg::after{ content:""; position:absolute; left:-10%; top:-16%; width:min(70vw,560px); aspect-ratio:1; border-radius:50%;
+  background:repeating-radial-gradient(circle at center, transparent 0 64px, var(--line) 64px 65px); opacity:.4; mask:radial-gradient(circle at center, #000 60%, transparent 72%); }
+.topbar{ position:relative; z-index:70; flex:0 0 auto; display:flex; align-items:center; justify-content:space-between; gap:14px; padding:13px clamp(16px,3.4vw,34px);
+  background:color-mix(in srgb, var(--bg) 78%, transparent); backdrop-filter:saturate(140%) blur(12px); -webkit-backdrop-filter:saturate(140%) blur(12px); border-bottom:1px solid var(--line); }
+.tb-left{ display:flex; align-items:center; gap:12px; min-width:0; }
+.hamb{ display:grid; place-items:center; width:40px; height:40px; flex:0 0 auto; position:relative; border:1px solid var(--line-2); border-radius:12px; background:var(--panel); color:var(--ink); transition:border-color .15s var(--ease); }
+.hamb:hover{ border-color:var(--accent); }
+.hamb .bar{ position:absolute; left:11px; right:11px; height:2px; border-radius:2px; background:currentColor; transition:transform .24s var(--ease), opacity .18s var(--ease); }
+.hamb .bar:nth-child(1){ top:14px; } .hamb .bar:nth-child(2){ top:19px; } .hamb .bar:nth-child(3){ top:24px; }
+body.drawer-open .hamb .bar:nth-child(1){ transform:translateY(5px) rotate(45deg); }
+body.drawer-open .hamb .bar:nth-child(2){ opacity:0; }
+body.drawer-open .hamb .bar:nth-child(3){ transform:translateY(-5px) rotate(-45deg); }
+.brand{ display:flex; align-items:center; gap:11px; min-width:0; }
+.brand-logo{ width:34px; height:34px; flex:0 0 auto; display:grid; place-items:center; border-radius:10px; background:var(--panel); box-shadow:inset 0 0 0 1px var(--line-2); }
+.brand-logo img{ width:22px; height:22px; border-radius:50%; }
+.brand-name{ font-size:19px; font-weight:820; letter-spacing:-0.03em; color:var(--ink); line-height:1.1; white-space:nowrap; }
+.tb-right{ display:flex; align-items:center; gap:9px; }
+.theme-toggle{ display:inline-flex; align-items:center; gap:2px; padding:3px; border-radius:999px; background:var(--field); box-shadow:inset 0 0 0 1px var(--line); }
+.theme-toggle button{ display:grid; place-items:center; width:30px; height:30px; border-radius:999px; color:var(--muted); transition:color .15s var(--ease), background-color .15s var(--ease); }
+.theme-toggle button svg{ width:15px; height:15px; }
+.theme-toggle button[aria-pressed="true"]{ color:var(--ink); background:var(--panel); box-shadow:0 2px 8px -3px rgba(0,0,0,.28); }
+.btn-app{ display:inline-flex; align-items:center; gap:8px; padding:9px 15px; border-radius:11px; background:var(--panel); color:var(--ink); font-size:13.5px; font-weight:700; letter-spacing:-0.01em; box-shadow:inset 0 0 0 1px var(--line-2); transition:box-shadow .15s var(--ease), transform .15s var(--ease); white-space:nowrap; }
+.btn-app svg{ width:16px; height:16px; color:var(--muted); }
+.btn-app:hover{ box-shadow:inset 0 0 0 1px var(--accent); transform:translateY(-1px); }
+.btn-app:hover svg{ color:var(--accent-ink); }
+.scrim{ position:fixed; inset:0; z-index:80; background:rgba(10,14,17,.42); opacity:0; visibility:hidden; transition:opacity .28s var(--ease), visibility .28s var(--ease); }
+body.drawer-open .scrim{ opacity:1; visibility:visible; }
+.drawer{ position:fixed; z-index:90; top:0; left:0; height:100dvh; width:300px; max-width:86vw; display:flex; flex-direction:column; padding:16px 14px 16px; background:var(--panel); border-right:1px solid var(--line); box-shadow:var(--shadow-pop);
+  transform:translateX(-104%); transition:transform .3s var(--ease); overflow-y:auto; }
+body.drawer-open .drawer{ transform:translateX(0); }
+.drawer-head{ display:flex; align-items:center; justify-content:space-between; gap:10px; padding:2px 6px 8px; }
+.drawer-head .brand-name{ font-size:15px; }
+.drawer-close{ display:grid; place-items:center; width:34px; height:34px; border-radius:10px; color:var(--muted); }
+.drawer-close:hover{ color:var(--ink); background:var(--field); }
+.drawer-close svg{ width:17px; height:17px; }
+.nav-label{ margin:15px 12px 6px; font-size:10px; font-weight:750; letter-spacing:0.15em; text-transform:uppercase; color:var(--faint); }
+.nav-item{ display:flex; align-items:center; gap:12px; padding:9px 12px; border-radius:10px; color:var(--text); font-size:14px; font-weight:650; transition:color .15s var(--ease), background-color .15s var(--ease); }
+.nav-item .ni-ico{ width:18px; height:18px; flex:0 0 auto; color:var(--muted); }
+.nav-item.is-active{ color:var(--accent-ink); background:var(--accent-soft); }
+.nav-item.is-active .ni-ico{ color:var(--accent-ink); }
+.nav-item:hover{ color:var(--ink); background:var(--field); }
+.nav-group{ border-radius:10px; }
+.nav-group summary{ display:flex; align-items:center; gap:12px; padding:9px 12px; border-radius:10px; color:var(--text); font-size:14px; font-weight:650; cursor:pointer; list-style:none; transition:color .15s var(--ease), background-color .15s var(--ease); }
+.nav-group summary::-webkit-details-marker{ display:none; }
+.nav-group summary .ni-ico{ width:18px; height:18px; flex:0 0 auto; color:var(--muted); }
+.nav-group summary .chev{ width:15px; height:15px; margin-left:auto; color:var(--faint); transition:transform .2s var(--ease); }
+.nav-group summary:hover{ color:var(--ink); background:var(--field); }
+.nav-group[open] summary{ color:var(--ink); }
+.nav-group[open] summary .chev{ transform:rotate(180deg); }
+.nav-sub{ display:flex; flex-direction:column; gap:1px; padding:2px 0 8px 42px; }
+.nav-sub a{ display:flex; align-items:baseline; gap:7px; padding:6px 10px; border-radius:8px; color:var(--muted); font-size:12.5px; font-weight:550; transition:color .15s var(--ease), background-color .15s var(--ease); }
+.nav-sub a small{ color:var(--faint); font-size:10.5px; font-weight:500; }
+.nav-sub a:hover{ color:var(--accent-ink); background:var(--field); }
+.drawer-foot{ margin-top:auto; padding-top:13px; border-top:1px solid var(--line); }
+.disclose{ margin:8px 8px 0; font-size:11px; line-height:1.5; color:var(--muted); }
+.disclose strong{ color:var(--text); font-weight:750; }
+.fine{ margin:6px 8px 0; font-size:10.5px; line-height:1.45; color:var(--faint); }
+.app{ height:100dvh; display:flex; flex-direction:column; overflow:hidden; position:relative; z-index:1; }
+.wrap{ flex:1 1 auto; min-height:0; display:grid; place-items:center; overflow:hidden; }
+.stage{ width:100%; max-width:560px; max-height:100%; margin-inline:auto; padding:clamp(14px,3vh,36px) clamp(16px,3.4vw,26px); display:flex; flex-direction:column; align-items:center; text-align:center; }
+.lead{ margin:0 0 clamp(13px,2.2vh,20px); max-width:24ch; font-size:clamp(19px,2.5vw,27px); line-height:1.16; letter-spacing:-0.025em; font-weight:750; color:var(--ink); }
+.lead .hl{ color:var(--accent-ink); }
+.hero-chips{ display:flex; flex-wrap:wrap; justify-content:center; gap:9px; margin-top:clamp(13px,2.2vh,18px); }
+.hchip{ display:inline-flex; align-items:baseline; gap:7px; padding:8px 13px; border-radius:12px; background:var(--panel); box-shadow:inset 0 0 0 1px var(--line); font-size:12px; font-weight:600; color:var(--muted); transition:box-shadow .15s var(--ease), color .15s var(--ease); }
+.hchip b{ color:var(--ink); font-family:var(--mono); font-size:12.5px; font-weight:650; font-variant-numeric:tabular-nums; }
+.hchip .ext{ color:var(--faint); font-size:10px; }
+a.hchip:hover{ box-shadow:inset 0 0 0 1px var(--accent); color:var(--text); }
+a.hchip:hover .ext{ color:var(--accent-ink); }
+.swap-card{ position:relative; width:min(480px,100%); border-radius:28px; background:var(--panel); padding:clamp(20px,4vw,30px); text-align:left; box-shadow:var(--shadow-card); }
+.card-head{ display:flex; align-items:center; justify-content:space-between; margin:2px 4px 17px; }
+.card-title{ font-size:15px; font-weight:800; letter-spacing:-0.02em; color:var(--ink); }
+.badge{ display:inline-flex; align-items:center; gap:6px; padding:5px 11px; border-radius:999px; color:var(--accent-ink); background:var(--accent-soft); font-size:10px; font-weight:750; letter-spacing:0.07em; text-transform:uppercase; }
+.badge i{ width:6px; height:6px; border-radius:50%; background:var(--accent); }
+.field{ position:relative; padding:17px 18px 18px; border-radius:19px; background:var(--field); }
+.field + .field{ margin-top:6px; }
+.field-top{ display:flex; align-items:center; justify-content:space-between; }
+.field-label{ font-size:12px; font-weight:600; color:var(--muted); }
+.field-bal{ font-size:11px; font-weight:600; color:var(--faint); }
+.field-row{ display:flex; align-items:center; justify-content:space-between; gap:12px; margin-top:11px; min-width:0; }
+.amount{ min-width:0; }
+.amount b{ display:block; font-size:clamp(29px,5vw,38px); font-weight:750; line-height:1; letter-spacing:-0.02em; color:var(--ink); font-variant-numeric:tabular-nums; }
+.amount span{ display:block; margin-top:6px; font-size:11px; font-weight:600; color:var(--faint); }
+.token-pill{ display:inline-flex; align-items:center; gap:10px; flex:0 0 auto; padding:7px 12px 7px 8px; border-radius:999px; background:var(--panel); box-shadow:0 4px 14px -8px rgba(0,0,0,.4), inset 0 0 0 1px var(--line); transition:box-shadow .15s var(--ease); }
+.token-pill:hover{ box-shadow:0 6px 18px -8px rgba(0,0,0,.42), inset 0 0 0 1px var(--line-2); }
+.token-pill img{ width:26px; height:26px; flex:0 0 auto; border-radius:50%; }
+.token-meta{ display:flex; flex-direction:column; line-height:1.05; min-width:0; }
+.token-meta small{ font-size:9.5px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; color:var(--faint); }
+.token-meta b{ font-size:15px; font-weight:800; letter-spacing:-0.01em; color:var(--ink); white-space:nowrap; }
+.token-pill .chev{ width:14px; height:14px; flex:0 0 auto; color:var(--faint); }
+.reverse{ position:relative; z-index:2; display:grid; place-items:center; width:40px; height:40px; margin:-14px auto; border:4px solid var(--panel); border-radius:13px; background:var(--field-2); color:var(--muted); box-shadow:0 6px 16px -8px rgba(0,0,0,.4); transition:transform .28s var(--ease), color .15s var(--ease), background-color .15s var(--ease); }
+.reverse svg{ width:16px; height:16px; }
+.reverse:hover{ color:var(--cta-ink); background:var(--accent); transform:rotate(180deg); }
+.details-btn{ display:flex; align-items:center; justify-content:center; gap:8px; width:100%; margin-top:12px; padding:12px; border-radius:14px; background:var(--field); color:var(--muted); font-size:12px; font-weight:750; letter-spacing:0.06em; text-transform:uppercase; transition:color .15s var(--ease), background-color .15s var(--ease); }
+.details-btn svg{ width:14px; height:14px; transition:transform .2s var(--ease); }
+.details-btn:hover{ color:var(--ink); }
+.details-btn[aria-expanded="true"] svg{ transform:rotate(180deg); }
+.details{ overflow:hidden; max-height:0; opacity:0; transition:max-height .3s var(--ease), opacity .22s var(--ease), margin .3s var(--ease); }
+.details.open{ max-height:280px; opacity:1; margin-top:6px; }
+.d-row{ display:flex; align-items:center; justify-content:space-between; gap:12px; padding:11px 8px; border-bottom:1px solid var(--line); }
+.d-row:last-child{ border-bottom:0; }
+.d-row span{ font-size:12.5px; font-weight:600; color:var(--muted); }
+.d-row b{ font-size:12.5px; font-weight:700; color:var(--text); }
+.d-row b.ok{ color:var(--accent-ink); }
+.d-row b.mono{ font-family:var(--mono); font-size:11px; }
+.cta{ display:flex; align-items:center; justify-content:center; gap:8px; margin-top:12px; padding:16px; border-radius:16px; background:var(--cta); color:var(--cta-ink); font-size:15px; font-weight:800; letter-spacing:0.03em; text-transform:uppercase; box-shadow:0 16px 34px -16px rgba(0,0,0,.5); transition:background-color .15s var(--ease), transform .15s var(--ease); }
+.cta svg{ width:16px; height:16px; }
+.cta:hover{ background:var(--cta-hover); transform:translateY(-1px); }
+.card-note{ margin:13px 4px 0; font-size:11px; line-height:1.5; color:var(--faint); text-align:center; }
+.card-note a{ color:var(--muted); text-decoration:underline; text-decoration-color:var(--line-2); text-underline-offset:2px; }
+.card-note a:hover{ color:var(--accent-ink); }
+@media (max-width:560px){
+  .brand-name{ font-size:16px; } .btn-app span{ display:none; } .btn-app{ padding:9px 11px; }
+  .stage{ padding:12px 16px; }
+  .lead{ font-size:clamp(18px,5.5vw,24px); margin-bottom:14px; }
+  .swap-card{ padding:18px; } .field{ padding:14px 15px 15px; } .amount b{ font-size:29px; }
+  .hero-chips{ margin-top:12px; }
+}
+@media (max-height:700px){ .lead{ font-size:clamp(17px,4.5vw,21px); margin-bottom:10px; } .hero-chips{ display:none; } }
+@media (max-height:600px){ .field{ padding:12px 15px 13px; } .amount b{ font-size:26px; } .details-btn{ margin-top:8px; padding:9px; } .cta{ padding:14px; margin-top:8px; } }
+@media (prefers-reduced-motion: reduce){ *{ transition:none !important; } }
   </style>
+  <script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
-  <!-- Premium background glows and grid mesh -->
-  <div class="bg" aria-hidden="true">
-    <div class="glow"></div>
-    <div class="grid"></div>
-  </div>
+  <a class="skip" href="#route-preview">Skip to preview</a>
+  <div class="bg" aria-hidden="true"></div>
 
-  <header class="topbar" aria-label="Site header">
-    <div class="brand" aria-label="Rhino Bridge logo">
-      <img src="favicon.png" width="28" height="28" alt="">
-      <span>Rhino Bridge</span>
+  <div class="app">
+  <header class="topbar">
+    <div class="tb-left">
+      <button class="hamb" type="button" id="hamb" aria-label="Open navigation" aria-controls="drawer" aria-expanded="false"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
+      <div class="brand"><span class="brand-logo"><img src="favicon.png" width="22" height="22" alt="Rhino Bridge logo"></span><h1 class="brand-name">Rhino Bridge</h1></div>
     </div>
-    <span class="spacer" aria-hidden="true"></span>
-    <nav class="nav" aria-label="Site navigation">
-      <a href="./">Trade</a>
-      <a href="about/index.html">About</a>
-      <a href="how-it-works/index.html">How It Works</a>
-      <a href="supported-chains/index.html">Chains</a>
-      <a href="security/index.html">Security</a>
-      <a href="faq/index.html">FAQ</a>
-      <a class="launch-btn" href="dashboard/" rel="noopener noreferrer nofollow">Launch App</a>
-    </nav>
+    <div class="tb-right">
+      <div class="theme-toggle" role="group" aria-label="Color theme">
+        <button type="button" id="theme-light" aria-pressed="true" aria-label="Light theme"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.4M12 19.6V22M2 12h2.4M19.6 12H22M4.9 4.9l1.7 1.7M17.4 17.4l1.7 1.7M19.1 4.9l-1.7 1.7M6.6 17.4l-1.7 1.7"/></svg></button>
+        <button type="button" id="theme-dark" aria-pressed="false" aria-label="Dark theme"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a6.5 6.5 0 1 0 10.5 10.5z"/></svg></button>
+      </div>
+      <a class="btn-app" href="dashboard/" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="3"/><path d="M16 11h2"/></svg><span>Open app</span></a>
+    </div>
   </header>
 
-  <main class="page">
-    <section class="hero centered-hero" aria-label="Rhino Bridge overview">
-      <h1>Rhino Bridge</h1>
-      <p class="sub">The premier decentralized exchange and native bridge engine on <strong>Rhino.fi Network</strong>.</p>
-      <p class="avail"><span class="dot"></span><b>14,913</b>&nbsp;tokens available</p>
+  <div class="scrim" id="scrim" tabindex="-1"></div>
+  <aside class="drawer" id="drawer" aria-label="Primary" aria-hidden="true">
+    <div class="drawer-head">
+      <div class="brand"><span class="brand-logo"><img src="favicon.png" width="22" height="22" alt=""></span><span class="brand-name">Rhino Bridge</span></div>
+      <button class="drawer-close" type="button" id="drawer-close" aria-label="Close navigation"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    </div>
+    <nav aria-label="Sections">
+      <p class="nav-label">Bridge</p>
+      <a class="nav-item is-active" href="#route-preview" aria-current="page"><svg class="ni-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M7 10h11l-3-3M17 14H6l3 3"/></svg>Route preview</a>
+      <p class="nav-label">Understand</p>
+      <details class="nav-group" open><summary><svg class="ni-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 5h10a3 3 0 0 1 3 3v11a2 2 0 0 0-2-2H4zM20 5h-1a3 3 0 0 0-3 3v11a2 2 0 0 1 2-2h2z"/></svg>Rhino Bridge essentials<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><div class="nav-sub"><a href="https://docs.rhino.fi/get-started/what-is-rhino" target="_blank" rel="noopener noreferrer">What is Rhino.fi? <small>Official product definition</small></a><a href="https://rhino.fi/about" target="_blank" rel="noopener noreferrer">About Rhino.fi <small>Team and mission</small></a><a href="https://docs.rhino.fi/sdk/concepts" target="_blank" rel="noopener noreferrer">Bridge SDK concepts <small>Bridge SDK architecture</small></a><a href="https://ethereum.org/bridges" target="_blank" rel="noopener noreferrer">Blockchain bridges <small>Bridge concepts and risks</small></a><a href="https://en.wikipedia.org/wiki/Stablecoin" target="_blank" rel="noopener noreferrer">Stablecoins <small>Stablecoin reference overview</small></a></div></details>
+      <p class="nav-label">Markets &amp; data</p>
+      <details class="nav-group"><summary><svg class="ni-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 5h10a3 3 0 0 1 3 3v11a2 2 0 0 0-2-2H4zM20 5h-1a3 3 0 0 0-3 3v11a2 2 0 0 1 2-2h2z"/></svg>Liquidity and activity<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><div class="nav-sub"><a href="https://defillama.com/protocol/rhino.fi" target="_blank" rel="noopener noreferrer">Rhino.fi TVL <small>Protocol TVL dashboard</small></a><a href="https://defillama.com/bridge/rhino.fi" target="_blank" rel="noopener noreferrer">Rhino.fi bridge volume <small>Bridge volume dashboard</small></a><a href="https://defillama.com/bridges" target="_blank" rel="noopener noreferrer">Bridge rankings <small>Cross-chain volume rankings</small></a><a href="https://base.blockscout.com/address/0x2f59e9086ec8130e21bd052065a9e6b2497bb102" target="_blank" rel="noopener noreferrer">Base bridge contract <small>Current Base contract</small></a><a href="https://coinmarketcap.com/currencies/deversifi/" target="_blank" rel="noopener noreferrer">Rhino.fi DVF market <small>Legacy DVF market</small></a></div></details>
+      <p class="nav-label">Guides</p>
+      <details class="nav-group"><summary><svg class="ni-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 5h10a3 3 0 0 1 3 3v11a2 2 0 0 0-2-2H4zM20 5h-1a3 3 0 0 0-3 3v11a2 2 0 0 1 2-2h2z"/></svg>Bridge and integrate<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><div class="nav-sub"><a href="https://app.rhino.fi/bridge" target="_blank" rel="noopener noreferrer">Rhino Bridge app <small>Launch bridge app</small></a><a href="https://docs.rhino.fi/get-started/supported-chains" target="_blank" rel="noopener noreferrer">Supported chains <small>Networks and supported assets</small></a><a href="https://docs.rhino.fi/get-started/fees-and-limits" target="_blank" rel="noopener noreferrer">Fees and limits <small>Pricing limits explained</small></a><a href="https://docs.rhino.fi/api-reference/bridge/history/bridge-status" target="_blank" rel="noopener noreferrer">Bridge status API <small>Track bridge transaction</small></a><a href="https://ethereum.org/guides/how-to-use-a-bridge/" target="_blank" rel="noopener noreferrer">Bridge tokens to L2 <small>Ethereum bridging steps</small></a></div></details>
+      <p class="nav-label">Safety</p>
+      <details class="nav-group"><summary><svg class="ni-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 5h10a3 3 0 0 1 3 3v11a2 2 0 0 0-2-2H4zM20 5h-1a3 3 0 0 0-3 3v11a2 2 0 0 1 2-2h2z"/></svg>Contracts and assurance<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><div class="nav-sub"><a href="https://rhino.fi/legal-policies-and-documentation/audit" target="_blank" rel="noopener noreferrer">Rhino.fi audits <small>Official audit directory</small></a><a href="https://github.com/rhinofi/contracts_public/blob/master/PeckShield-Audit-Report-CrossSwap-v1.0.pdf" target="_blank" rel="noopener noreferrer">CrossSwap audit <small>PeckShield cross-swap review</small></a><a href="https://github.com/rhinofi/contracts_public" target="_blank" rel="noopener noreferrer">Public contracts <small>Published Solidity contracts</small></a><a href="https://immunefi.com/bounty/rhinofi/" target="_blank" rel="noopener noreferrer">Rhino.fi bug bounty <small>Bug bounty scope</small></a><a href="https://l2beat.com/scaling/projects/rhinofi" target="_blank" rel="noopener noreferrer">Rhino.fi on L2BEAT <small>Legacy Validium risk review</small></a></div></details>
+    </nav>
+    <div class="drawer-foot">
+      <p class="disclose"><strong>Independent dashboard.</strong> Not affiliated with any protocol or issuer named here.</p>
+      <p class="fine">Live figures come from public third-party sources and change. Educational reference only.</p>
+    </div>
+  </aside>
 
-      <section class="card" aria-label="Bridge preview">
-        <div class="card-head">
-          <span class="selector">Rhino.fi Network</span>
-          <span class="preview-pill"><span class="preview-dot" aria-hidden="true"></span>Preview</span>
-        </div>
-
-        <div class="field">
-          <span class="flabel">Sell</span>
-          <div class="frow">
-            <div class="fleft">
-              <button class="tokpill" type="button">
-                <img src="eth.png" alt="ETH">
-                ETH <span class="cv" aria-hidden="true">&#9662;</span>
-              </button>
-              <span class="amt">1.00</span>
-            </div>
+  <div class="wrap">
+    <main class="stage">
+      <h2 class="lead">Cross-chain <span class="hl">stablecoin bridge</span></h2>
+      <div class="swap-card" id="route-preview" aria-label="Rhino Bridge preview">
+          <div class="card-head"><span class="card-title">Cross-chain stablecoin route</span><span class="badge"><i aria-hidden="true"></i> Preview</span></div>
+          <div class="field">
+            <div class="field-top"><span class="field-label">You send</span><span class="field-bal">Illustrative</span></div>
+            <div class="field-row"><div class="amount"><b>1.00</b><span id="sub-from">on Ethereum (ETH)</span></div>
+              <span class="token-pill" id="pill-from"><img src="eth.png" alt="Ethereum (ETH) logo" width="26" height="26"><span class="token-meta"><small>From</small><b>Ethereum (ETH)</b></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></div>
           </div>
-        </div>
-
-        <div class="route">
-          <button class="switch" type="button" data-switch aria-label="Switch bridge direction">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
-          </button>
-        </div>
-
-        <div class="field">
-          <span class="flabel">Buy</span>
-          <div class="frow">
-            <div class="fleft">
-              <button class="tokpill" type="button">
-                <img src="usdc.png" alt="USDC">
-                USDC <span class="cv" aria-hidden="true">&#9662;</span>
-              </button>
-              <span class="amt" style="font-size: 1.6rem;">3,250.00</span>
-            </div>
+          <button class="reverse" type="button" id="reverse" aria-label="Reverse direction" title="Reverse direction"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M8 4v13M8 4L4 8M8 4l4 4M16 20V7M16 20l-4-4M16 20l4-4"/></svg></button>
+          <div class="field">
+            <div class="field-top"><span class="field-label">You receive</span><span class="field-bal">minus gas</span></div>
+            <div class="field-row"><div class="amount"><b>≈ 1.00</b><span id="sub-to">on USD Coin (USDC)</span></div>
+              <span class="token-pill" id="pill-to"><img src="usdc.png" alt="USD Coin (USDC) logo" width="26" height="26"><span class="token-meta"><small>To</small><b>USD Coin (USDC)</b></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></div>
           </div>
-        </div>
-
-        <a class="cta" href="dashboard/" rel="noopener noreferrer nofollow" style="margin-top: 12px;">
-          Start Bridge
-        </a>
-      </section>
-
-      <!-- Key Features Grid for SEO Copy Density and LSI Bolding -->
-      <h2 class="section-title">Key Features of Rhino Bridge</h2>
-      <div class="features-grid">
-        <div class="feature-card">
-          <div class="feature-icon">⚡</div>
-          <h3>Gas-Optimized Bridging</h3>
-          <p>Migrate assets across chains with minimal overhead. The protocol dynamically monitors network congestion to optimize block space and reduce gas fees for prominent tokens like <b>BTC</b>, <b>ETH</b>, and <b>SOL</b>.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">🛡️</div>
-          <h3>Non-Custodial Security</h3>
-          <p>Retain full custody of your digital assets. All cross-chain transfers are settled directly via peer-audited smart contracts, mitigating counterparty risks for tokens including <b>AVAX</b> and <b>LINK</b>.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">💧</div>
-          <h3>Aggregated Liquidity Pools</h3>
-          <p>Access deep liquidity routing. The smart routing system coordinates cross-chain pools automatically to prevent transaction slippage and guarantee optimal transfer rates.</p>
-        </div>
+          <button class="details-btn" type="button" id="details-btn" aria-expanded="false" aria-controls="details">Show details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+          <div class="details" id="details">
+            <div class="d-row"><span>Category</span><b>Cross-chain liquidity infrastructure</b></div>
+            <div class="d-row"><span>Primary assets</span><b>Stablecoins</b></div>
+            <div class="d-row"><span>Route types</span><b>Bridge and bridge + swap</b></div>
+            <div class="d-row"><span>Access</span><b>App, API, SDK, and widgets</b></div>
+          </div>
+          <a class="cta" href="dashboard/" target="_blank" rel="noopener noreferrer">Open app <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+          
       </div>
-
-      <!-- Collapsible FAQ Accordion for SEO & AIO -->
-      <h2 class="section-title">Frequently Asked Questions</h2>
-      <div class="faq-container">
-        
-        <details class="faq-item">
-          <summary>What is Rhino Bridge?</summary>
-          <div class="faq-answer" onclick="event.stopPropagation();">
-            <p><b>Rhino Bridge</b> is a leading <a class="inline" href="https://en.wikipedia.org/wiki/Decentralized_exchange" target="_blank" rel="noopener noreferrer">decentralized cross-chain bridge</a> and <a class="inline" href="https://academy.binance.com/en/articles/what-is-an-automated-market-maker-amm" target="_blank" rel="noopener noreferrer">automated market maker (AMM)</a> built natively on the Rhino.fi Network. By utilizing optimized routing scalability, Rhino Bridge offers low-fee, near-instant token transfers for prominent assets like <b>BTC</b>, <b>ETH</b>, <b>SOL</b>, <b>AVAX</b>, and <b>LINK</b>. As documented on the <a class="inline" href="https://coinmarketcap.com/currencies/rhino-fi/" target="_blank" rel="noopener noreferrer">CoinMarketCap</a> database, the platform integrates deep pools to prevent transaction slippage while maintaining a non-custodial framework where users retain full ownership of their assets.</p>
-          </div>
-        </details>
-
-        <details class="faq-item">
-          <summary>How to Bridge Assets on Rhino Bridge?</summary>
-          <div class="faq-answer" onclick="event.stopPropagation();">
-            <p>Trading on the platform is straightforward. First, review token contract addresses and current price actions on <a class="inline" href="https://coinmarketcap.com/currencies/rhino-fi/" target="_blank" rel="noopener noreferrer">CoinMarketCap</a> to check market depth. Connect your <a class="inline" href="https://academy.binance.com/en/articles/what-is-a-crypto-wallet" target="_blank" rel="noopener noreferrer">Web3 wallet</a>, configure the network parameters, and select the token pair you wish to exchange. The routing engine consults liquidity databases on <a class="inline" href="https://www.coingecko.com/" target="_blank" rel="noopener noreferrer">CoinGecko</a> to construct the most cost-efficient path. For a detailed guide on supported networks, check the <a class="inline" href="supported-chains/index.html">Supported Chains</a> database.</p>
-          </div>
-        </details>
-
-        <details class="faq-item">
-          <summary>What are the Security Audits and Gas Optimization on Rhino Bridge?</summary>
-          <div class="faq-answer" onclick="event.stopPropagation();">
-            <p>The transactions are registered on the <a class="inline" href="https://etherscan.io/" target="_blank" rel="noopener noreferrer">Ethereum Explorer</a>. Security protocols conform to rigorous decentralized finance standards as documented by <a class="inline" href="https://en.wikipedia.org/wiki/Decentralized_finance" target="_blank" rel="noopener noreferrer">Wikipedia</a>. Rhino Bridge dynamically monitors network <a class="inline" href="https://ethereum.org/en/developers/docs/gas/" target="_blank" rel="noopener noreferrer">gas prices</a> to route transfers efficiently, minimizing the overhead cost for every single transaction. Learn more about our audits in the <a class="inline" href="security/index.html">Security Documentation</a>.</p>
-          </div>
-        </details>
-
+      <div class="hero-chips">
+        <a class="hchip" href="https://defillama.com/protocol/rhino.fi" target="_blank" rel="noopener noreferrer">Rhino TVL <b id="sig0">—</b> <span class="ext" aria-hidden="true">↗</span></a>
+          <a class="hchip" href="https://ethereum.org/developers/docs/apis/json-rpc/" target="_blank" rel="noopener noreferrer">Ethereum gas <b id="sig1">—</b> <span class="ext" aria-hidden="true">↗</span></a>
+          <a class="hchip" href="https://docs.rhino.fi/get-started/supported-chains" target="_blank" rel="noopener noreferrer">Route modes <b>Bridge + swap</b> <span class="ext" aria-hidden="true">↗</span></a>
       </div>
-    </section>
-
-    <footer class="footer">
-      <p>Rhino Bridge &mdash; 2026</p>
-    </footer>
-  </main>
+    </main>
+  </div>
+  </div>
 
   <script>
-  (function () {
+  (function(){
     "use strict";
-
-    var button = document.querySelector("[data-switch]");
-    var fields = document.querySelectorAll(".field");
-
-    if (!button || fields.length !== 2) return;
-
-    button.addEventListener("click", function () {
-      var firstPill = fields[0].querySelector(".tokpill");
-      var secondPill = fields[1].querySelector(".tokpill");
-      var firstAmt = fields[0].querySelector(".amt");
-      var secondAmt = fields[1].querySelector(".amt");
-
-      // Bridge HTML of tokpills
-      var tempPill = firstPill.innerHTML;
-      firstPill.innerHTML = secondPill.innerHTML;
-      secondPill.innerHTML = tempPill;
-
-      // Bridge text of amt
-      var tempAmt = firstAmt.innerText;
-      firstAmt.innerText = secondAmt.innerText;
-      secondAmt.innerText = tempAmt;
-
-      // Bridge font size of amt just in case
-      var tempFontSize = firstAmt.style.fontSize;
-      firstAmt.style.fontSize = secondAmt.style.fontSize;
-      secondAmt.style.fontSize = tempFontSize;
-
-      // Rotate switch button
-      button.classList.toggle("is-swapped");
-    });
-  }());
+    var $=function(id){ return document.getElementById(id); };
+    var root=document.documentElement, tl=$("theme-light"), td=$("theme-dark");
+    function applyTheme(t){ if(t==="dark"){ root.setAttribute("data-theme","dark"); } else { root.removeAttribute("data-theme"); } if(tl) tl.setAttribute("aria-pressed", String(t!=="dark")); if(td) td.setAttribute("aria-pressed", String(t==="dark")); }
+    var saved=null; try{ saved=localStorage.getItem("rhinobridg-theme"); }catch(e){}
+    if(saved) applyTheme(saved);
+    function setTheme(t){ applyTheme(t); try{ localStorage.setItem("rhinobridg-theme", t); }catch(e){} }
+    if(tl) tl.addEventListener("click", function(){ setTheme("light"); });
+    if(td) td.addEventListener("click", function(){ setTheme("dark"); });
+    var body=document.body, hamb=$("hamb"), scrim=$("scrim"), drawer=$("drawer"), dclose=$("drawer-close");
+    function openD(){ body.classList.add("drawer-open"); hamb.setAttribute("aria-expanded","true"); drawer.setAttribute("aria-hidden","false"); }
+    function closeD(){ body.classList.remove("drawer-open"); hamb.setAttribute("aria-expanded","false"); drawer.setAttribute("aria-hidden","true"); }
+    if(hamb) hamb.addEventListener("click", function(){ body.classList.contains("drawer-open")?closeD():openD(); });
+    if(scrim) scrim.addEventListener("click", closeD);
+    if(dclose) dclose.addEventListener("click", closeD);
+    document.addEventListener("keydown", function(e){ if(e.key==="Escape" && body.classList.contains("drawer-open")) closeD(); });
+    if(drawer) drawer.addEventListener("click", function(e){ if(e.target.closest("a")) closeD(); });
+    var reversed=false;
+    var TOK={ A:{img:"eth.png",name:"Ethereum (ETH)",sub:"on Ethereum (ETH)",alt:"Ethereum (ETH) logo"}, B:{img:"usdc.png",name:"USD Coin (USDC)",sub:"on USD Coin (USDC)",alt:"USD Coin (USDC) logo"} };
+    var chev='<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>';
+    function pill(role,k){ var n=TOK[k]; return '<img src="'+n.img+'" alt="'+n.alt+'" width="26" height="26"><span class="token-meta"><small>'+role+'</small><b>'+n.name+'</b></span>'+chev; }
+    function render(){ var a=reversed?"B":"A", b=reversed?"A":"B"; $("pill-from").innerHTML=pill("From",a); $("pill-to").innerHTML=pill("To",b); $("sub-from").textContent=TOK[a].sub; $("sub-to").textContent=TOK[b].sub; }
+    var rev=$("reverse"); if(rev) rev.addEventListener("click", function(){ reversed=!reversed; render(); });
+    var db=$("details-btn"), dp=$("details");
+    if(db&&dp) db.addEventListener("click", function(){ var open=dp.classList.toggle("open"); db.setAttribute("aria-expanded", String(open)); db.firstChild.textContent = open?"Hide details ":"Show details "; });
+    function money(n){ if(n>=1e9) return "$"+(n/1e9).toFixed(2)+"B"; if(n>=1e6) return "$"+(n/1e6).toFixed(1)+"M"; if(n>=1e3) return "$"+(n/1e3).toFixed(0)+"K"; return "$"+n.toFixed(0); }
+    function gwei(g){ return (g>=0.1?g.toFixed(2):(g>=0.001?g.toFixed(3):Number(g.toPrecision(2)).toString()))+" gwei"; }
+    function grab(url,opt){ var c="AbortController" in window ? new AbortController():null, t=c?setTimeout(function(){c.abort();},7000):null; var o=opt||{}; if(c) o.signal=c.signal; return fetch(url,o).then(function(r){ if(!r.ok) throw 0; return r.json(); }).finally(function(){ if(t) clearTimeout(t); }); }
+    grab("https://api.llama.fi/protocol/rhino.fi").then(function(j){ var a=j&&j.tvl; if(!a||!a.length) return; var last=a[a.length-1], v=Number(last.totalLiquidityUSD!=null?last.totalLiquidityUSD:last.tvl); if(isFinite(v)&&v>0) $("sig0").textContent=money(v); }).catch(function(){});
+    grab("https://ethereum-rpc.publicnode.com",{ method:"POST", headers:{"Content-Type":"application/json"}, body:'{"jsonrpc":"2.0","id":1,"method":"eth_gasPrice","params":[]}' }).then(function(j){ var wei=j&&j.result?parseInt(j.result,16):NaN; if(isFinite(wei)&&wei>0) $("sig1").textContent=gwei(wei/1e9); }).catch(function(){});
+  })();
   </script>
 </body>
 </html>
