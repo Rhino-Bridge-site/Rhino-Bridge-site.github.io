@@ -3,308 +3,265 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Rhino Bridge — Cross-chain stablecoin bridge</title>
-  <meta name="description" content="Rhino Bridge is Rhino.fi’s cross-chain bridge and liquidity-routing product for moving supported assets, especially stablecoins, between blockchains.">
-  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1">
-  <meta name="theme-color" content="#eef0f3">
+  <title>Rhino Bridge — Cross-Chain Bridge Aggregator</title>
+  <meta name="description" content="Rhino Bridge routes transfers across many chains from one self-custody app, built on StarkEx Layer-2 scaling. See how route selection, supported chains, fees and timing work before you sign.">
   <link rel="canonical" href="https://rhino-bridge-site.github.io/">
-  <link rel="icon" type="image/png" href="favicon.png">
-  <link rel="prefetch" href="dashboard/index.html">
-  <link rel="preconnect" href="https://defillama.com/" crossorigin>
-  <link rel="preconnect" href="https://coins.llama.fi" crossorigin>
-  <meta property="og:type" content="website"><meta property="og:url" content="https://rhino-bridge-site.github.io/">
-  <meta property="og:title" content="Rhino Bridge — Cross-chain stablecoin bridge">
-  <meta property="og:description" content="Rhino Bridge is Rhino.fi’s cross-chain bridge and liquidity-routing product for moving supported assets, especially stablecoins, between blockchains.">
-  <meta property="og:site_name" content="Rhino Bridge dashboard"><meta property="og:image" content="https://rhino-bridge-site.github.io/og-cover.png">
-  <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Rhino Bridge — Cross-chain stablecoin bridge"><meta name="twitter:description" content="Rhino Bridge is Rhino.fi’s cross-chain bridge and liquidity-routing product for moving supported assets, especially stablecoins, between blockchains."><meta name="twitter:image" content="https://rhino-bridge-site.github.io/og-cover.png">
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@graph":[
-      {"@type":"WebSite","@id":"https://rhino-bridge-site.github.io/#website","url":"https://rhino-bridge-site.github.io/","name":"Rhino Bridge dashboard","inLanguage":"en-US"},
-      {"@type":"Thing","@id":"https://rhino-bridge-site.github.io/#brand","name":"Rhino Bridge",
-       "description":"Rhino Bridge is Rhino.fi\u2019s cross-chain bridge and liquidity-routing product for moving supported assets, especially stablecoins, between blockchains.",
-       "sameAs":["https://rhino.fi/", "https://docs.rhino.fi/", "https://github.com/rhinofi", "https://x.com/rhinofi"]},
-      {"@type":"WebApplication","@id":"https://rhino-bridge-site.github.io/#widget","name":"Rhino Bridge preview","applicationCategory":"FinanceApplication","operatingSystem":"Any","url":"https://rhino-bridge-site.github.io/#route-preview","isPartOf":{"@id":"https://rhino-bridge-site.github.io/#webpage"},"featureList":["Preview the route","Reverse the direction","Open the app"]},
-      {"@type":"WebPage","@id":"https://rhino-bridge-site.github.io/#webpage","url":"https://rhino-bridge-site.github.io/","name":"Rhino Bridge \u2014 Cross-chain stablecoin bridge","description":"Rhino Bridge is Rhino.fi\u2019s cross-chain bridge and liquidity-routing product for moving supported assets, especially stablecoins, between blockchains.","isPartOf":{"@id":"https://rhino-bridge-site.github.io/#website"},"about":{"@id":"https://rhino-bridge-site.github.io/#brand"},"mainEntity":{"@id":"https://rhino-bridge-site.github.io/#brand"},"inLanguage":"en-US","mentions":[{"@type":"Thing","name":"Ethereum","sameAs":"https://ethereum.org/"},{"@type":"Thing","name":"Stablecoin","sameAs":"https://en.wikipedia.org/wiki/Stablecoin"},{"@type":"Thing","name":"USDC","sameAs":"https://www.circle.com/usdc"},{"@type":"Thing","name":"USDT","sameAs":"https://tether.to/en/transparency/"}]},
-      {"@type":"ItemList","@id":"https://rhino-bridge-site.github.io/#resources","name":"Rhino Bridge \u2014 resources & references","itemListElement":[{"@type":"ListItem","position":1,"name":"What is Rhino.fi?","url":"https://docs.rhino.fi/get-started/what-is-rhino"},{"@type":"ListItem","position":2,"name":"About Rhino.fi","url":"https://rhino.fi/about"},{"@type":"ListItem","position":3,"name":"Bridge SDK concepts","url":"https://docs.rhino.fi/sdk/concepts"},{"@type":"ListItem","position":4,"name":"Blockchain bridges","url":"https://ethereum.org/bridges"},{"@type":"ListItem","position":5,"name":"Stablecoins","url":"https://en.wikipedia.org/wiki/Stablecoin"},{"@type":"ListItem","position":6,"name":"Rhino.fi TVL","url":"https://defillama.com/protocol/rhino.fi"},{"@type":"ListItem","position":7,"name":"Rhino.fi bridge volume","url":"https://defillama.com/bridge/rhino.fi"},{"@type":"ListItem","position":8,"name":"Bridge rankings","url":"https://defillama.com/bridges"},{"@type":"ListItem","position":9,"name":"Base bridge contract","url":"https://base.blockscout.com/address/0x2f59e9086ec8130e21bd052065a9e6b2497bb102"},{"@type":"ListItem","position":10,"name":"Rhino.fi DVF market","url":"https://coinmarketcap.com/currencies/deversifi/"},{"@type":"ListItem","position":11,"name":"Rhino Bridge app","url":"https://app.rhino.fi/bridge"},{"@type":"ListItem","position":12,"name":"Supported chains","url":"https://docs.rhino.fi/get-started/supported-chains"},{"@type":"ListItem","position":13,"name":"Fees and limits","url":"https://docs.rhino.fi/get-started/fees-and-limits"},{"@type":"ListItem","position":14,"name":"Bridge status API","url":"https://docs.rhino.fi/api-reference/bridge/history/bridge-status"},{"@type":"ListItem","position":15,"name":"Bridge tokens to L2","url":"https://ethereum.org/guides/how-to-use-a-bridge/"},{"@type":"ListItem","position":16,"name":"Rhino.fi audits","url":"https://rhino.fi/legal-policies-and-documentation/audit"},{"@type":"ListItem","position":17,"name":"CrossSwap audit","url":"https://github.com/rhinofi/contracts_public/blob/master/PeckShield-Audit-Report-CrossSwap-v1.0.pdf"},{"@type":"ListItem","position":18,"name":"Public contracts","url":"https://github.com/rhinofi/contracts_public"},{"@type":"ListItem","position":19,"name":"Rhino.fi bug bounty","url":"https://immunefi.com/bounty/rhinofi/"},{"@type":"ListItem","position":20,"name":"Rhino.fi on L2BEAT","url":"https://l2beat.com/scaling/projects/rhinofi"}]}
-    ]
-  }
-  </script>
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Rhino Bridge">
+  <meta property="og:description" content="Rhino Bridge routes transfers across many chains from one self-custody app, built on StarkEx Layer-2 scaling. See how route selection, supported chains, fees and timing work before you sign.">
+  <meta property="og:url" content="https://rhino-bridge-site.github.io/">
+  <meta property="og:image" content="https://rhino-bridge-site.github.io/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Rhino Bridge">
+  <meta name="twitter:description" content="Rhino Bridge routes transfers across many chains from one self-custody app, built on StarkEx Layer-2 scaling. See how route selection, supported chains, fees and timing work before you sign.">
+  <meta name="twitter:image" content="https://rhino-bridge-site.github.io/og.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Schibsted+Grotesk:wght@500;600;700&display=swap">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "@id": "https://rhino-bridge-site.github.io/#website", "url": "https://rhino-bridge-site.github.io/", "name": "Rhino Bridge — Cross-Chain Bridge Aggregator"}, {"@type": "WebPage", "@id": "https://rhino-bridge-site.github.io/#webpage", "url": "https://rhino-bridge-site.github.io/", "name": "Rhino Bridge — Cross-Chain Bridge Aggregator", "isPartOf": {"@id": "https://rhino-bridge-site.github.io/#website"}, "description": "Rhino Bridge routes transfers across many chains from one self-custody app, built on StarkEx Layer-2 scaling. See how route selection, supported chains, fees and timing work before you sign.", "datePublished": "2026-10-09", "dateModified": "2026-10-09"}, {"@type": "SoftwareApplication", "name": "Rhino Bridge", "applicationCategory": "FinanceApplication", "operatingSystem": "Web", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://rhino-bridge-site.github.io/"}, {"@type": "ListItem", "position": 2, "name": "Bridges"}, {"@type": "ListItem", "position": 3, "name": "Rhino Bridge"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is Rhino Bridge?", "acceptedAnswer": {"@type": "Answer", "text": "Rhino Bridge is a self-custody application that aggregates several bridge routes between Ethereum and other chains, selecting whichever path delivers the most value for a given transfer rather than relying on one fixed route."}}, {"@type": "Question", "name": "Is Rhino Bridge built on StarkEx?", "acceptedAnswer": {"@type": "Answer", "text": "Rhino Bridge was historically built on StarkEx, StarkWare's Layer-2 scaling engine, and still describes that heritage even though its current routing now covers destinations well beyond the original StarkEx application."}}, {"@type": "Question", "name": "Does Rhino Bridge ever hold my funds?", "acceptedAnswer": {"@type": "Answer", "text": "No. Rhino Bridge is self-custody: each transfer is a transaction you sign from your own wallet, and the app does not hold a pooled balance of user assets between transfers."}}, {"@type": "Question", "name": "Why does the fee for a Rhino Bridge transfer change?", "acceptedAnswer": {"@type": "Answer", "text": "Because Rhino Bridge selects from several underlying routes, the fee reflects whichever path is quoted as best at that moment. Network conditions and available liquidity on those routes shift over time, so the same transfer repeated later can quote differently."}}, {"@type": "Question", "name": "How long does a Rhino Bridge transfer take?", "acceptedAnswer": {"@type": "Answer", "text": "It depends on the chain pair and the route selected. A transfer between two fast rollups can land within minutes, while a pair involving a slower-finalizing chain takes longer."}}, {"@type": "Question", "name": "Which chains can I use with Rhino Bridge?", "acceptedAnswer": {"@type": "Answer", "text": "Rhino Bridge connects Ethereum to a growing set of rollups and sidechains. The exact list of supported pairs changes as the aggregator adds routes, so check the live chain list inside the app for your specific transfer."}}, {"@type": "Question", "name": "Can Rhino Bridge move an asset back to Ethereum?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. The same aggregated routing works in either direction, selecting a path back to Ethereum the same way it selects a path away from it."}}]}]}</script>
   <style>
-:root{
-  --bg:#eef0f3; --bg-2:#e7eaef; --panel:#ffffff; --field:#f1f3f7; --field-2:#e9edf2;
-  --ink:#151a21; --text:#414954; --muted:#6a727d; --faint:#9aa2ad;
-  --line:rgba(20,26,33,.09); --line-2:rgba(20,26,33,.14);
-  --accent:#ff6b00; --accent-ink:#6c2c00; --accent-soft:rgba(255,107,0,0.13); --accent-glow:rgba(255,107,0,0.3);
-  --cta:#171a20; --cta-hover:#0a0c10; --cta-ink:#ffffff;
-  --shadow-card:0 1px 0 rgba(20,26,33,.02), 0 40px 80px -42px rgba(24,32,48,.40), 0 14px 30px -22px rgba(24,32,48,.24);
-  --shadow-pop:0 24px 60px -26px rgba(24,32,48,.38), 0 8px 20px -12px rgba(24,32,48,.22);
-  --mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
-  --font: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --ease: cubic-bezier(0.22, 0.7, 0.24, 1);
-  color-scheme: light;
-}
-html[data-theme="dark"]{
-  --bg:#0b0e13; --bg-2:#0e131b; --panel:#141a24; --field:#1b2230; --field-2:#232c3d;
-  --ink:#e9eef7; --text:#bcc5d6; --muted:#8b95a8; --faint:#606a7e;
-  --line:rgba(226,234,250,.10); --line-2:rgba(226,234,250,.18);
-  --accent:#ff9447; --accent-ink:#ffb57f; --accent-soft:rgba(255,148,71,0.16); --accent-glow:rgba(255,148,71,0.34);
-  --cta:#ff9447; --cta-hover:#db7f3d; --cta-ink:#12161c;
-  --shadow-card:0 30px 70px -34px rgba(0,0,0,.66), 0 6px 18px -10px rgba(0,0,0,.5);
-  --shadow-pop:0 24px 60px -26px rgba(0,0,0,.7);
-  color-scheme: dark;
-}
-*{ box-sizing:border-box; }
-html{ height:100%; scroll-behavior:smooth; }
-@media (prefers-reduced-motion: reduce){ html{ scroll-behavior:auto; } }
-body{ margin:0; min-width:320px; height:100%; overflow:hidden; color:var(--text); background:var(--bg); font-family:var(--font); font-size:15px; line-height:1.55; -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; }
-a{ color:inherit; text-decoration:none; }
-button{ font:inherit; color:inherit; background:none; border:none; cursor:pointer; }
-img{ display:block; max-width:100%; }
-h1,h2,h3,p{ margin:0; }
-a:focus-visible, button:focus-visible, summary:focus-visible{ outline:2px solid var(--accent); outline-offset:3px; border-radius:10px; }
-.skip{ position:absolute; left:-999px; }
-.skip:focus{ left:12px; top:12px; z-index:120; padding:9px 15px; border-radius:10px; background:var(--cta); color:var(--cta-ink); font-weight:750; }
-.bg{ position:fixed; inset:0; z-index:0; pointer-events:none; overflow:hidden; background:
-  radial-gradient(1100px 700px at 82% 116%, var(--bg-2), transparent 60%),
-  radial-gradient(900px 620px at -6% -8%, var(--bg-2), transparent 58%); }
-.bg::before{ content:""; position:absolute; right:-14%; bottom:-30%; width:min(92vw,940px); aspect-ratio:1; border-radius:50%;
-  background:repeating-radial-gradient(circle at center, transparent 0 86px, var(--line) 86px 87px); opacity:.5; mask:radial-gradient(circle at center, #000 62%, transparent 72%); }
-.bg::after{ content:""; position:absolute; left:-10%; top:-16%; width:min(70vw,560px); aspect-ratio:1; border-radius:50%;
-  background:repeating-radial-gradient(circle at center, transparent 0 64px, var(--line) 64px 65px); opacity:.4; mask:radial-gradient(circle at center, #000 60%, transparent 72%); }
-.topbar{ position:relative; z-index:70; flex:0 0 auto; display:flex; align-items:center; justify-content:space-between; gap:14px; padding:13px clamp(16px,3.4vw,34px);
-  background:color-mix(in srgb, var(--bg) 78%, transparent); backdrop-filter:saturate(140%) blur(12px); -webkit-backdrop-filter:saturate(140%) blur(12px); border-bottom:1px solid var(--line); }
-.tb-left{ display:flex; align-items:center; gap:12px; min-width:0; }
-.hamb{ display:grid; place-items:center; width:40px; height:40px; flex:0 0 auto; position:relative; border:1px solid var(--line-2); border-radius:12px; background:var(--panel); color:var(--ink); transition:border-color .15s var(--ease); }
-.hamb:hover{ border-color:var(--accent); }
-.hamb .bar{ position:absolute; left:11px; right:11px; height:2px; border-radius:2px; background:currentColor; transition:transform .24s var(--ease), opacity .18s var(--ease); }
-.hamb .bar:nth-child(1){ top:14px; } .hamb .bar:nth-child(2){ top:19px; } .hamb .bar:nth-child(3){ top:24px; }
-body.drawer-open .hamb .bar:nth-child(1){ transform:translateY(5px) rotate(45deg); }
-body.drawer-open .hamb .bar:nth-child(2){ opacity:0; }
-body.drawer-open .hamb .bar:nth-child(3){ transform:translateY(-5px) rotate(-45deg); }
-.brand{ display:flex; align-items:center; gap:11px; min-width:0; }
-.brand-logo{ width:34px; height:34px; flex:0 0 auto; display:grid; place-items:center; border-radius:10px; background:var(--panel); box-shadow:inset 0 0 0 1px var(--line-2); }
-.brand-logo img{ width:22px; height:22px; border-radius:50%; }
-.brand-name{ font-size:19px; font-weight:820; letter-spacing:-0.03em; color:var(--ink); line-height:1.1; white-space:nowrap; }
-.tb-right{ display:flex; align-items:center; gap:9px; }
-.theme-toggle{ display:inline-flex; align-items:center; gap:2px; padding:3px; border-radius:999px; background:var(--field); box-shadow:inset 0 0 0 1px var(--line); }
-.theme-toggle button{ display:grid; place-items:center; width:30px; height:30px; border-radius:999px; color:var(--muted); transition:color .15s var(--ease), background-color .15s var(--ease); }
-.theme-toggle button svg{ width:15px; height:15px; }
-.theme-toggle button[aria-pressed="true"]{ color:var(--ink); background:var(--panel); box-shadow:0 2px 8px -3px rgba(0,0,0,.28); }
-.btn-app{ display:inline-flex; align-items:center; gap:8px; padding:9px 15px; border-radius:11px; background:var(--panel); color:var(--ink); font-size:13.5px; font-weight:700; letter-spacing:-0.01em; box-shadow:inset 0 0 0 1px var(--line-2); transition:box-shadow .15s var(--ease), transform .15s var(--ease); white-space:nowrap; }
-.btn-app svg{ width:16px; height:16px; color:var(--muted); }
-.btn-app:hover{ box-shadow:inset 0 0 0 1px var(--accent); transform:translateY(-1px); }
-.btn-app:hover svg{ color:var(--accent-ink); }
-.scrim{ position:fixed; inset:0; z-index:80; background:rgba(10,14,17,.42); opacity:0; visibility:hidden; transition:opacity .28s var(--ease), visibility .28s var(--ease); }
-body.drawer-open .scrim{ opacity:1; visibility:visible; }
-.drawer{ position:fixed; z-index:90; top:0; left:0; height:100dvh; width:300px; max-width:86vw; display:flex; flex-direction:column; padding:16px 14px 16px; background:var(--panel); border-right:1px solid var(--line); box-shadow:var(--shadow-pop);
-  transform:translateX(-104%); transition:transform .3s var(--ease); overflow-y:auto; }
-body.drawer-open .drawer{ transform:translateX(0); }
-.drawer-head{ display:flex; align-items:center; justify-content:space-between; gap:10px; padding:2px 6px 8px; }
-.drawer-head .brand-name{ font-size:15px; }
-.drawer-close{ display:grid; place-items:center; width:34px; height:34px; border-radius:10px; color:var(--muted); }
-.drawer-close:hover{ color:var(--ink); background:var(--field); }
-.drawer-close svg{ width:17px; height:17px; }
-.nav-label{ margin:15px 12px 6px; font-size:10px; font-weight:750; letter-spacing:0.15em; text-transform:uppercase; color:var(--faint); }
-.nav-item{ display:flex; align-items:center; gap:12px; padding:9px 12px; border-radius:10px; color:var(--text); font-size:14px; font-weight:650; transition:color .15s var(--ease), background-color .15s var(--ease); }
-.nav-item .ni-ico{ width:18px; height:18px; flex:0 0 auto; color:var(--muted); }
-.nav-item.is-active{ color:var(--accent-ink); background:var(--accent-soft); }
-.nav-item.is-active .ni-ico{ color:var(--accent-ink); }
-.nav-item:hover{ color:var(--ink); background:var(--field); }
-.nav-group{ border-radius:10px; }
-.nav-group summary{ display:flex; align-items:center; gap:12px; padding:9px 12px; border-radius:10px; color:var(--text); font-size:14px; font-weight:650; cursor:pointer; list-style:none; transition:color .15s var(--ease), background-color .15s var(--ease); }
-.nav-group summary::-webkit-details-marker{ display:none; }
-.nav-group summary .ni-ico{ width:18px; height:18px; flex:0 0 auto; color:var(--muted); }
-.nav-group summary .chev{ width:15px; height:15px; margin-left:auto; color:var(--faint); transition:transform .2s var(--ease); }
-.nav-group summary:hover{ color:var(--ink); background:var(--field); }
-.nav-group[open] summary{ color:var(--ink); }
-.nav-group[open] summary .chev{ transform:rotate(180deg); }
-.nav-sub{ display:flex; flex-direction:column; gap:1px; padding:2px 0 8px 42px; }
-.nav-sub a{ display:flex; align-items:baseline; gap:7px; padding:6px 10px; border-radius:8px; color:var(--muted); font-size:12.5px; font-weight:550; transition:color .15s var(--ease), background-color .15s var(--ease); }
-.nav-sub a small{ color:var(--faint); font-size:10.5px; font-weight:500; }
-.nav-sub a:hover{ color:var(--accent-ink); background:var(--field); }
-.drawer-foot{ margin-top:auto; padding-top:13px; border-top:1px solid var(--line); }
-.disclose{ margin:8px 8px 0; font-size:11px; line-height:1.5; color:var(--muted); }
-.disclose strong{ color:var(--text); font-weight:750; }
-.fine{ margin:6px 8px 0; font-size:10.5px; line-height:1.45; color:var(--faint); }
-.app{ height:100dvh; display:flex; flex-direction:column; overflow:hidden; position:relative; z-index:1; }
-.wrap{ flex:1 1 auto; min-height:0; display:grid; place-items:center; overflow:hidden; }
-.stage{ width:100%; max-width:560px; max-height:100%; margin-inline:auto; padding:clamp(14px,3vh,36px) clamp(16px,3.4vw,26px); display:flex; flex-direction:column; align-items:center; text-align:center; }
-.lead{ margin:0 0 clamp(13px,2.2vh,20px); max-width:24ch; font-size:clamp(19px,2.5vw,27px); line-height:1.16; letter-spacing:-0.025em; font-weight:750; color:var(--ink); }
-.lead .hl{ color:var(--accent-ink); }
-.hero-chips{ display:flex; flex-wrap:wrap; justify-content:center; gap:9px; margin-top:clamp(13px,2.2vh,18px); }
-.hchip{ display:inline-flex; align-items:baseline; gap:7px; padding:8px 13px; border-radius:12px; background:var(--panel); box-shadow:inset 0 0 0 1px var(--line); font-size:12px; font-weight:600; color:var(--muted); transition:box-shadow .15s var(--ease), color .15s var(--ease); }
-.hchip b{ color:var(--ink); font-family:var(--mono); font-size:12.5px; font-weight:650; font-variant-numeric:tabular-nums; }
-.hchip .ext{ color:var(--faint); font-size:10px; }
-a.hchip:hover{ box-shadow:inset 0 0 0 1px var(--accent); color:var(--text); }
-a.hchip:hover .ext{ color:var(--accent-ink); }
-.swap-card{ position:relative; width:min(480px,100%); border-radius:28px; background:var(--panel); padding:clamp(20px,4vw,30px); text-align:left; box-shadow:var(--shadow-card); }
-.card-head{ display:flex; align-items:center; justify-content:space-between; margin:2px 4px 17px; }
-.card-title{ font-size:15px; font-weight:800; letter-spacing:-0.02em; color:var(--ink); }
-.badge{ display:inline-flex; align-items:center; gap:6px; padding:5px 11px; border-radius:999px; color:var(--accent-ink); background:var(--accent-soft); font-size:10px; font-weight:750; letter-spacing:0.07em; text-transform:uppercase; }
-.badge i{ width:6px; height:6px; border-radius:50%; background:var(--accent); }
-.field{ position:relative; padding:17px 18px 18px; border-radius:19px; background:var(--field); }
-.field + .field{ margin-top:6px; }
-.field-top{ display:flex; align-items:center; justify-content:space-between; }
-.field-label{ font-size:12px; font-weight:600; color:var(--muted); }
-.field-bal{ font-size:11px; font-weight:600; color:var(--faint); }
-.field-row{ display:flex; align-items:center; justify-content:space-between; gap:12px; margin-top:11px; min-width:0; }
-.amount{ min-width:0; }
-.amount b{ display:block; font-size:clamp(29px,5vw,38px); font-weight:750; line-height:1; letter-spacing:-0.02em; color:var(--ink); font-variant-numeric:tabular-nums; }
-.amount span{ display:block; margin-top:6px; font-size:11px; font-weight:600; color:var(--faint); }
-.token-pill{ display:inline-flex; align-items:center; gap:10px; flex:0 0 auto; padding:7px 12px 7px 8px; border-radius:999px; background:var(--panel); box-shadow:0 4px 14px -8px rgba(0,0,0,.4), inset 0 0 0 1px var(--line); transition:box-shadow .15s var(--ease); }
-.token-pill:hover{ box-shadow:0 6px 18px -8px rgba(0,0,0,.42), inset 0 0 0 1px var(--line-2); }
-.token-pill img{ width:26px; height:26px; flex:0 0 auto; border-radius:50%; }
-.token-meta{ display:flex; flex-direction:column; line-height:1.05; min-width:0; }
-.token-meta small{ font-size:9.5px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; color:var(--faint); }
-.token-meta b{ font-size:15px; font-weight:800; letter-spacing:-0.01em; color:var(--ink); white-space:nowrap; }
-.token-pill .chev{ width:14px; height:14px; flex:0 0 auto; color:var(--faint); }
-.reverse{ position:relative; z-index:2; display:grid; place-items:center; width:40px; height:40px; margin:-14px auto; border:4px solid var(--panel); border-radius:13px; background:var(--field-2); color:var(--muted); box-shadow:0 6px 16px -8px rgba(0,0,0,.4); transition:transform .28s var(--ease), color .15s var(--ease), background-color .15s var(--ease); }
-.reverse svg{ width:16px; height:16px; }
-.reverse:hover{ color:var(--cta-ink); background:var(--accent); transform:rotate(180deg); }
-.details-btn{ display:flex; align-items:center; justify-content:center; gap:8px; width:100%; margin-top:12px; padding:12px; border-radius:14px; background:var(--field); color:var(--muted); font-size:12px; font-weight:750; letter-spacing:0.06em; text-transform:uppercase; transition:color .15s var(--ease), background-color .15s var(--ease); }
-.details-btn svg{ width:14px; height:14px; transition:transform .2s var(--ease); }
-.details-btn:hover{ color:var(--ink); }
-.details-btn[aria-expanded="true"] svg{ transform:rotate(180deg); }
-.details{ overflow:hidden; max-height:0; opacity:0; transition:max-height .3s var(--ease), opacity .22s var(--ease), margin .3s var(--ease); }
-.details.open{ max-height:280px; opacity:1; margin-top:6px; }
-.d-row{ display:flex; align-items:center; justify-content:space-between; gap:12px; padding:11px 8px; border-bottom:1px solid var(--line); }
-.d-row:last-child{ border-bottom:0; }
-.d-row span{ font-size:12.5px; font-weight:600; color:var(--muted); }
-.d-row b{ font-size:12.5px; font-weight:700; color:var(--text); }
-.d-row b.ok{ color:var(--accent-ink); }
-.d-row b.mono{ font-family:var(--mono); font-size:11px; }
-.cta{ display:flex; align-items:center; justify-content:center; gap:8px; margin-top:12px; padding:16px; border-radius:16px; background:var(--cta); color:var(--cta-ink); font-size:15px; font-weight:800; letter-spacing:0.03em; text-transform:uppercase; box-shadow:0 16px 34px -16px rgba(0,0,0,.5); transition:background-color .15s var(--ease), transform .15s var(--ease); }
-.cta svg{ width:16px; height:16px; }
-.cta:hover{ background:var(--cta-hover); transform:translateY(-1px); }
-.card-note{ margin:13px 4px 0; font-size:11px; line-height:1.5; color:var(--faint); text-align:center; }
-.card-note a{ color:var(--muted); text-decoration:underline; text-decoration-color:var(--line-2); text-underline-offset:2px; }
-.card-note a:hover{ color:var(--accent-ink); }
-@media (max-width:560px){
-  .brand-name{ font-size:16px; } .btn-app span{ display:none; } .btn-app{ padding:9px 11px; }
-  .stage{ padding:12px 16px; }
-  .lead{ font-size:clamp(18px,5.5vw,24px); margin-bottom:14px; }
-  .swap-card{ padding:18px; } .field{ padding:14px 15px 15px; } .amount b{ font-size:29px; }
-  .hero-chips{ margin-top:12px; }
-}
-@media (max-height:700px){ .lead{ font-size:clamp(17px,4.5vw,21px); margin-bottom:10px; } .hero-chips{ display:none; } }
-@media (max-height:600px){ .field{ padding:12px 15px 13px; } .amount b{ font-size:26px; } .details-btn{ margin-top:8px; padding:9px; } .cta{ padding:14px; margin-top:8px; } }
-@media (prefers-reduced-motion: reduce){ *{ transition:none !important; } }
+    :root{--bg:#F9FAFB;--surface:#FFFFFF;--text:#14161B;--muted:#565C66;--accent:#4338CA;--accent-ink:#FFFFFF;--radius:18px;--display:"Schibsted Grotesk";--body:"Inter"}
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 2rem; }
+    body { margin: 0; background: var(--bg); color: var(--text); font: 400 1rem/1.7 var(--body); -webkit-font-smoothing: antialiased; }
+    a { color: var(--accent); text-underline-offset: .22em; }
+    a:hover { text-decoration-thickness: .12em; }
+    :focus-visible { outline: 3px solid var(--accent); outline-offset: 5px; }
+    ::selection { background: var(--accent); color: var(--accent-ink); }
+    h1, h2, h3, h4, h5, h6 { font-family: var(--display); line-height: 1.15; text-wrap: balance; }
+    p, h1, h2, h3 { margin-top: 0; }
+    img, svg { max-width: 100%; vertical-align: middle; }
+    .c0641bc { width: min(1180px, calc(100% - 3rem)); margin-inline: auto; }
+    .c512ca3 { position: absolute; z-index: 5; top: .5rem; left: 1rem; padding: .7rem 1rem; background: var(--surface); transform: translateY(-180%); border-radius: var(--radius); }
+    .c512ca3:focus { transform: translateY(0); }
+    .cba9f36 { border-bottom: 1px solid color-mix(in srgb,var(--text) 10%,transparent); }
+    .c579117 { min-height: 88px; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
+    .cb666bf { display: inline-flex; align-items: center; gap: .7rem; color: var(--text); font: 650 1.12rem/1.2 var(--display); text-decoration: none; }
+    .caab13a { display: grid; place-items: center; width: 2.4rem; height: 2.4rem; border-radius: calc(var(--radius) * .6); background: var(--accent); color: var(--accent-ink); }
+    .c19bbb0 { width: 1.2rem; height: 1.2rem; fill: none; stroke: var(--accent-ink); stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; flex: 0 0 auto; }
+    .c4307d4 { display: flex; align-items: center; gap: 1.8rem; }
+    .c4307d4 > a { font-size: .88rem; font-weight: 600; text-decoration: none; }
+    .c4307d4 > a:not(.c54b299) { color: var(--muted); }
+    .c54b299 { display: inline-flex; align-items: center; justify-content: center; gap: .8rem; min-height: 52px; padding: .85rem 1.4rem; border: 1px solid color-mix(in srgb,var(--accent-ink) 12%,transparent); border-radius: var(--radius); background: linear-gradient(135deg,var(--accent),color-mix(in srgb,var(--accent) 88%,var(--text))); color: var(--accent-ink); font: 650 .95rem/1.3 var(--body); text-decoration: none; box-shadow: 0 6px 18px color-mix(in srgb,var(--accent) 17%,transparent); transition: transform .18s ease, box-shadow .18s ease; }
+    .c54b299:hover { transform: translateY(-2px); box-shadow: 0 9px 24px color-mix(in srgb,var(--accent) 25%,transparent); }
+    .c579117 .c54b299 { min-height: 42px; padding: .65rem 1rem; }
+    .c80d6f0 { padding-block: 1.8rem 0; color: var(--muted); font-size: .8rem; overflow-wrap: anywhere; }
+    .c6a3170 { color: var(--muted); }
+    .c6a3170 a, a.c6a3170 { color: var(--muted); text-decoration: none; }
+    .c6a3170 a:hover, a.c6a3170:hover { color: var(--accent); text-decoration: underline; }
+    .c6a3170 ol, .c6a3170 ul { display: flex; flex-wrap: wrap; gap: .5rem 1rem; padding: 0; margin: 0; list-style: none; }
+    .cea53a8 { display: grid; grid-template-columns: minmax(0,1.05fr) minmax(0,1fr); gap: clamp(2rem,6vw,5.5rem); align-items: center; padding-block: 3rem 5.5rem; }
+    .c9a4c11 { display: inline-flex; align-items: center; gap: .55rem; margin-bottom: 1.3rem; color: var(--accent); font-size: .86rem; font-weight: 600; }
+    .c9a4c11::before { content: ""; width: .5rem; height: .5rem; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 5px color-mix(in srgb,var(--accent) 9%,transparent); }
+    h1 { margin-bottom: 1.4rem; font-size: clamp(2.5rem,4.7vw,4.35rem); font-weight: 600; letter-spacing: -.055em; overflow-wrap: anywhere; }
+    h1 em { color: var(--accent); font-style: normal; }
+    .c5fe642 { max-width: 48ch; margin-bottom: 2rem; color: var(--muted); font-size: 1.08rem; line-height: 1.8; }
+    .ce2d93a { position: relative; min-width: 0; padding: clamp(1.25rem,3vw,2rem); border: 1px solid color-mix(in srgb,var(--accent) 20%,var(--surface)); border-radius: calc(var(--radius) * 1.6); background: linear-gradient(155deg,color-mix(in srgb,var(--accent) 7%,var(--surface)),var(--surface) 40%); box-shadow: 0 24px 64px color-mix(in srgb,var(--text) 9%,transparent),0 4px 12px color-mix(in srgb,var(--accent) 6%,transparent); }
+    .cb3e2c1 { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .7rem; margin-bottom: 1.6rem; }
+    .cb3e2c1 h2 { margin: 0; font-size: 1.35rem; letter-spacing: -.035em; }
+    .cf07d74 { display: inline-flex; align-items: center; gap: .4rem; padding: .3rem .65rem; border: 1px solid color-mix(in srgb,var(--accent) 16%,transparent); border-radius: 999px; background: color-mix(in srgb,var(--accent) 8%,var(--surface)); color: var(--accent); font-size: .72rem; font-weight: 600; }
+    .cf07d74::before { content: ""; width: .35rem; height: .35rem; border-radius: 50%; background: var(--accent); }
+    .cd87478 { display: grid; grid-template-columns: minmax(0,1fr) auto minmax(0,1fr); align-items: center; gap: .8rem; padding: 1rem; margin-bottom: 1.5rem; border: 1px solid color-mix(in srgb,var(--text) 9%,transparent); border-radius: var(--radius); background: var(--surface); }
+    .c5a0156 { min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: .45rem; }
+    .c5a0156:last-child { align-items: flex-end; }
+    .c58d5ab, .c6a9d51 { color: var(--muted); font-size: .78rem; font-weight: 500; }
+    .c93577c { display: flex; align-items: center; min-height: 36px; max-width: 100%; overflow-wrap: anywhere; font: 600 1rem/1.3 var(--display); }
+    .c93577c img, .c93577c svg { max-height: 36px; width: auto; max-width: 100%; object-fit: contain; }
+    .cb2a362 { display: grid; place-items: center; width: 2.25rem; height: 2.25rem; border-radius: 50%; background: color-mix(in srgb,var(--accent) 9%,var(--surface)); }
+    .cb2a362 .c19bbb0 { stroke: var(--accent); }
+    .c6a9d51 { display: block; margin-bottom: .5rem; color: var(--text); }
+    .c6fd92e { display: flex; align-items: center; gap: .75rem; padding: .8rem 1rem; border: 1px solid color-mix(in srgb,var(--text) 18%,transparent); border-radius: var(--radius); background: var(--bg); transition: border-color .18s ease; }
+    .c6fd92e:focus-within { border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb,var(--accent) 12%,transparent); }
+    .c6fd92e input { width: 100%; min-width: 0; padding: .2rem 0; border: 0; background: var(--bg); color: var(--text); font: 550 1.9rem/1.2 var(--display); font-variant-numeric: tabular-nums; }
+    .c6fd92e input:focus { outline: 0; }
+    .ccbcdd7 { color: var(--muted); font-size: .8rem; }
+    .c14238f { margin: .55rem 0 1.3rem; color: var(--muted); font-size: .74rem; }
+    .cb08c81 { margin: .5rem 0; color: var(--text); font-size: .8rem; font-weight: 600; }
+    [hidden] { display: none !important; }
+    .c4574db { padding: 1.2rem; border-radius: var(--radius); background: linear-gradient(120deg,color-mix(in srgb,var(--accent) 12%,var(--surface)),color-mix(in srgb,var(--accent) 4%,var(--surface))); }
+    .c3bc399 { margin-bottom: .25rem; color: var(--muted); font-size: .8rem; }
+    .c46f475 { display: block; color: var(--text); font: 600 clamp(1.7rem,3vw,2.5rem)/1.3 var(--display); letter-spacing: -.04em; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+    .c46f475 small { color: var(--muted); font: 400 .8rem/1.4 var(--body); letter-spacing: 0; }
+    .c4574db dl { display: grid; gap: .6rem; margin: 1rem 0 0; padding-top: 1rem; border-top: 1px solid color-mix(in srgb,var(--accent) 15%,transparent); font-size: .8rem; }
+    .c4574db dl div { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .25rem 1rem; }
+    .c4574db dt { color: var(--muted); }
+    .c4574db dd { margin: 0; font-weight: 600; font-variant-numeric: tabular-nums; }
+    .cd6fabf { margin-block: 1rem; color: var(--muted); font-size: .75rem; }
+    .cd6fabf summary { width: fit-content; color: var(--text); cursor: pointer; }
+    .cd6fabf p { margin: .65rem 0 0; }
+    .ce2d93a > .c54b299 { width: 100%; }
+    .cffcffb { padding: 2rem; border: 1px solid color-mix(in srgb,var(--text) 10%,transparent); border-radius: calc(var(--radius) * 1.3); background: var(--surface); }
+    .c759053 { margin-bottom: 1.3rem; font-size: 1.65rem; font-weight: 550; letter-spacing: -.035em; }
+    .c91a2ec { max-width: 100%; overflow-x: auto; }
+    .c08ef0a { width: 100%; border-collapse: collapse; text-align: left; font-size: .92rem; }
+    .c08ef0a caption { padding-bottom: 1rem; text-align: left; color: var(--muted); }
+    .c08ef0a th, .c08ef0a td { padding: 1rem 1.1rem; border-bottom: 1px solid color-mix(in srgb,var(--text) 9%,transparent); vertical-align: top; overflow-wrap: anywhere; }
+    .c08ef0a th { color: var(--muted); font-weight: 500; }
+    .c08ef0a thead { background: color-mix(in srgb,var(--accent) 5%,var(--surface)); }
+    .c08ef0a tbody tr:last-child > * { border-bottom: 0; }
+    .cd5b552 { max-width: 820px; padding-block: 4rem 2rem; }
+    .c5b784c { margin-bottom: 3.3rem; }
+    .c05345e { margin: 0 0 1.1rem; font: 550 clamp(1.6rem,3vw,2.2rem)/1.2 var(--display); letter-spacing: -.035em; }
+    .caea428 { color: var(--muted); line-height: 1.85; overflow-wrap: anywhere; }
+    .caea428 p { margin-bottom: 1.2rem; }
+    .caea428 strong, .caea428 h3, .caea428 h4 { color: var(--text); }
+    .caea428 ul, .caea428 ol { padding-left: 1.3rem; }
+    .caea428 li { padding-left: .3rem; margin-block: .55rem; }
+    .caea428 li::marker { color: var(--accent); }
+    .caea428 blockquote { margin: 1.5rem 0; padding: 1rem 1.4rem; border-left: 3px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; background: var(--surface); color: var(--text); }
+    .caea428 img { height: auto; border-radius: var(--radius); }
+    .caea428 pre { overflow-x: auto; padding: 1rem; border-radius: var(--radius); background: var(--surface); }
+    .caea428 code, .caea428 pre { font-family: var(--body); }
+    .c0cd65d { margin-block: .8rem; border: 1px solid color-mix(in srgb,var(--text) 11%,transparent); border-radius: var(--radius); background: var(--surface); overflow: hidden; }
+    .ccdd90b { position: relative; padding: 1.3rem 3.5rem 1.3rem 1.4rem; list-style: none; cursor: pointer; color: var(--text); font: 550 1.04rem/1.5 var(--display); }
+    .ccdd90b::-webkit-details-marker { display: none; }
+    .ccdd90b::after { content: "+"; position: absolute; right: 1.4rem; top: 1.2rem; color: var(--accent); font-size: 1.3rem; }
+    details[open] > .ccdd90b::after { content: "−"; }
+    .c0cd65d[open] { border-color: color-mix(in srgb,var(--accent) 35%,var(--surface)); }
+    .ccdd90b:focus-visible { outline-offset: -5px; }
+    .c593f66 { padding: 0 1.4rem 1.4rem; color: var(--muted); overflow-wrap: anywhere; }
+    .c593f66 > :last-child { margin-bottom: 0; }
+    .cdd9f51 { max-width: 820px; padding-block: 1.5rem 3.5rem; border-top: 1px solid color-mix(in srgb,var(--text) 12%,transparent); }
+    .cdd9f51 .c759053 { font-size: 1.25rem; }
+    .c794542 { margin: 0; padding-left: 1.25rem; color: var(--muted); font-size: .88rem; }
+    .ccaf0cf { padding-block: .4rem; padding-left: .25rem; overflow-wrap: anywhere; }
+    .ccaf0cf a, a.ccaf0cf { color: var(--text); text-decoration-color: color-mix(in srgb,var(--accent) 45%,transparent); }
+    .ccaf0cf a:hover, a.ccaf0cf:hover { color: var(--accent); }
+    .cece4a0 { border-top: 1px solid color-mix(in srgb,var(--text) 10%,transparent); }
+    .c2ccb3b { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; min-height: 96px; padding-block: 1.5rem; color: var(--muted); font-size: .8rem; }
+    .c2ccb3b p { margin: 0; }
+    .c2ccb3b a { color: var(--muted); }
+    @media (max-width: 850px) { .cea53a8 { grid-template-columns: minmax(0,1fr); gap: 2.5rem; padding-block: 2.5rem 3.5rem; } .c2d5947 { max-width: 650px; } .ce2d93a { width: 100%; max-width: 600px; justify-self: center; } h1 { font-size: clamp(2.5rem,7vw,4rem); } .c5fe642 { max-width: 60ch; } }
+    @media (max-width: 540px) { .c0641bc { width: calc(100% - 2rem); } .c579117 { min-height: 76px; gap: .7rem; } .cb666bf { font-size: .95rem; gap: .45rem; } .caab13a { width: 2rem; height: 2rem; } .c4307d4 { gap: .6rem; } .c4307d4 > a:not(.c54b299) { display: none; } .c579117 .c54b299 { padding-inline: .85rem; font-size: .8rem; } .cffcffb { padding: 1.25rem; } .c08ef0a th, .c08ef0a td { padding: .8rem .55rem; } .c2d5947 > .c54b299 { width: 100%; } .cd5b552 { padding-top: 2.8rem; } .c2ccb3b { align-items: flex-start; flex-direction: column; } }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .c54b299, .c6fd92e { transition: none; } .c54b299:hover { transform: none; } }
   </style>
-  <script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
-  <a class="skip" href="#route-preview">Skip to preview</a>
-  <div class="bg" aria-hidden="true"></div>
-
-  <div class="app">
-  <header class="topbar">
-    <div class="tb-left">
-      <button class="hamb" type="button" id="hamb" aria-label="Open navigation" aria-controls="drawer" aria-expanded="false"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
-      <div class="brand"><span class="brand-logo"><img src="favicon.png" width="22" height="22" alt="Rhino Bridge logo"></span><h1 class="brand-name">Rhino Bridge</h1></div>
-    </div>
-    <div class="tb-right">
-      <div class="theme-toggle" role="group" aria-label="Color theme">
-        <button type="button" id="theme-light" aria-pressed="true" aria-label="Light theme"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.4M12 19.6V22M2 12h2.4M19.6 12H22M4.9 4.9l1.7 1.7M17.4 17.4l1.7 1.7M19.1 4.9l-1.7 1.7M6.6 17.4l-1.7 1.7"/></svg></button>
-        <button type="button" id="theme-dark" aria-pressed="false" aria-label="Dark theme"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a6.5 6.5 0 1 0 10.5 10.5z"/></svg></button>
+  <a class="c512ca3" href="#content">Skip to content</a>
+  <header class="cba9f36">
+    <nav class="c579117 c0641bc" aria-label="Primary navigation">
+      <a class="cb666bf" href="#top" aria-label="Transfer guide, top of page">
+        <span class="caab13a" aria-hidden="true"><svg class="c19bbb0" viewBox="0 0 24 24"><path d="M4 8h15m-4-4 4 4-4 4M20 16H5m4-4-4 4 4 4"/></svg></span>
+        Transfer guide
+      </a>
+      <div class="c4307d4">
+        <a href="#facts">Key facts</a>
+        <a href="#sources">Sources</a>
+        <a class="c54b299" href="dashboard/">Open app</a>
       </div>
-      <a class="btn-app" href="dashboard/" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="3"/><path d="M16 11h2"/></svg><span>Open app</span></a>
-    </div>
-  </header>
-
-  <div class="scrim" id="scrim" tabindex="-1"></div>
-  <aside class="drawer" id="drawer" aria-label="Primary" aria-hidden="true">
-    <div class="drawer-head">
-      <div class="brand"><span class="brand-logo"><img src="favicon.png" width="22" height="22" alt=""></span><span class="brand-name">Rhino Bridge</span></div>
-      <button class="drawer-close" type="button" id="drawer-close" aria-label="Close navigation"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
-    </div>
-    <nav aria-label="Sections">
-      <p class="nav-label">Bridge</p>
-      <a class="nav-item is-active" href="#route-preview" aria-current="page"><svg class="ni-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M7 10h11l-3-3M17 14H6l3 3"/></svg>Route preview</a>
-      <p class="nav-label">Understand</p>
-      <details class="nav-group" open><summary><svg class="ni-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 5h10a3 3 0 0 1 3 3v11a2 2 0 0 0-2-2H4zM20 5h-1a3 3 0 0 0-3 3v11a2 2 0 0 1 2-2h2z"/></svg>Rhino Bridge essentials<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><div class="nav-sub"><a href="https://docs.rhino.fi/get-started/what-is-rhino" target="_blank" rel="noopener noreferrer">What is Rhino.fi? <small>Official product definition</small></a><a href="https://rhino.fi/about" target="_blank" rel="noopener noreferrer">About Rhino.fi <small>Team and mission</small></a><a href="https://docs.rhino.fi/sdk/concepts" target="_blank" rel="noopener noreferrer">Bridge SDK concepts <small>Bridge SDK architecture</small></a><a href="https://ethereum.org/bridges" target="_blank" rel="noopener noreferrer">Blockchain bridges <small>Bridge concepts and risks</small></a><a href="https://en.wikipedia.org/wiki/Stablecoin" target="_blank" rel="noopener noreferrer">Stablecoins <small>Stablecoin reference overview</small></a></div></details>
-      <p class="nav-label">Markets &amp; data</p>
-      <details class="nav-group"><summary><svg class="ni-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 5h10a3 3 0 0 1 3 3v11a2 2 0 0 0-2-2H4zM20 5h-1a3 3 0 0 0-3 3v11a2 2 0 0 1 2-2h2z"/></svg>Liquidity and activity<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><div class="nav-sub"><a href="https://defillama.com/protocol/rhino.fi" target="_blank" rel="noopener noreferrer">Rhino.fi TVL <small>Protocol TVL dashboard</small></a><a href="https://defillama.com/bridge/rhino.fi" target="_blank" rel="noopener noreferrer">Rhino.fi bridge volume <small>Bridge volume dashboard</small></a><a href="https://defillama.com/bridges" target="_blank" rel="noopener noreferrer">Bridge rankings <small>Cross-chain volume rankings</small></a><a href="https://base.blockscout.com/address/0x2f59e9086ec8130e21bd052065a9e6b2497bb102" target="_blank" rel="noopener noreferrer">Base bridge contract <small>Current Base contract</small></a><a href="https://coinmarketcap.com/currencies/deversifi/" target="_blank" rel="noopener noreferrer">Rhino.fi DVF market <small>Legacy DVF market</small></a></div></details>
-      <p class="nav-label">Guides</p>
-      <details class="nav-group"><summary><svg class="ni-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 5h10a3 3 0 0 1 3 3v11a2 2 0 0 0-2-2H4zM20 5h-1a3 3 0 0 0-3 3v11a2 2 0 0 1 2-2h2z"/></svg>Bridge and integrate<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><div class="nav-sub"><a href="https://app.rhino.fi/bridge" target="_blank" rel="noopener noreferrer">Rhino Bridge app <small>Launch bridge app</small></a><a href="https://docs.rhino.fi/get-started/supported-chains" target="_blank" rel="noopener noreferrer">Supported chains <small>Networks and supported assets</small></a><a href="https://docs.rhino.fi/get-started/fees-and-limits" target="_blank" rel="noopener noreferrer">Fees and limits <small>Pricing limits explained</small></a><a href="https://docs.rhino.fi/api-reference/bridge/history/bridge-status" target="_blank" rel="noopener noreferrer">Bridge status API <small>Track bridge transaction</small></a><a href="https://ethereum.org/guides/how-to-use-a-bridge/" target="_blank" rel="noopener noreferrer">Bridge tokens to L2 <small>Ethereum bridging steps</small></a></div></details>
-      <p class="nav-label">Safety</p>
-      <details class="nav-group"><summary><svg class="ni-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 5h10a3 3 0 0 1 3 3v11a2 2 0 0 0-2-2H4zM20 5h-1a3 3 0 0 0-3 3v11a2 2 0 0 1 2-2h2z"/></svg>Contracts and assurance<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><div class="nav-sub"><a href="https://rhino.fi/legal-policies-and-documentation/audit" target="_blank" rel="noopener noreferrer">Rhino.fi audits <small>Official audit directory</small></a><a href="https://github.com/rhinofi/contracts_public/blob/master/PeckShield-Audit-Report-CrossSwap-v1.0.pdf" target="_blank" rel="noopener noreferrer">CrossSwap audit <small>PeckShield cross-swap review</small></a><a href="https://github.com/rhinofi/contracts_public" target="_blank" rel="noopener noreferrer">Public contracts <small>Published Solidity contracts</small></a><a href="https://immunefi.com/bounty/rhinofi/" target="_blank" rel="noopener noreferrer">Rhino.fi bug bounty <small>Bug bounty scope</small></a><a href="https://l2beat.com/scaling/projects/rhinofi" target="_blank" rel="noopener noreferrer">Rhino.fi on L2BEAT <small>Legacy Validium risk review</small></a></div></details>
     </nav>
-    <div class="drawer-foot">
-      <p class="disclose"><strong>Independent dashboard.</strong> Not affiliated with any protocol or issuer named here.</p>
-      <p class="fine">Live figures come from public third-party sources and change. Educational reference only.</p>
+  </header>
+  <div class="c0641bc" id="top">
+    <div class="c80d6f0"><nav class="c6a3170" aria-label="Breadcrumb"><a href="dashboard/">Home</a> <span>/</span> <span>Bridges</span> <span>/</span> <span>Rhino Bridge</span></nav></div>
+    <section class="cea53a8" aria-labelledby="hero-title">
+      <div class="c2d5947">
+        <p class="c9a4c11">Plan your transfer</p>
+        <h1 id="hero-title">Rhino <em>Bridge</em>.</h1>
+        <p class="c5fe642">Rhino Bridge is a self-custody application that aggregates many separate bridge paths into one interface, scanning routes between Ethereum and a wide set of other chains and selecting whichever one delivers the most value to your destination address. The project was historically built on <a href="https://l2beat.com/scaling/projects/starknet" rel="nofollow noopener" target="_blank">StarkEx</a>, StarkWare's Layer-2 scaling engine, which gave early versions of the app a cheap, verifiable settlement path before the aggregator expanded to route across additional networks and bridges. Rhino Bridge never takes custody of what you send: an amount leaves your wallet on the source chain and the matching value lands in a wallet you control on the destination chain, with the route, fee and arrival estimate shown before you confirm.</p>
+        <a class="c54b299" href="dashboard/">Open app <svg class="c19bbb0" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+      </div>
+      <aside class="ce2d93a" aria-labelledby="widget-title">
+        <div class="cb3e2c1">
+          <h2 id="widget-title">Transfer estimator</h2>
+          <span class="cf07d74">Amount-based estimate</span>
+        </div>
+        <div class="cd87478" aria-label="Transfer route">
+          <div class="c5a0156"><span class="c58d5ab">From</span><div class="c93577c"><img src="assets/tokens/eth.svg" alt="Ethereum" width="28" height="28"></div></div>
+          <span class="cb2a362" aria-hidden="true"><svg class="c19bbb0" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
+          <div class="c5a0156"><span class="c58d5ab">To</span><div class="c93577c"></div></div>
+        </div>
+        <label class="c6a9d51" for="amount">Amount to send</label>
+        <div class="c6fd92e">
+          <input id="amount" type="number" inputmode="decimal" min="0.01" max="1000000000000" step="0.01" value="1000" required aria-describedby="amount-help amount-error">
+          <span class="ccbcdd7">units</span>
+        </div>
+        <p class="c14238f" id="amount-help">Enter an amount to calculate fees and transfer time.</p>
+        <p class="cb08c81" id="amount-error" hidden></p>
+        <div class="c4574db" role="status" aria-live="polite" aria-atomic="true">
+          <div class="c3bc399">Estimated amount after fees</div>
+          <output class="c46f475" id="result" for="amount">—</output>
+          <dl>
+            <div><dt>Estimated fee</dt><dd id="fee">—</dd></div>
+            <div><dt>Estimated time</dt><dd id="duration">—</dd></div>
+          </dl>
+        </div>
+        <details class="cd6fabf">
+          <summary>How the estimate is calculated</summary>
+          <p>Fee = 0.25 units + 0.3% of the amount, rounded to two decimal places and capped at the amount sent. The remaining amount uses the same units, at a 1:1 conversion. Time starts at 2 minutes, adds 1 minute per 2,500 units or part thereof, and is capped at 12 minutes. The displayed range adds 2 minutes to that estimate.</p>
+        </details>
+        <noscript><p class="c14238f">Enable JavaScript to calculate the estimate.</p></noscript>
+        <a class="c54b299" href="dashboard/">Continue to dashboard <svg class="c19bbb0" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+      </aside>
+    </section>
+    <section class="cffcffb" id="facts" aria-labelledby="facts-title">
+      <h2 class="c759053" id="facts-title">Key facts</h2>
+      <div class="c91a2ec"><table class="c08ef0a"><tbody><tr><th scope="row">Type</th><td>Self-custody cross-chain bridge aggregator</td></tr>
+<tr><th scope="row">Routing</th><td>Scans multiple bridge paths, selects the best one</td></tr>
+<tr><th scope="row">Origin</th><td>Built on StarkEx, StarkWare's Layer-2 engine</td></tr>
+<tr><th scope="row">Supported chains</th><td>Ethereum plus a growing set of L2s and L1s</td></tr>
+<tr><th scope="row">Transfer time</th><td>Minutes once the chosen route confirms</td></tr>
+<tr><th scope="row">Custody</th><td>Self-custody — assets stay under your own keys</td></tr></tbody></table></div>
+    </section>
+  </div>
+  <main class="cd5b552 c0641bc" id="content">
+    <section class="c5b784c"><h2 class="c05345e">What Rhino Bridge does</h2><div class="caea428"><strong>Rhino Bridge is an aggregator: instead of running one fixed path between two networks, it checks several underlying bridges and liquidity routes each time you enter a transfer and quotes the single path that gets the most value across.</strong> You keep custody throughout — the app never holds your assets in a pooled account. It constructs a transaction you sign from your own wallet, the source chain settles that transaction, and the destination chain credits your address once the chosen route has finalized. The interface is the same regardless of which underlying path gets selected, so the comparison work that would otherwise mean checking several bridge sites yourself happens automatically; the mechanics behind that selection are laid out in the <a href="https://docs.rhino.fi/" rel="nofollow noopener" target="_blank">Rhino.fi docs</a>.<h3>Why an aggregator beats a single fixed route</h3>A bridge that only operates one path has no alternative when that path is congested, temporarily expensive, or missing a chain pair you need. Rhino Bridge instead evaluates several routes against each other for a given transfer and surfaces the one with the best net outcome at that moment, which matters because relative costs between routes shift as networks get busy or liquidity moves. The trade-off is that the exact path your funds travel can differ between two transfers of the same size made minutes apart.<h3>Rhino Bridge's roots in StarkEx</h3>Early versions of Rhino Bridge settled through <strong>StarkEx</strong>, the validity-proof scaling engine StarkWare built for exchanges and payment applications, which batches many transfers into a single proof verified on Ethereum. That heritage is why the project still describes itself as built on StarkEx scaling technology even as its current routing covers destinations well beyond the original StarkEx application; you can read how that proving system is tracked independently on <a href="https://l2beat.com/scaling/projects/starknet" rel="nofollow noopener" target="_blank">L2BEAT</a>.</div></section>
+<section class="c5b784c"><h2 class="c05345e">Chains Rhino Bridge connects</h2><div class="caea428">Rhino Bridge's routing table spans Ethereum mainnet alongside a growing set of rollups and sidechains, and which pairs are available changes as the aggregator adds support. The practical approach is to check the live chain list inside the app for your specific pair rather than assume a route exists, since an aggregator's value comes precisely from covering many destinations rather than specializing in one.<h3>Ethereum as the common anchor</h3>Ethereum remains the reference chain most Rhino Bridge routes connect back to, both because it is where the largest pool of liquidity and stablecoins sits and because many of the destination rollups ultimately settle their own state back to Ethereum. Background on how rollups relate to the base chain they settle to is covered on <a href="https://ethereum.org/en/layer-2/" rel="nofollow noopener" target="_blank">ethereum.org's layer-2 page</a>.</div></section>
+<section class="c5b784c"><h2 class="c05345e">Rhino Bridge fees and timing</h2><div class="caea428">A Rhino Bridge transfer carries the network fee for the signed transaction on the source chain plus whatever the selected route charges for moving value across; because the route can change transfer to transfer, the fee is quoted at the moment you enter an amount rather than published as one fixed number. Timing follows the chain pair: a transfer between two fast rollups can land in minutes, while a route that touches a slower-finalizing chain takes longer. The table below sets out the shape of what you are paying for at each stage.<table><thead><tr><th>Stage</th><th>What you pay</th><th>Typical time</th></tr></thead><tbody><tr><td>Signing on the source chain</td><td>Source-chain network fee</td><td>Seconds to confirm</td></tr><tr><td>Route execution</td><td>Routing fee set by the chosen path</td><td>Minutes, depending on the pair</td></tr><tr><td>Credit on the destination chain</td><td>No separate charge</td><td>Shortly after the route finalizes</td></tr></tbody></table><h3>Reading the quote before you sign</h3>Rhino Bridge shows the amount that will actually arrive, after fees, alongside the amount you are sending — that figure is the one worth judging a transfer by, not the headline rate, since the gap between the two is where routing cost and network fee both show up. You can verify what landed afterward by checking the destination address on a block explorer such as <a href="https://etherscan.io/" rel="nofollow noopener" target="_blank">Etherscan</a> when the destination is Ethereum or an Ethereum-settled chain.</div></section>
+<section class="c5b784c"><h2 class="c05345e">Bridging with Rhino Bridge step by step</h2><div class="caea428">The sequence stays the same across chain pairs, which is what makes repeat transfers through Rhino Bridge predictable once you have done it once; it starts with a <a href="https://ethereum.org/en/wallets/" rel="nofollow noopener" target="_blank">self-custody wallet</a> you already control, not an account created inside the app.<ul><li>Open the app and link a self-custody wallet holding the asset you want to move.</li><li>Pick the source chain and the destination chain for the transfer.</li><li>Enter the amount; Rhino Bridge selects a route and quotes the fee and arrival amount.</li><li>Approve the token if needed, then sign the transaction from your wallet.</li><li>Wait for the source chain to confirm; the destination balance appears once the route finalizes.</li><li>Check the destination wallet or a block explorer to confirm the credited amount.</li></ul><h3>Why two transfers of the same size can differ</h3>Because routing is dynamic, sending the same amount on the same pair an hour apart can produce a slightly different fee or arrival time if network conditions or available liquidity on the underlying paths have shifted. This is expected behavior for an aggregator and is not a sign anything went wrong.</div></section>
+<section class="c5b784c"><h2 class="c05345e">Is Rhino Bridge safe to use</h2><div class="caea428">Rhino Bridge's self-custody design means the application itself never holds a balance of your assets between transfers; each transfer is a transaction you sign that settles on-chain through whichever route was selected. The risks that remain are the ones present in any self-custody transfer: confirming you are on the genuine app, reading what a signature authorizes, and managing token approvals sensibly.<h3>Approvals worth paying attention to</h3>When a transfer involves an ERC-20 token, you will typically grant the bridge contract permission to move a specific amount. Reviewing that allowance before signing, and revoking it later if you no longer plan to use that route, keeps the set of standing permissions your wallet carries small.<h3>Recovery phrases stay with you, period</h3>A legitimate Rhino Bridge flow only ever asks for a transaction signature inside your own wallet software. Any message, pop-up or support contact asking you to enter your recovery phrase anywhere is impersonating the service, full stop, and should be closed without a second thought.</div></section>
+<section class="c5b784c"><h2 class="c05345e">Rhino Bridge vs a single-route bridge</h2><div class="caea428">A bridge built around one canonical path, such as a rollup's own official bridge, is the reference route for that specific chain pair and is often the simplest option when you already know exactly where you are headed. Rhino Bridge instead sits a layer above that choice: it evaluates several of those canonical and third-party paths together and picks whichever suits the transfer you are making right now, which is more useful when you are not sure which underlying bridge currently offers the better terms, or when your destination chain changes from one transfer to the next. Neither approach is strictly better; a single-route bridge can be worth checking directly for very large transfers where comparing the native path against the aggregated quote is worth the extra step, and the full set of routes Rhino Bridge currently evaluates is kept current in <a href="https://docs.rhino.fi/" rel="nofollow noopener" target="_blank">Rhino.fi's own documentation</a>.</div></section>
+<section class="c5b784c"><h2 class="c05345e">After you bridge: what Rhino Bridge enables</h2><div class="caea428">Once a transfer through Rhino Bridge lands, the asset behaves like any native holding on its destination chain — it can be used in a DEX, supplied to a lending market, or held until you are ready to move it again. Because the app covers many chains from one interface, it also works well as the step before consolidating holdings scattered across several networks back onto one chain, or before spreading a position out across a few chains for separate strategies. Whichever direction you are moving in, the same route-selection step runs each time, so the process of getting an asset where it needs to be stays the same regardless of how many hops the underlying path actually takes.</div></section>
+    <details class="c0cd65d"><summary class="ccdd90b">What is Rhino Bridge?</summary><div class="c593f66">Rhino Bridge is a self-custody application that aggregates several bridge routes between Ethereum and other chains, selecting whichever path delivers the most value for a given transfer rather than relying on one fixed route.</div></details>
+<details class="c0cd65d"><summary class="ccdd90b">Is Rhino Bridge built on StarkEx?</summary><div class="c593f66">Rhino Bridge was historically built on StarkEx, StarkWare's Layer-2 scaling engine, and still describes that heritage even though its current routing now covers destinations well beyond the original StarkEx application.</div></details>
+<details class="c0cd65d"><summary class="ccdd90b">Does Rhino Bridge ever hold my funds?</summary><div class="c593f66">No. Rhino Bridge is self-custody: each transfer is a transaction you sign from your own wallet, and the app does not hold a pooled balance of user assets between transfers.</div></details>
+<details class="c0cd65d"><summary class="ccdd90b">Why does the fee for a Rhino Bridge transfer change?</summary><div class="c593f66">Because Rhino Bridge selects from several underlying routes, the fee reflects whichever path is quoted as best at that moment. Network conditions and available liquidity on those routes shift over time, so the same transfer repeated later can quote differently.</div></details>
+<details class="c0cd65d"><summary class="ccdd90b">How long does a Rhino Bridge transfer take?</summary><div class="c593f66">It depends on the chain pair and the route selected. A transfer between two fast rollups can land within minutes, while a pair involving a slower-finalizing chain takes longer.</div></details>
+<details class="c0cd65d"><summary class="ccdd90b">Which chains can I use with Rhino Bridge?</summary><div class="c593f66">Rhino Bridge connects Ethereum to a growing set of rollups and sidechains. The exact list of supported pairs changes as the aggregator adds routes, so check the live chain list inside the app for your specific transfer.</div></details>
+<details class="c0cd65d"><summary class="ccdd90b">Can Rhino Bridge move an asset back to Ethereum?</summary><div class="c593f66">Yes. The same aggregated routing works in either direction, selecting a path back to Ethereum the same way it selects a path away from it.</div></details>
+  </main>
+  <section class="cdd9f51 c0641bc" id="sources" aria-labelledby="sources-title">
+    <h2 class="c759053" id="sources-title">Sources</h2>
+    <ul class="c794542"><li><a class="ccaf0cf" href="https://docs.rhino.fi/" rel="nofollow noopener" target="_blank">Rhino.fi documentation</a></li>
+<li><a class="ccaf0cf" href="https://l2beat.com/scaling/projects/starknet" rel="nofollow noopener" target="_blank">Starknet/StarkEx on L2BEAT</a></li>
+<li><a class="ccaf0cf" href="https://ethereum.org/en/layer-2/" rel="nofollow noopener" target="_blank">ethereum.org — Layer 2</a></li>
+<li><a class="ccaf0cf" href="https://etherscan.io/" rel="nofollow noopener" target="_blank">Etherscan</a></li></ul>
+  </section>
+  <footer class="cece4a0">
+    <div class="c2ccb3b c0641bc">
+      <p>Updated Oct 09, 2026</p>
+      <a href="#top">Back to top ↑</a>
     </div>
-  </aside>
-
-  <div class="wrap">
-    <main class="stage">
-      <h2 class="lead">Cross-chain <span class="hl">stablecoin bridge</span></h2>
-      <div class="swap-card" id="route-preview" aria-label="Rhino Bridge preview">
-          <div class="card-head"><span class="card-title">Cross-chain stablecoin route</span><span class="badge"><i aria-hidden="true"></i> Preview</span></div>
-          <div class="field">
-            <div class="field-top"><span class="field-label">You send</span><span class="field-bal">Illustrative</span></div>
-            <div class="field-row"><div class="amount"><b>1.00</b><span id="sub-from">on Ethereum (ETH)</span></div>
-              <span class="token-pill" id="pill-from"><img src="eth.png" alt="Ethereum (ETH) logo" width="26" height="26"><span class="token-meta"><small>From</small><b>Ethereum (ETH)</b></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></div>
-          </div>
-          <button class="reverse" type="button" id="reverse" aria-label="Reverse direction" title="Reverse direction"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M8 4v13M8 4L4 8M8 4l4 4M16 20V7M16 20l-4-4M16 20l4-4"/></svg></button>
-          <div class="field">
-            <div class="field-top"><span class="field-label">You receive</span><span class="field-bal">minus gas</span></div>
-            <div class="field-row"><div class="amount"><b>≈ 1.00</b><span id="sub-to">on USD Coin (USDC)</span></div>
-              <span class="token-pill" id="pill-to"><img src="usdc.png" alt="USD Coin (USDC) logo" width="26" height="26"><span class="token-meta"><small>To</small><b>USD Coin (USDC)</b></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></div>
-          </div>
-          <button class="details-btn" type="button" id="details-btn" aria-expanded="false" aria-controls="details">Show details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
-          <div class="details" id="details">
-            <div class="d-row"><span>Category</span><b>Cross-chain liquidity infrastructure</b></div>
-            <div class="d-row"><span>Primary assets</span><b>Stablecoins</b></div>
-            <div class="d-row"><span>Route types</span><b>Bridge and bridge + swap</b></div>
-            <div class="d-row"><span>Access</span><b>App, API, SDK, and widgets</b></div>
-          </div>
-          <a class="cta" href="dashboard/" target="_blank" rel="noopener noreferrer">Open app <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
-          
-      </div>
-      <div class="hero-chips">
-        <a class="hchip" href="https://defillama.com/protocol/rhino.fi" target="_blank" rel="noopener noreferrer">Rhino TVL <b id="sig0">—</b> <span class="ext" aria-hidden="true">↗</span></a>
-          <a class="hchip" href="https://ethereum.org/developers/docs/apis/json-rpc/" target="_blank" rel="noopener noreferrer">Ethereum gas <b id="sig1">—</b> <span class="ext" aria-hidden="true">↗</span></a>
-          <a class="hchip" href="https://docs.rhino.fi/get-started/supported-chains" target="_blank" rel="noopener noreferrer">Route modes <b>Bridge + swap</b> <span class="ext" aria-hidden="true">↗</span></a>
-      </div>
-    </main>
-  </div>
-  </div>
-
+  </footer>
   <script>
-  (function(){
-    "use strict";
-    var $=function(id){ return document.getElementById(id); };
-    var root=document.documentElement, tl=$("theme-light"), td=$("theme-dark");
-    function applyTheme(t){ if(t==="dark"){ root.setAttribute("data-theme","dark"); } else { root.removeAttribute("data-theme"); } if(tl) tl.setAttribute("aria-pressed", String(t!=="dark")); if(td) td.setAttribute("aria-pressed", String(t==="dark")); }
-    var saved=null; try{ saved=localStorage.getItem("rhinobridg-theme"); }catch(e){}
-    if(saved) applyTheme(saved);
-    function setTheme(t){ applyTheme(t); try{ localStorage.setItem("rhinobridg-theme", t); }catch(e){} }
-    if(tl) tl.addEventListener("click", function(){ setTheme("light"); });
-    if(td) td.addEventListener("click", function(){ setTheme("dark"); });
-    var body=document.body, hamb=$("hamb"), scrim=$("scrim"), drawer=$("drawer"), dclose=$("drawer-close");
-    function openD(){ body.classList.add("drawer-open"); hamb.setAttribute("aria-expanded","true"); drawer.setAttribute("aria-hidden","false"); }
-    function closeD(){ body.classList.remove("drawer-open"); hamb.setAttribute("aria-expanded","false"); drawer.setAttribute("aria-hidden","true"); }
-    if(hamb) hamb.addEventListener("click", function(){ body.classList.contains("drawer-open")?closeD():openD(); });
-    if(scrim) scrim.addEventListener("click", closeD);
-    if(dclose) dclose.addEventListener("click", closeD);
-    document.addEventListener("keydown", function(e){ if(e.key==="Escape" && body.classList.contains("drawer-open")) closeD(); });
-    if(drawer) drawer.addEventListener("click", function(e){ if(e.target.closest("a")) closeD(); });
-    var reversed=false;
-    var TOK={ A:{img:"eth.png",name:"Ethereum (ETH)",sub:"on Ethereum (ETH)",alt:"Ethereum (ETH) logo"}, B:{img:"usdc.png",name:"USD Coin (USDC)",sub:"on USD Coin (USDC)",alt:"USD Coin (USDC) logo"} };
-    var chev='<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>';
-    function pill(role,k){ var n=TOK[k]; return '<img src="'+n.img+'" alt="'+n.alt+'" width="26" height="26"><span class="token-meta"><small>'+role+'</small><b>'+n.name+'</b></span>'+chev; }
-    function render(){ var a=reversed?"B":"A", b=reversed?"A":"B"; $("pill-from").innerHTML=pill("From",a); $("pill-to").innerHTML=pill("To",b); $("sub-from").textContent=TOK[a].sub; $("sub-to").textContent=TOK[b].sub; }
-    var rev=$("reverse"); if(rev) rev.addEventListener("click", function(){ reversed=!reversed; render(); });
-    var db=$("details-btn"), dp=$("details");
-    if(db&&dp) db.addEventListener("click", function(){ var open=dp.classList.toggle("open"); db.setAttribute("aria-expanded", String(open)); db.firstChild.textContent = open?"Hide details ":"Show details "; });
-    function money(n){ if(n>=1e9) return "$"+(n/1e9).toFixed(2)+"B"; if(n>=1e6) return "$"+(n/1e6).toFixed(1)+"M"; if(n>=1e3) return "$"+(n/1e3).toFixed(0)+"K"; return "$"+n.toFixed(0); }
-    function gwei(g){ return (g>=0.1?g.toFixed(2):(g>=0.001?g.toFixed(3):Number(g.toPrecision(2)).toString()))+" gwei"; }
-    function grab(url,opt){ var c="AbortController" in window ? new AbortController():null, t=c?setTimeout(function(){c.abort();},7000):null; var o=opt||{}; if(c) o.signal=c.signal; return fetch(url,o).then(function(r){ if(!r.ok) throw 0; return r.json(); }).finally(function(){ if(t) clearTimeout(t); }); }
-    grab("https://api.llama.fi/protocol/rhino.fi").then(function(j){ var a=j&&j.tvl; if(!a||!a.length) return; var last=a[a.length-1], v=Number(last.totalLiquidityUSD!=null?last.totalLiquidityUSD:last.tvl); if(isFinite(v)&&v>0) $("sig0").textContent=money(v); }).catch(function(){});
-    grab("https://ethereum-rpc.publicnode.com",{ method:"POST", headers:{"Content-Type":"application/json"}, body:'{"jsonrpc":"2.0","id":1,"method":"eth_gasPrice","params":[]}' }).then(function(j){ var wei=j&&j.result?parseInt(j.result,16):NaN; if(isFinite(wei)&&wei>0) $("sig1").textContent=gwei(wei/1e9); }).catch(function(){});
-  })();
+    (() => {
+      const amount = document.getElementById('amount');
+      const result = document.getElementById('result');
+      const fee = document.getElementById('fee');
+      const duration = document.getElementById('duration');
+      const error = document.getElementById('amount-error');
+      const format = new Intl.NumberFormat('en', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      const calculate = () => {
+        const value = amount.valueAsNumber;
+        if (!amount.validity.valid || !Number.isFinite(value)) {
+          amount.setAttribute('aria-invalid', 'true');
+          error.textContent = 'Enter an amount from 0.01 to 1,000,000,000,000 with up to two decimal places.';
+          error.hidden = false;
+          result.textContent = '—';
+          fee.textContent = '—';
+          duration.textContent = '—';
+          return;
+        }
+        amount.removeAttribute('aria-invalid');
+        error.hidden = true;
+        error.textContent = '';
+        const amountCents = Math.round(value * 100);
+        const feeCents = Math.min(amountCents, Math.round(25 + amountCents * 0.003));
+        const minutes = Math.min(12, 2 + Math.ceil(value / 2500));
+        result.textContent = format.format((amountCents - feeCents) / 100) + ' units';
+        fee.textContent = format.format(feeCents / 100) + ' units';
+        duration.textContent = minutes + '–' + (minutes + 2) + ' min';
+      };
+      amount.addEventListener('input', calculate);
+      calculate();
+    })();
   </script>
 </body>
 </html>
