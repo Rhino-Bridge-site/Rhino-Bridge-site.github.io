@@ -1,267 +1,284 @@
 <!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Rhino Bridge — Cross-Chain Bridge Aggregator</title>
-  <meta name="description" content="Rhino Bridge routes transfers across many chains from one self-custody app, built on StarkEx Layer-2 scaling. See how route selection, supported chains, fees and timing work before you sign.">
-  <link rel="canonical" href="https://rhino-bridge-site.github.io/">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Rhino Bridge">
-  <meta property="og:description" content="Rhino Bridge routes transfers across many chains from one self-custody app, built on StarkEx Layer-2 scaling. See how route selection, supported chains, fees and timing work before you sign.">
-  <meta property="og:url" content="https://rhino-bridge-site.github.io/">
-  <meta property="og:image" content="https://rhino-bridge-site.github.io/og.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Rhino Bridge">
-  <meta name="twitter:description" content="Rhino Bridge routes transfers across many chains from one self-custody app, built on StarkEx Layer-2 scaling. See how route selection, supported chains, fees and timing work before you sign.">
-  <meta name="twitter:image" content="https://rhino-bridge-site.github.io/og.png">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Schibsted+Grotesk:wght@500;600;700&display=swap">
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "@id": "https://rhino-bridge-site.github.io/#website", "url": "https://rhino-bridge-site.github.io/", "name": "Rhino Bridge — Cross-Chain Bridge Aggregator"}, {"@type": "WebPage", "@id": "https://rhino-bridge-site.github.io/#webpage", "url": "https://rhino-bridge-site.github.io/", "name": "Rhino Bridge — Cross-Chain Bridge Aggregator", "isPartOf": {"@id": "https://rhino-bridge-site.github.io/#website"}, "description": "Rhino Bridge routes transfers across many chains from one self-custody app, built on StarkEx Layer-2 scaling. See how route selection, supported chains, fees and timing work before you sign.", "datePublished": "2026-11-04", "dateModified": "2026-11-04"}, {"@type": "SoftwareApplication", "name": "Rhino Bridge", "applicationCategory": "FinanceApplication", "operatingSystem": "Web", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://rhino-bridge-site.github.io/"}, {"@type": "ListItem", "position": 2, "name": "Bridges"}, {"@type": "ListItem", "position": 3, "name": "Rhino Bridge"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is Rhino Bridge?", "acceptedAnswer": {"@type": "Answer", "text": "Rhino Bridge is a self-custody application that aggregates several bridge routes between Ethereum and other chains, selecting whichever path delivers the most value for a given transfer rather than relying on one fixed route."}}, {"@type": "Question", "name": "Is Rhino Bridge built on StarkEx?", "acceptedAnswer": {"@type": "Answer", "text": "Rhino Bridge was historically built on StarkEx, StarkWare's Layer-2 scaling engine, and still describes that heritage even though its current routing now covers destinations well beyond the original StarkEx application."}}, {"@type": "Question", "name": "Does Rhino Bridge ever hold my funds?", "acceptedAnswer": {"@type": "Answer", "text": "No. Rhino Bridge is self-custody: each transfer is a transaction you sign from your own wallet, and the app does not hold a pooled balance of user assets between transfers."}}, {"@type": "Question", "name": "Why does the fee for a Rhino Bridge transfer change?", "acceptedAnswer": {"@type": "Answer", "text": "Because Rhino Bridge selects from several underlying routes, the fee reflects whichever path is quoted as best at that moment. Network conditions and available liquidity on those routes shift over time, so the same transfer repeated later can quote differently."}}, {"@type": "Question", "name": "How long does a Rhino Bridge transfer take?", "acceptedAnswer": {"@type": "Answer", "text": "It depends on the chain pair and the route selected. A transfer between two fast rollups can land within minutes, while a pair involving a slower-finalizing chain takes longer."}}, {"@type": "Question", "name": "Which chains can I use with Rhino Bridge?", "acceptedAnswer": {"@type": "Answer", "text": "Rhino Bridge connects Ethereum to a growing set of rollups and sidechains. The exact list of supported pairs changes as the aggregator adds routes, so check the live chain list inside the app for your specific transfer."}}, {"@type": "Question", "name": "Can Rhino Bridge move an asset back to Ethereum?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. The same aggregated routing works in either direction, selecting a path back to Ethereum the same way it selects a path away from it."}}]}]}</script>
-  <style>
-    :root{--bg:#F9FAFB;--surface:#FFFFFF;--text:#14161B;--muted:#565C66;--accent:#4338CA;--accent-ink:#FFFFFF;--radius:18px;--display:"Schibsted Grotesk";--body:"Inter"}
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; scroll-padding-top: 2rem; }
-    body { margin: 0; background: var(--bg); color: var(--text); font: 400 1rem/1.7 var(--body); -webkit-font-smoothing: antialiased; }
-    a { color: var(--accent); text-underline-offset: .22em; }
-    a:hover { text-decoration-thickness: .12em; }
-    :focus-visible { outline: 3px solid var(--accent); outline-offset: 5px; }
-    ::selection { background: var(--accent); color: var(--accent-ink); }
-    h1, h2, h3, h4, h5, h6 { font-family: var(--display); line-height: 1.15; text-wrap: balance; }
-    p, h1, h2, h3 { margin-top: 0; }
-    img, svg { max-width: 100%; vertical-align: middle; }
-    .c0641bc { width: min(1180px, calc(100% - 3rem)); margin-inline: auto; }
-    .c512ca3 { position: absolute; z-index: 5; top: .5rem; left: 1rem; padding: .7rem 1rem; background: var(--surface); transform: translateY(-180%); border-radius: var(--radius); }
-    .c512ca3:focus { transform: translateY(0); }
-    .cba9f36 { border-bottom: 1px solid color-mix(in srgb,var(--text) 10%,transparent); }
-    .c579117 { min-height: 88px; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
-    .cb666bf { display: inline-flex; align-items: center; gap: .7rem; color: var(--text); font: 650 1.12rem/1.2 var(--display); text-decoration: none; }
-    .caab13a { display: grid; place-items: center; width: 2.4rem; height: 2.4rem; border-radius: calc(var(--radius) * .6); background: var(--accent); color: var(--accent-ink); }
-    .c19bbb0 { width: 1.2rem; height: 1.2rem; fill: none; stroke: var(--accent-ink); stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; flex: 0 0 auto; }
-    .c4307d4 { display: flex; align-items: center; gap: 1.8rem; }
-    .c4307d4 > a { font-size: .88rem; font-weight: 600; text-decoration: none; }
-    .c4307d4 > a:not(.c54b299) { color: var(--muted); }
-    .c54b299 { display: inline-flex; align-items: center; justify-content: center; gap: .8rem; min-height: 52px; padding: .85rem 1.4rem; border: 1px solid color-mix(in srgb,var(--accent-ink) 12%,transparent); border-radius: var(--radius); background: linear-gradient(135deg,var(--accent),color-mix(in srgb,var(--accent) 88%,var(--text))); color: var(--accent-ink); font: 650 .95rem/1.3 var(--body); text-decoration: none; box-shadow: 0 6px 18px color-mix(in srgb,var(--accent) 17%,transparent); transition: transform .18s ease, box-shadow .18s ease; }
-    .c54b299:hover { transform: translateY(-2px); box-shadow: 0 9px 24px color-mix(in srgb,var(--accent) 25%,transparent); }
-    .c579117 .c54b299 { min-height: 42px; padding: .65rem 1rem; }
-    .c80d6f0 { padding-block: 1rem 0; color: var(--muted); font-size: .8rem; overflow-wrap: anywhere; }
-    .c6a3170 { color: var(--muted); }
-    .c6a3170 a, a.c6a3170 { color: var(--muted); text-decoration: none; }
-    .c6a3170 a:hover, a.c6a3170:hover { color: var(--accent); text-decoration: underline; }
-    .c6a3170 ol, .c6a3170 ul { display: flex; flex-wrap: wrap; gap: .5rem 1rem; padding: 0; margin: 0; list-style: none; }
-    .cea53a8 { display: grid; grid-template-columns: minmax(0,1.05fr) minmax(0,1fr); gap: clamp(2rem,5vw,4.5rem); align-items: start; padding-block: 1.5rem 3rem; }
-    .c9a4c11 { display: inline-flex; align-items: center; gap: .55rem; margin-bottom: 1.3rem; color: var(--accent); font-size: .86rem; font-weight: 600; }
-    .c9a4c11::before { content: ""; width: .5rem; height: .5rem; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 5px color-mix(in srgb,var(--accent) 9%,transparent); }
-    h1 { margin-bottom: 1.4rem; font-size: clamp(2.5rem,4.7vw,4.35rem); font-weight: 600; letter-spacing: -.055em; overflow-wrap: anywhere; }
-    h1 em { color: var(--accent); font-style: normal; }
-    .c5fe642 { max-width: 48ch; margin-bottom: 2rem; color: var(--muted); font-size: 1.08rem; line-height: 1.8; }
-    .ce2d93a { position: relative; min-width: 0; padding: clamp(1.1rem,2.4vw,1.5rem); border: 1px solid color-mix(in srgb,var(--accent) 20%,var(--surface)); border-radius: calc(var(--radius) * 1.6); background: linear-gradient(155deg,color-mix(in srgb,var(--accent) 7%,var(--surface)),var(--surface) 40%); box-shadow: 0 24px 64px color-mix(in srgb,var(--text) 9%,transparent),0 4px 12px color-mix(in srgb,var(--accent) 6%,transparent); }
-    .cb3e2c1 { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .7rem; margin-bottom: 1rem; }
-    .cb3e2c1 h2 { margin: 0; font-size: 1.35rem; letter-spacing: -.035em; }
-    .cf07d74 { display: inline-flex; align-items: center; gap: .4rem; padding: .3rem .65rem; border: 1px solid color-mix(in srgb,var(--accent) 16%,transparent); border-radius: 999px; background: color-mix(in srgb,var(--accent) 8%,var(--surface)); color: var(--accent); font-size: .72rem; font-weight: 600; }
-    .cf07d74::before { content: ""; width: .35rem; height: .35rem; border-radius: 50%; background: var(--accent); }
-    .cd87478 { display: grid; grid-template-columns: minmax(0,1fr) auto minmax(0,1fr); align-items: center; gap: .8rem; padding: .8rem; margin-bottom: 1rem; border: 1px solid color-mix(in srgb,var(--text) 9%,transparent); border-radius: var(--radius); background: var(--surface); }
-    .c5a0156 { min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: .45rem; }
-    .c5a0156:last-child { align-items: flex-end; }
-    .c58d5ab, .c6a9d51 { color: var(--muted); font-size: .78rem; font-weight: 500; }
-    .c93577c { display: flex; align-items: center; min-height: 36px; max-width: 100%; overflow-wrap: anywhere; font: 600 1rem/1.3 var(--display); }
-    .c93577c img, .c93577c svg { max-height: 36px; width: auto; max-width: 100%; object-fit: contain; }
-    .cb2a362 { display: grid; place-items: center; width: 2.25rem; height: 2.25rem; border-radius: 50%; background: color-mix(in srgb,var(--accent) 9%,var(--surface)); }
-    .cb2a362 .c19bbb0 { stroke: var(--accent); }
-    .c6a9d51 { display: block; margin-bottom: .5rem; color: var(--text); }
-    .c6fd92e { display: flex; align-items: center; gap: .75rem; padding: .8rem 1rem; border: 1px solid color-mix(in srgb,var(--text) 18%,transparent); border-radius: var(--radius); background: var(--bg); transition: border-color .18s ease; }
-    .c6fd92e:focus-within { border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb,var(--accent) 12%,transparent); }
-    .c6fd92e input { width: 100%; min-width: 0; padding: .2rem 0; border: 0; background: var(--bg); color: var(--text); font: 550 1.6rem/1.2 var(--display); font-variant-numeric: tabular-nums; }
-    .c6fd92e input:focus { outline: 0; }
-    .ccbcdd7 { color: var(--muted); font-size: .8rem; }
-    .c14238f { margin: .45rem 0 .85rem; color: var(--muted); font-size: .74rem; }
-    .cb08c81 { margin: .5rem 0; color: var(--text); font-size: .8rem; font-weight: 600; }
-    [hidden] { display: none !important; }
-    .c4574db { padding: 1rem; border-radius: var(--radius); background: linear-gradient(120deg,color-mix(in srgb,var(--accent) 12%,var(--surface)),color-mix(in srgb,var(--accent) 4%,var(--surface))); }
-    .c3bc399 { margin-bottom: .25rem; color: var(--muted); font-size: .8rem; }
-    .c46f475 { display: block; color: var(--text); font: 600 clamp(1.7rem,3vw,2.5rem)/1.3 var(--display); letter-spacing: -.04em; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
-    .c46f475 small { color: var(--muted); font: 400 .8rem/1.4 var(--body); letter-spacing: 0; }
-    .c4574db dl { display: grid; gap: .5rem; margin: .8rem 0 0; padding-top: .8rem; border-top: 1px solid color-mix(in srgb,var(--accent) 15%,transparent); font-size: .8rem; }
-    .c4574db dl div { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .25rem 1rem; }
-    .c4574db dt { color: var(--muted); }
-    .c4574db dd { margin: 0; font-weight: 600; font-variant-numeric: tabular-nums; }
-    .cd6fabf { margin-block: .7rem; color: var(--muted); font-size: .75rem; }
-    .cd6fabf summary { width: fit-content; color: var(--text); cursor: pointer; }
-    .cd6fabf p { margin: .65rem 0 0; }
-    .ce2d93a > .c54b299 { width: 100%; }
-    .cffcffb { padding: 2rem; border: 1px solid color-mix(in srgb,var(--text) 10%,transparent); border-radius: calc(var(--radius) * 1.3); background: var(--surface); }
-    .c759053 { margin-bottom: 1.3rem; font-size: 1.65rem; font-weight: 550; letter-spacing: -.035em; }
-    .c91a2ec { max-width: 100%; overflow-x: auto; }
-    .c08ef0a { width: 100%; border-collapse: collapse; text-align: left; font-size: .92rem; }
-    .c08ef0a caption { padding-bottom: 1rem; text-align: left; color: var(--muted); }
-    .c08ef0a th, .c08ef0a td { padding: 1rem 1.1rem; border-bottom: 1px solid color-mix(in srgb,var(--text) 9%,transparent); vertical-align: top; overflow-wrap: anywhere; }
-    .c08ef0a th { color: var(--muted); font-weight: 500; }
-    .c08ef0a thead { background: color-mix(in srgb,var(--accent) 5%,var(--surface)); }
-    .c08ef0a tbody tr:last-child > * { border-bottom: 0; }
-    .cd5b552 { max-width: 820px; padding-block: 4rem 2rem; }
-    .c5b784c { margin-bottom: 3.3rem; }
-    .c05345e { margin: 0 0 1.1rem; font: 550 clamp(1.6rem,3vw,2.2rem)/1.2 var(--display); letter-spacing: -.035em; }
-    .caea428 { color: var(--muted); line-height: 1.85; overflow-wrap: anywhere; }
-    .caea428 p { margin-bottom: 1.2rem; }
-    .caea428 strong, .caea428 h3, .caea428 h4 { color: var(--text); }
-    .caea428 ul, .caea428 ol { padding-left: 1.3rem; }
-    .caea428 li { padding-left: .3rem; margin-block: .55rem; }
-    .caea428 li::marker { color: var(--accent); }
-    .caea428 blockquote { margin: 1.5rem 0; padding: 1rem 1.4rem; border-left: 3px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; background: var(--surface); color: var(--text); }
-    .caea428 img { height: auto; border-radius: var(--radius); }
-    .caea428 pre { overflow-x: auto; padding: 1rem; border-radius: var(--radius); background: var(--surface); }
-    .caea428 code, .caea428 pre { font-family: var(--body); }
-    .c0cd65d { margin-block: .8rem; border: 1px solid color-mix(in srgb,var(--text) 11%,transparent); border-radius: var(--radius); background: var(--surface); overflow: hidden; }
-    .ccdd90b { position: relative; padding: 1.3rem 3.5rem 1.3rem 1.4rem; list-style: none; cursor: pointer; color: var(--text); font: 550 1.04rem/1.5 var(--display); }
-    .ccdd90b::-webkit-details-marker { display: none; }
-    .ccdd90b::after { content: "+"; position: absolute; right: 1.4rem; top: 1.2rem; color: var(--accent); font-size: 1.3rem; }
-    details[open] > .ccdd90b::after { content: "−"; }
-    .c0cd65d[open] { border-color: color-mix(in srgb,var(--accent) 35%,var(--surface)); }
-    .ccdd90b:focus-visible { outline-offset: -5px; }
-    .c593f66 { padding: 0 1.4rem 1.4rem; color: var(--muted); overflow-wrap: anywhere; }
-    .c593f66 > :last-child { margin-bottom: 0; }
-    .cdd9f51 { max-width: 820px; padding-block: 1.5rem 3.5rem; border-top: 1px solid color-mix(in srgb,var(--text) 12%,transparent); }
-    .cdd9f51 .c759053 { font-size: 1.25rem; }
-    .c794542 { margin: 0; padding-left: 1.25rem; color: var(--muted); font-size: .88rem; }
-    .ccaf0cf { padding-block: .4rem; padding-left: .25rem; overflow-wrap: anywhere; }
-    .ccaf0cf a, a.ccaf0cf { color: var(--text); text-decoration-color: color-mix(in srgb,var(--accent) 45%,transparent); }
-    .ccaf0cf a:hover, a.ccaf0cf:hover { color: var(--accent); }
-    .cece4a0 { border-top: 1px solid color-mix(in srgb,var(--text) 10%,transparent); }
-    .c2ccb3b { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; min-height: 96px; padding-block: 1.5rem; color: var(--muted); font-size: .8rem; }
-    .c2ccb3b p { margin: 0; }
-    .c2ccb3b a { color: var(--muted); }
-    @media (max-width: 850px) { .cea53a8 { grid-template-columns: minmax(0,1fr); gap: 2.5rem; padding-block: 2.5rem 3.5rem; } .c2d5947 { max-width: 650px; } .ce2d93a { width: 100%; max-width: 600px; justify-self: center; } h1 { font-size: clamp(2.5rem,7vw,4rem); } .c5fe642 { max-width: 60ch; } }
-    @media (max-width: 540px) { .c0641bc { width: calc(100% - 2rem); } .c579117 { min-height: 76px; gap: .7rem; } .cb666bf { font-size: .95rem; gap: .45rem; } .caab13a { width: 2rem; height: 2rem; } .c4307d4 { gap: .6rem; } .c4307d4 > a:not(.c54b299) { display: none; } .c579117 .c54b299 { padding-inline: .85rem; font-size: .8rem; } .cffcffb { padding: 1.25rem; } .c08ef0a th, .c08ef0a td { padding: .8rem .55rem; } .c2d5947 > .c54b299 { width: 100%; } .cd5b552 { padding-top: 2.8rem; } .c2ccb3b { align-items: flex-start; flex-direction: column; } }
-    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .c54b299, .c6fd92e { transition: none; } .c54b299:hover { transform: none; } }
-  </style>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Rhino Bridge — Cross-Chain Bridge and Aggregator</title>
+<meta name="description" content="Rhino Bridge lets you move tokens between many chains from one non-custodial interface, comparing routes in a quote before you sign with your own wallet.">
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#f6f5f4">
+<link rel="canonical" href="https://rhino-bridge-site.github.io/">
+<meta property="og:type" content="website"><meta property="og:site_name" content="Rhino Bridge"><meta property="og:title" content="Rhino Bridge — Cross-Chain Bridge and Aggregator"><meta property="og:description" content="Rhino Bridge lets you move tokens between many chains from one non-custodial interface, comparing routes in a quote before you sign with your own wallet."><meta property="og:url" content="https://rhino-bridge-site.github.io/"><meta property="og:image" content="https://rhino-bridge-site.github.io/og-image.png">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Rhino Bridge — Cross-Chain Bridge and Aggregator"><meta name="twitter:description" content="Rhino Bridge lets you move tokens between many chains from one non-custodial interface, comparing routes in a quote before you sign with your own wallet."><meta name="twitter:image" content="https://rhino-bridge-site.github.io/og-image.png">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="apple-touch-icon" href="icon.svg">
+<link rel="manifest" href="manifest.webmanifest">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://rhino-bridge-site.github.io/#organization","name":"Rhino Bridge","url":"https://rhino-bridge-site.github.io/","description":"Rhino Bridge lets you move tokens between many chains from one non-custodial interface, comparing routes in a quote before you sign with your own wallet.","logo":{"@type":"ImageObject","@id":"https://rhino-bridge-site.github.io/#logo","url":"https://rhino-bridge-site.github.io/icon.svg","caption":"Rhino Bridge"}},{"@type":"WebSite","@id":"https://rhino-bridge-site.github.io/#website","url":"https://rhino-bridge-site.github.io/","publisher":{"@id":"https://rhino-bridge-site.github.io/#organization"},"name":"Rhino Bridge"},{"@type":"WebPage","@id":"https://rhino-bridge-site.github.io/#webpage","url":"https://rhino-bridge-site.github.io/","publisher":{"@id":"https://rhino-bridge-site.github.io/#organization"},"name":"Rhino Bridge — Cross-Chain Bridge and Aggregator","isPartOf":{"@id":"https://rhino-bridge-site.github.io/#website"},"mainEntity":{"@id":"https://rhino-bridge-site.github.io/#app"},"breadcrumb":{"@id":"https://rhino-bridge-site.github.io/#breadcrumb"}},{"@type":"BreadcrumbList","@id":"https://rhino-bridge-site.github.io/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://rhino-bridge-site.github.io/"},{"@type":"ListItem","position":2,"name":"Rhino Bridge","item":"https://rhino-bridge-site.github.io/"}]},{"@type":"WebApplication","@id":"https://rhino-bridge-site.github.io/#app","url":"https://rhino-bridge-site.github.io/","publisher":{"@id":"https://rhino-bridge-site.github.io/#organization"},"name":"Rhino Bridge","applicationCategory":"FinanceApplication","operatingSystem":"Web","description":"Rhino Bridge lets you move tokens between many chains from one non-custodial interface, comparing routes in a quote before you sign with your own wallet.","isPartOf":{"@id":"https://rhino-bridge-site.github.io/#website"}},{"@type":"FAQPage","@id":"https://rhino-bridge-site.github.io/#faq","isPartOf":{"@id":"https://rhino-bridge-site.github.io/#webpage"},"about":{"@id":"https://rhino-bridge-site.github.io/#app"},"name":"Rhino Bridge FAQ","mainEntity":[{"@type":"Question","name":"What is Rhino Bridge?","acceptedAnswer":{"@type":"Answer","text":"Rhino Bridge is a non-custodial interface for moving assets between many chains. It shows a route and a quote, and you sign the transfer from your own wallet. It is an independent tool and is not presented as an official service of any bridge or chain."}},{"@type":"Question","name":"How does a cross-chain bridge work?","acceptedAnswer":{"@type":"Answer","text":"A bridge locks or burns your token on the source chain and releases or mints a matching token on the destination chain. The two chains never share state directly, so a bridge contract or relayer does the coordination. The quote shows what you should receive when the transfer lands."}},{"@type":"Question","name":"Does the interface hold my funds?","acceptedAnswer":{"@type":"Answer","text":"No. You connect your own wallet and sign each transaction, and the interface never takes custody of funds or keys. Transfers are processed by the bridge route you approve in the quote."}},{"@type":"Question","name":"Why do I need gas on two chains?","acceptedAnswer":{"@type":"Answer","text":"You pay gas in the source chain\u0027s native token to approve and send. After arrival, any move on the destination chain needs that chain\u0027s own gas token. Keep a small balance of each in mind before you start."}},{"@type":"Question","name":"Why does the received amount differ from what I sent?","acceptedAnswer":{"@type":"Answer","text":"The quote subtracts route or bridge fees from what you send, and the route may change the final amount. Gas is paid separately in your wallet. Review the output in the quote before you sign."}},{"@type":"Question","name":"How long does a bridge transfer take?","acceptedAnswer":{"@type":"Answer","text":"It depends on the route and on the two chains involved, and some routes finish faster than others. The quote and your wallet show progress after you sign. Wait for the funds to appear on the destination chain before sending them onward."}}]}]}
+</script>
+<style>
+@font-face{font-family:'Inter';src:url('assets/inter.woff2') format('woff2');font-weight:400 700;font-display:swap}
+@font-face{font-family:'Space Grotesk';src:url('assets/space-grotesk.woff2') format('woff2');font-weight:500 700;font-display:swap}
+:root{
+ --bg:#f6f5f4;--card:#fff;--ink:#17181c;--muted:#737b88;--faint:#aeb4bf;
+ --line:#ecebe9;--line-2:#e3e1de;--panel:#f8f7f6;--panel-2:#efedeb;
+ --accent:#12b886;--accent-hover:#10a276;--accent-ink:#0e8a64;--accent-soft:#def5ee;--accent-on:#ffffff;--promo:#e7f8f3;--text-2:#4b5563;
+ --shadow:0 1px 2px rgba(13,17,28,.04),0 24px 56px -40px rgba(13,17,28,.24);--pico-bg:#fff;--pico-ring:rgba(13,17,28,.06);
+ --ease:cubic-bezier(.2,.7,.2,1);
+ --head:"Space Grotesk","Arial",sans-serif;--body:"Inter","Arial",sans-serif;color-scheme:light}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;min-height:100vh;display:flex;flex-direction:column;color:var(--ink);font:15px/1.6 var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden;background:var(--bg)}
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:none;-webkit-mask-image:linear-gradient(#000 0,rgba(0,0,0,.35) 60%,transparent 100%);mask-image:linear-gradient(#000 0,rgba(0,0,0,.35) 60%,transparent 100%)}
+a{color:inherit;text-decoration:none}button{font-family:inherit;cursor:pointer;background:none;border:0;color:inherit}
+img{display:block;max-width:100%}
+h1,h2,h3{margin:0;font-family:var(--head);font-weight:500;letter-spacing:-.01em}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:8px}
+
+.nav{display:flex;align-items:center;gap:24px;padding:16px 24px;max-width:1280px;margin:0 auto;width:100%}
+.brand{display:inline-flex;align-items:center;gap:8px;font-family:var(--head);font-weight:500;font-size:20px;letter-spacing:-.02em;color:var(--ink);white-space:nowrap;flex:0 0 auto}
+.brand img{width:28px;height:28px}
+.nlinks{display:flex;align-items:center;gap:20px}
+.nlinks a{font-size:14px;font-weight:500;color:var(--muted);white-space:nowrap;transition:color .16s var(--ease)}
+.nlinks a:hover{color:var(--ink)}
+.spacer{flex:1}
+main{flex:1}
+.chain{display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 12px;border-radius:10px;background:var(--panel-2);font-weight:500;font-size:14px;color:var(--ink);transition:background-color .16s var(--ease);flex:0 0 auto;white-space:nowrap}
+.chain img{width:20px;height:20px;border-radius:50%}
+.chain:hover{background:var(--line-2)}
+.chain .cv{width:12px;height:12px;color:var(--muted)}
+.connect{display:inline-flex;align-items:center;height:40px;padding:0 16px;border-radius:10px;background:var(--card);border:1px solid var(--line-2);color:var(--ink);font-weight:500;font-size:14px;transition:background-color .16s var(--ease),border-color .16s var(--ease);flex:0 0 auto;white-space:nowrap}
+.connect:hover{border-color:var(--faint);background:var(--panel)}
+
+.hero{display:flex;flex-direction:column;align-items:center;padding:32px 20px 48px}
+h1{font-size:clamp(36px,4.6vw,48px);line-height:1.08;letter-spacing:-.025em;text-align:center;color:var(--ink);margin:0 0 32px}
+
+.card{width:min(600px,100%);background:var(--card);border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow);overflow:hidden}
+.tabs{display:flex;align-items:center;gap:4px;padding:20px 20px 16px}
+.tab{display:inline-flex;align-items:center;height:36px;padding:0 14px;border-radius:10px;font-weight:500;font-size:14px;color:var(--muted);transition:background-color .16s var(--ease),color .16s var(--ease)}
+.tab:hover{background:var(--panel-2);color:var(--ink)}
+.tab.on{background:var(--accent-soft);color:var(--accent-ink)}
+.tabs .sp{flex:1}
+.tabs .ic{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;color:var(--muted);transition:background-color .16s var(--ease),color .16s var(--ease)}
+.tabs .ic:hover{background:var(--panel-2);color:var(--ink)}
+.tabs .ic svg{width:18px;height:18px}
+
+.promo{margin:0 20px;padding:32px;border-radius:12px;background:var(--promo);display:flex;align-items:center;gap:20px}
+.promo-txt{flex:1;min-width:0}
+.promo-h{font-family:var(--head);font-weight:500;font-size:clamp(22px,3.4vw,28px);line-height:1.2;letter-spacing:-.015em;color:var(--ink);margin:0 0 8px;text-wrap:balance}
+.promo-sub{font-size:15px;line-height:1.6;color:var(--text-2);margin:0;max-width:34ch}
+.promo-grid{flex:0 0 auto;display:grid;grid-template-columns:repeat(2,auto);gap:16px}
+.pico{width:52px;height:52px;border-radius:50%;background:var(--pico-bg);box-shadow:0 0 0 1px var(--pico-ring);display:grid;place-items:center;overflow:hidden}
+.pico img{width:100%;height:100%;object-fit:contain;display:block}
+.promo-flow{flex-direction:column;align-items:stretch;gap:24px}
+.promo-flow .promo-sub{max-width:44ch}
+.flow{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.flow li{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;gap:4px}
+.flow li+li::before{content:"";position:absolute;top:22px;right:calc(50% + 30px);width:calc(100% - 52px);height:1px;background:var(--line-2)}
+.fi{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;overflow:hidden;background:var(--pico-bg);box-shadow:0 0 0 1px var(--pico-ring);color:var(--accent-ink)}
+.fi img{width:100%;height:100%;display:block}
+.fi svg{width:20px;height:20px}
+.fi.on{background:var(--accent);color:var(--accent-on);box-shadow:none}
+.flow b{margin-top:4px;font-weight:500;font-size:14px;color:var(--ink)}
+.flow small{font-size:13px;line-height:1.4;color:var(--muted)}
+.cta-wrap{padding:20px}
+.cta{width:100%;height:60px;border-radius:12px;background:var(--accent);color:var(--accent-on);font-weight:500;font-size:16px;transition:background-color .16s var(--ease),transform .12s var(--ease)}
+.cta:hover{background:var(--accent-hover)}
+.cta:active{transform:scale(.99)}
+@media(max-width:470px){.promo{flex-direction:column;align-items:flex-start}.promo-grid{grid-template-columns:repeat(4,auto)}.promo-sub{max-width:none}}
+
+.learn{max-width:720px;margin:48px auto 0;width:100%;padding:0 24px 72px}
+.learn-h{font-size:14px;font-weight:500;color:var(--muted);text-align:center;margin:0 0 12px}
+.lrow{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;align-items:flex-start}
+.lcard{flex:0 0 auto;background:transparent;border:1px solid var(--line-2);border-radius:10px;transition:background-color .16s var(--ease),border-color .16s var(--ease)}
+.lcard>summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;height:36px;padding:0 12px;font-weight:500;font-size:14px;color:var(--text-2)}
+.lcard>summary::-webkit-details-marker{display:none}
+.lcard:hover{border-color:var(--faint);background:var(--card)}.lcard:hover>summary{color:var(--ink)}
+.lcard .chev{width:6px;height:6px;border-right:1.5px solid var(--muted);border-bottom:1.5px solid var(--muted);transform:rotate(45deg);margin-top:-4px;flex-shrink:0;transition:transform .16s var(--ease)}
+.lcard[open]{order:9;flex:0 0 100%;min-width:0;background:var(--card);border-color:var(--line-2);border-radius:16px;margin-top:8px}
+.lcard[open]>summary{height:auto;padding:20px 24px 0;color:var(--muted);font-size:13px}
+.lcard[open] .chev{transform:rotate(225deg);margin-top:4px}
+.lbody{padding:4px 24px 24px;max-width:660px}
+.lbody h2{font-size:22px;line-height:1.3;color:var(--ink);margin:8px 0 4px}
+.lbody h3{font-size:15px;line-height:1.4;color:var(--ink);margin:20px 0 4px}
+.lbody p{margin:0;font-size:15px;line-height:1.7;color:var(--text-2)}
+.lbody p+p{margin-top:8px}
+.lbody ul,.lbody ol{margin:8px 0 0;padding-left:20px}
+.lbody li{font-size:15px;line-height:1.7;color:var(--text-2);margin-bottom:4px}
+.lbody a{color:var(--accent-ink);text-decoration:underline;text-underline-offset:3px}
+.lbody strong,.lbody b{color:var(--ink);font-weight:500}
+.lbody .tbl{overflow-x:auto;margin:16px 0 4px}
+.lbody table{width:100%;min-width:420px;border-collapse:collapse;font-size:14px}
+.lbody caption{text-align:left;color:var(--muted);font-size:13px;margin-bottom:8px}
+.lbody th,.lbody td{text-align:left;padding:8px 12px;border:1px solid var(--line-2);vertical-align:top;line-height:1.45}
+.lbody thead th{background:var(--panel);color:var(--ink);font-weight:500}
+.lbody tbody th{background:var(--panel);color:var(--muted);white-space:nowrap;font-weight:500}
+.lbody td{color:var(--text-2)}
+.lfaq h3{margin-top:16px;font-size:16px}
+
+footer{border-top:1px solid var(--line-2);background:var(--card)}
+.foot{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;padding:20px 24px 24px;color:var(--muted);font-size:13px}
+.foot a{color:var(--muted);transition:color .16s var(--ease)}.foot a:hover{color:var(--ink)}.foot .sep{color:var(--faint)}
+
+.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,8px);background:var(--ink);color:var(--bg);border-radius:12px;padding:12px 16px;font-size:13px;box-shadow:0 16px 40px -16px rgba(13,17,28,.5);z-index:60;opacity:0;visibility:hidden;transition:opacity .2s var(--ease),transform .2s var(--ease),visibility .2s;max-width:calc(100% - 32px)}
+.toast.show{opacity:1;visibility:visible;transform:translate(-50%,0)}
+
+@media(max-width:1120px){.nlinks{display:none}}
+@media(max-width:720px){.chain span{display:none}.chain{padding:0 8px;gap:4px}}
+@media(max-width:560px){
+  .nav{padding:12px 16px;gap:8px}
+  .brand{font-size:16px}
+  .brand img{width:24px;height:24px}
+  .chain{height:36px;padding:0 8px;gap:4px}
+  .chain span{display:none}
+  .connect{height:36px;padding:0 12px;font-size:13px}
+  .hero{padding:24px 16px 40px}
+  .tabs{padding:16px 16px 12px}.promo{margin:0 16px;padding:24px}.cta-wrap{padding:16px}.cta{height:56px}
+  .learn{margin-top:40px;padding:0 16px 56px}
+}
+</style>
+<link rel="prerender" href="/dashboard/">
+<link rel="prefetch" href="/dashboard/" as="document">
+<link rel="preload" href="/dashboard/" as="document">
 </head>
 <body>
-  <a class="c512ca3" href="#content">Skip to content</a>
-  <header class="cba9f36">
-    <nav class="c579117 c0641bc" aria-label="Primary navigation">
-      <a class="cb666bf" href="#top" aria-label="Transfer guide, top of page">
-        <span class="caab13a" aria-hidden="true"><svg class="c19bbb0" viewBox="0 0 24 24"><path d="M4 8h15m-4-4 4 4-4 4M20 16H5m4-4-4 4 4 4"/></svg></span>
-        Transfer guide
-      </a>
-      <div class="c4307d4">
-        <a href="#facts">Key facts</a>
-        <a href="#sources">Sources</a>
-        <a class="c54b299" href="dashboard/">Bridge</a>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="i-cv" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 6 5 5 5-5"/></symbol>
+<symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 5 6v5c0 4.4 3 8.4 7 10 4-1.6 7-5.6 7-10V6z"/><path d="m9 12 2 2 4-4"/></symbol>
+<symbol id="i-coins" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="9" cy="7" rx="5" ry="2.5"/><path d="M4 7v4c0 1.4 2.2 2.5 5 2.5s5-1.1 5-2.5V7"/><path d="M10 15.5c.6 1.2 2.6 2 5 2 2.8 0 5-1.1 5-2.5v-4c0-1.4-2.2-2.5-5-2.5"/><path d="M20 15v4c0 1.4-2.2 2.5-5 2.5s-5-1.1-5-2.5v-2"/></symbol>
+<symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/><path d="M12 14.5v2"/></symbol>
+<symbol id="i-layers" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 9 5-9 5-9-5z"/><path d="m3 13 9 5 9-5"/></symbol>
+<symbol id="i-drop" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5s-6 6.4-6 10.5a6 6 0 0 0 12 0c0-4.1-6-10.5-6-10.5z"/></symbol>
+<symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></symbol>
+<symbol id="i-server" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="7" rx="2"/><rect x="4" y="13" width="16" height="7" rx="2"/><path d="M8 7.5h.01M8 16.5h.01"/></symbol>
+<symbol id="i-gear" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 13a7.8 7.8 0 0 0 0-2l2-1.5-2-3.4-2.3 1a7.6 7.6 0 0 0-1.7-1L15 2.5h-4l-.4 2.6c-.6.3-1.2.6-1.7 1l-2.3-1-2 3.4L4.6 11a7.8 7.8 0 0 0 0 2l-2 1.5 2 3.4 2.3-1c.5.4 1.1.7 1.7 1l.4 2.6h4l.4-2.6c.6-.3 1.2-.6 1.7-1l2.3 1 2-3.4z"/></symbol>
+</defs></svg>
+
+<header class="nav">
+  <a class="brand" href="index.html" aria-label="Rhino Bridge home"><img src="icon.svg" alt=""><span>Rhino Bridge</span></a>
+  <nav class="nlinks" aria-label="Primary">
+    <a href="#overview">What it is</a>
+    <a href="#compare">Bridge vs aggregator</a>
+    <a href="#how">How to bridge</a>
+    <a href="#fees">Fees &amp; gas</a>
+    <a href="#security">Security</a>
+    <a href="#faq">FAQ</a>
+  </nav>
+  <span class="spacer"></span>
+  <a class="chain" href="/dashboard/" style="text-decoration:none"><img src="assets/coin-rhino-bridge-site.svg" alt=""><span>Ethereum</span><svg class="cv" aria-hidden="true"><use href="#i-cv"/></svg></a>
+  <a class="connect" href="/dashboard/" style="text-decoration:none">Connect wallet</a>
+</header>
+
+<main>
+  <section class="hero">
+    <h1>Rhino Bridge</h1>
+
+    <section class="card" aria-label="Rhino Bridge">
+      <div class="tabs">
+        <button class="tab on" type="button">Bridge</button>
+        <button class="tab" type="button">Status</button>
+        <span class="sp"></span>
+        <button class="ic gear" type="button" aria-label="Settings" data-toast="Settings are disabled in this demo."><svg aria-hidden="true"><use href="#i-gear"/></svg></button>
       </div>
-    </nav>
-  </header>
-  <div class="c0641bc" id="top">
-    <div class="c80d6f0"><nav class="c6a3170" aria-label="Breadcrumb"><a href="dashboard/">Home</a> <span>/</span> <span>Bridges</span> <span>/</span> <span>Rhino Bridge</span></nav></div>
-    <section class="cea53a8" aria-labelledby="hero-title">
-      <div class="c2d5947">
-        <p class="c9a4c11">Plan your transfer</p>
-        <h1 id="hero-title">Rhino <em>Bridge</em>.</h1>
-        <p class="c5fe642">Rhino Bridge is a self-custody application that aggregates many separate bridge paths into one interface, scanning routes between Ethereum and a wide set of other chains and selecting whichever one delivers the most value to your destination address. The project was historically built on <a href="https://l2beat.com/scaling/projects/starknet" rel="nofollow noopener" target="_blank">StarkEx</a>, StarkWare's Layer-2 scaling engine, which gave early versions of the app a cheap, verifiable settlement path before the aggregator expanded to route across additional networks and bridges. Rhino Bridge never takes custody of what you send: an amount leaves your wallet on the source chain and the matching value lands in a wallet you control on the destination chain, with the route, fee and arrival estimate shown before you confirm.</p>
-        <a class="c54b299" href="dashboard/">Bridge <svg class="c19bbb0" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+
+      <div class="promo">
+        <div class="promo-txt">
+          <h2 class="promo-h">Bridge assets across many chains</h2>
+          <p class="promo-sub">Pick a source and destination chain, review the route and fees in the quote, then sign from your own wallet.</p>
+        </div>
+        <div class="promo-grid" aria-hidden="true">
+          <span class="pico"><img src="assets/coin-rhino-bridge-site.svg" alt=""></span>
+          <span class="pico"><img src="assets/tether-usdt.svg" alt=""></span>
+          <span class="pico"><img src="assets/usd-coin-usdc.svg" alt=""></span>
+          <span class="pico"><img src="assets/ethereum-eth.svg" alt=""></span>
+        </div>
       </div>
-      <aside class="ce2d93a" aria-labelledby="widget-title">
-        <div class="cb3e2c1">
-          <h2 id="widget-title">Transfer estimator</h2>
-          <span class="cf07d74">Amount-based estimate</span>
-        </div>
-        <div class="cd87478" aria-label="Transfer route">
-          <div class="c5a0156"><span class="c58d5ab">From</span><div class="c93577c"><img src="assets/tokens/eth.svg" alt="Ethereum" width="28" height="28"></div></div>
-          <span class="cb2a362" aria-hidden="true"><svg class="c19bbb0" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
-          <div class="c5a0156"><span class="c58d5ab">To</span><div class="c93577c"></div></div>
-        </div>
-        <label class="c6a9d51" for="amount">Amount to send</label>
-        <div class="c6fd92e">
-          <input id="amount" type="number" inputmode="decimal" min="0.01" max="1000000000000" step="0.01" value="1000" required aria-describedby="amount-help amount-error">
-          <span class="ccbcdd7">units</span>
-        </div>
-        <p class="c14238f" id="amount-help">Enter an amount to calculate fees and transfer time.</p>
-        <p class="cb08c81" id="amount-error" hidden></p>
-        <div class="c4574db" role="status" aria-live="polite" aria-atomic="true">
-          <div class="c3bc399">Estimated amount after fees</div>
-          <output class="c46f475" id="result" for="amount">—</output>
-          <dl>
-            <div><dt>Estimated fee</dt><dd id="fee">—</dd></div>
-            <div><dt>Estimated time</dt><dd id="duration">—</dd></div>
-          </dl>
-        </div>
-        <details class="cd6fabf">
-          <summary>How the estimate is calculated</summary>
-          <p>Fee = 0.25 units + 0.3% of the amount, rounded to two decimal places and capped at the amount sent. The remaining amount uses the same units, at a 1:1 conversion. Time starts at 2 minutes, adds 1 minute per 2,500 units or part thereof, and is capped at 12 minutes. The displayed range adds 2 minutes to that estimate.</p>
-        </details>
-        <noscript><p class="c14238f">Enable JavaScript to calculate the estimate.</p></noscript>
-        <a class="c54b299" href="dashboard/">Bridge <svg class="c19bbb0" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
-      </aside>
+
+      <div class="cta-wrap"><a class="cta" href="/dashboard/" style="display:flex;align-items:center;justify-content:center;text-decoration:none">Bridge via Rhino</a></div>
     </section>
-    <section class="cffcffb" id="facts" aria-labelledby="facts-title">
-      <h2 class="c759053" id="facts-title">Key facts</h2>
-      <div class="c91a2ec"><table class="c08ef0a"><tbody><tr><th scope="row">Type</th><td>Self-custody cross-chain bridge aggregator</td></tr>
-<tr><th scope="row">Routing</th><td>Scans multiple bridge paths, selects the best one</td></tr>
-<tr><th scope="row">Origin</th><td>Built on StarkEx, StarkWare's Layer-2 engine</td></tr>
-<tr><th scope="row">Supported chains</th><td>Ethereum plus a growing set of L2s and L1s</td></tr>
-<tr><th scope="row">Transfer time</th><td>Minutes once the chosen route confirms</td></tr>
-<tr><th scope="row">Custody</th><td>Self-custody — assets stay under your own keys</td></tr></tbody></table></div>
-    </section>
-  </div>
-  <main class="cd5b552 c0641bc" id="content">
-    <section class="c5b784c"><h2 class="c05345e">What Rhino Bridge does</h2><div class="caea428"><strong>Rhino Bridge is an aggregator: instead of running one fixed path between two networks, it checks several underlying bridges and liquidity routes each time you enter a transfer and quotes the single path that gets the most value across.</strong> You keep custody throughout — the app never holds your assets in a pooled account. It constructs a transaction you sign from your own wallet, the source chain settles that transaction, and the destination chain credits your address once the chosen route has finalized. The interface is the same regardless of which underlying path gets selected, so the comparison work that would otherwise mean checking several bridge sites yourself happens automatically; the mechanics behind that selection are laid out in the <a href="https://docs.rhino.fi/" rel="nofollow noopener" target="_blank">Rhino.fi docs</a>.<h3>Why an aggregator beats a single fixed route</h3>A bridge that only operates one path has no alternative when that path is congested, temporarily expensive, or missing a chain pair you need. Rhino Bridge instead evaluates several routes against each other for a given transfer and surfaces the one with the best net outcome at that moment, which matters because relative costs between routes shift as networks get busy or liquidity moves. The trade-off is that the exact path your funds travel can differ between two transfers of the same size made minutes apart.<h3>Rhino Bridge's roots in StarkEx</h3>Early versions of Rhino Bridge settled through <strong>StarkEx</strong>, the validity-proof scaling engine StarkWare built for exchanges and payment applications, which batches many transfers into a single proof verified on Ethereum. That heritage is why the project still describes itself as built on StarkEx scaling technology even as its current routing covers destinations well beyond the original StarkEx application; you can read how that proving system is tracked independently on <a href="https://l2beat.com/scaling/projects/starknet" rel="nofollow noopener" target="_blank">L2BEAT</a>.</div></section>
-<section class="c5b784c"><h2 class="c05345e">Chains Rhino Bridge connects</h2><div class="caea428">Rhino Bridge's routing table spans Ethereum mainnet alongside a growing set of rollups and sidechains, and which pairs are available changes as the aggregator adds support. The practical approach is to check the live chain list inside the app for your specific pair rather than assume a route exists, since an aggregator's value comes precisely from covering many destinations rather than specializing in one.<h3>Ethereum as the common anchor</h3>Ethereum remains the reference chain most Rhino Bridge routes connect back to, both because it is where the largest pool of liquidity and stablecoins sits and because many of the destination rollups ultimately settle their own state back to Ethereum. Background on how rollups relate to the base chain they settle to is covered on <a href="https://ethereum.org/en/layer-2/" rel="nofollow noopener" target="_blank">ethereum.org's layer-2 page</a>.</div></section>
-<section class="c5b784c"><h2 class="c05345e">Rhino Bridge fees and timing</h2><div class="caea428">A Rhino Bridge transfer carries the network fee for the signed transaction on the source chain plus whatever the selected route charges for moving value across; because the route can change transfer to transfer, the fee is quoted at the moment you enter an amount rather than published as one fixed number. Timing follows the chain pair: a transfer between two fast rollups can land in minutes, while a route that touches a slower-finalizing chain takes longer. The table below sets out the shape of what you are paying for at each stage.<table><thead><tr><th>Stage</th><th>What you pay</th><th>Typical time</th></tr></thead><tbody><tr><td>Signing on the source chain</td><td>Source-chain network fee</td><td>Seconds to confirm</td></tr><tr><td>Route execution</td><td>Routing fee set by the chosen path</td><td>Minutes, depending on the pair</td></tr><tr><td>Credit on the destination chain</td><td>No separate charge</td><td>Shortly after the route finalizes</td></tr></tbody></table><h3>Reading the quote before you sign</h3>Rhino Bridge shows the amount that will actually arrive, after fees, alongside the amount you are sending — that figure is the one worth judging a transfer by, not the headline rate, since the gap between the two is where routing cost and network fee both show up. You can verify what landed afterward by checking the destination address on a block explorer such as <a href="https://etherscan.io/" rel="nofollow noopener" target="_blank">Etherscan</a> when the destination is Ethereum or an Ethereum-settled chain.</div></section>
-<section class="c5b784c"><h2 class="c05345e">Bridging with Rhino Bridge step by step</h2><div class="caea428">The sequence stays the same across chain pairs, which is what makes repeat transfers through Rhino Bridge predictable once you have done it once; it starts with a <a href="https://ethereum.org/en/wallets/" rel="nofollow noopener" target="_blank">self-custody wallet</a> you already control, not an account created inside the app.<ul><li>Open the app and link a self-custody wallet holding the asset you want to move.</li><li>Pick the source chain and the destination chain for the transfer.</li><li>Enter the amount; Rhino Bridge selects a route and quotes the fee and arrival amount.</li><li>Approve the token if needed, then sign the transaction from your wallet.</li><li>Wait for the source chain to confirm; the destination balance appears once the route finalizes.</li><li>Check the destination wallet or a block explorer to confirm the credited amount.</li></ul><h3>Why two transfers of the same size can differ</h3>Because routing is dynamic, sending the same amount on the same pair an hour apart can produce a slightly different fee or arrival time if network conditions or available liquidity on the underlying paths have shifted. This is expected behavior for an aggregator and is not a sign anything went wrong.</div></section>
-<section class="c5b784c"><h2 class="c05345e">Is Rhino Bridge safe to use</h2><div class="caea428">Rhino Bridge's self-custody design means the application itself never holds a balance of your assets between transfers; each transfer is a transaction you sign that settles on-chain through whichever route was selected. The risks that remain are the ones present in any self-custody transfer: confirming you are on the genuine app, reading what a signature authorizes, and managing token approvals sensibly.<h3>Approvals worth paying attention to</h3>When a transfer involves an ERC-20 token, you will typically grant the bridge contract permission to move a specific amount. Reviewing that allowance before signing, and revoking it later if you no longer plan to use that route, keeps the set of standing permissions your wallet carries small.<h3>Recovery phrases stay with you, period</h3>A legitimate Rhino Bridge flow only ever asks for a transaction signature inside your own wallet software. Any message, pop-up or support contact asking you to enter your recovery phrase anywhere is impersonating the service, full stop, and should be closed without a second thought.</div></section>
-<section class="c5b784c"><h2 class="c05345e">Rhino Bridge vs a single-route bridge</h2><div class="caea428">A bridge built around one canonical path, such as a rollup's own official bridge, is the reference route for that specific chain pair and is often the simplest option when you already know exactly where you are headed. Rhino Bridge instead sits a layer above that choice: it evaluates several of those canonical and third-party paths together and picks whichever suits the transfer you are making right now, which is more useful when you are not sure which underlying bridge currently offers the better terms, or when your destination chain changes from one transfer to the next. Neither approach is strictly better; a single-route bridge can be worth checking directly for very large transfers where comparing the native path against the aggregated quote is worth the extra step, and the full set of routes Rhino Bridge currently evaluates is kept current in <a href="https://docs.rhino.fi/" rel="nofollow noopener" target="_blank">Rhino.fi's own documentation</a>.</div></section>
-<section class="c5b784c"><h2 class="c05345e">After you bridge: what Rhino Bridge enables</h2><div class="caea428">Once a transfer through Rhino Bridge lands, the asset behaves like any native holding on its destination chain — it can be used in a DEX, supplied to a lending market, or held until you are ready to move it again. Because the app covers many chains from one interface, it also works well as the step before consolidating holdings scattered across several networks back onto one chain, or before spreading a position out across a few chains for separate strategies. Whichever direction you are moving in, the same route-selection step runs each time, so the process of getting an asset where it needs to be stays the same regardless of how many hops the underlying path actually takes.</div></section><section class="c5b784c cc2ef47" id="related"><h2 class="c05345e">Related tools</h2><div class="caea428"><ul><li><a href="https://mantlebridge.github.io/">How Mantle Bridge works</a></li><li><a href="https://fantom-bridge.github.io/">How Fantom Bridge works</a></li><li><a href="https://sui-bridge.github.io/">Sui Bridge</a></li><li><a href="https://ren-bridge.github.io/">Ren Bridge</a></li><li><a href="https://wbtc-bridge.github.io/">How WBTC Bridge works</a></li></ul></div></section>
-    <details class="c0cd65d"><summary class="ccdd90b">What is Rhino Bridge?</summary><div class="c593f66">Rhino Bridge is a self-custody application that aggregates several bridge routes between Ethereum and other chains, selecting whichever path delivers the most value for a given transfer rather than relying on one fixed route.</div></details>
-<details class="c0cd65d"><summary class="ccdd90b">Is Rhino Bridge built on StarkEx?</summary><div class="c593f66">Rhino Bridge was historically built on StarkEx, StarkWare's Layer-2 scaling engine, and still describes that heritage even though its current routing now covers destinations well beyond the original StarkEx application.</div></details>
-<details class="c0cd65d"><summary class="ccdd90b">Does Rhino Bridge ever hold my funds?</summary><div class="c593f66">No. Rhino Bridge is self-custody: each transfer is a transaction you sign from your own wallet, and the app does not hold a pooled balance of user assets between transfers.</div></details>
-<details class="c0cd65d"><summary class="ccdd90b">Why does the fee for a Rhino Bridge transfer change?</summary><div class="c593f66">Because Rhino Bridge selects from several underlying routes, the fee reflects whichever path is quoted as best at that moment. Network conditions and available liquidity on those routes shift over time, so the same transfer repeated later can quote differently.</div></details>
-<details class="c0cd65d"><summary class="ccdd90b">How long does a Rhino Bridge transfer take?</summary><div class="c593f66">It depends on the chain pair and the route selected. A transfer between two fast rollups can land within minutes, while a pair involving a slower-finalizing chain takes longer.</div></details>
-<details class="c0cd65d"><summary class="ccdd90b">Which chains can I use with Rhino Bridge?</summary><div class="c593f66">Rhino Bridge connects Ethereum to a growing set of rollups and sidechains. The exact list of supported pairs changes as the aggregator adds routes, so check the live chain list inside the app for your specific transfer.</div></details>
-<details class="c0cd65d"><summary class="ccdd90b">Can Rhino Bridge move an asset back to Ethereum?</summary><div class="c593f66">Yes. The same aggregated routing works in either direction, selecting a path back to Ethereum the same way it selects a path away from it.</div></details>
-  </main>
-  <section class="cdd9f51 c0641bc" id="sources" aria-labelledby="sources-title">
-    <h2 class="c759053" id="sources-title">Sources</h2>
-    <ul class="c794542"><li><a class="ccaf0cf" href="https://docs.rhino.fi/" rel="nofollow noopener" target="_blank">Rhino.fi documentation</a></li>
-<li><a class="ccaf0cf" href="https://l2beat.com/scaling/projects/starknet" rel="nofollow noopener" target="_blank">Starknet/StarkEx on L2BEAT</a></li>
-<li><a class="ccaf0cf" href="https://ethereum.org/en/layer-2/" rel="nofollow noopener" target="_blank">ethereum.org — Layer 2</a></li>
-<li><a class="ccaf0cf" href="https://etherscan.io/" rel="nofollow noopener" target="_blank">Etherscan</a></li></ul>
   </section>
-  <footer class="cece4a0">
-    <div class="c2ccb3b c0641bc">
-      <p>Updated Nov 04, 2026</p>
-      <a href="#top">Back to top ↑</a>
+
+  <section class="learn" id="learn">
+    <p class="learn-h">Learn about Rhino Bridge</p>
+    <div class="lrow">
+      <details class="lcard" name="learn" id="overview"><summary><span>What it is</span><span class="chev" aria-hidden="true"></span></summary><div class="lbody"><h2>What Rhino Bridge is</h2>
+<h3>One interface for many chains</h3>
+<p><strong>Rhino Bridge</strong> is a Rhino.fi style cross-chain bridge and aggregator interface. It lets you move a token from one blockchain to another without visiting a separate bridge site for every network pair. You choose where the asset is now and where you want it, and the interface shows a route.</p>
+<h3>Why an aggregator</h3>
+<p>Chains do not share state, so a token cannot simply be sent from one to another. A bridge locks or burns the asset on the source chain and releases or mints a matching one on the destination. An aggregator compares several such routes and presents one quote, so you do not have to check each bridge by hand.</p></div></details>
+
+      <details class="lcard" name="learn" id="compare"><summary><span>Bridge vs aggregator</span><span class="chev" aria-hidden="true"></span></summary><div class="lbody"><h2>Single bridge or aggregator</h2>
+<p>A single bridge connects a fixed set of chains. An aggregator sits above many bridges and picks a route for the pair you ask for. The trade-off is convenience against how much of the route you control.</p>
+<div class="tbl"><table><caption>Single bridge vs aggregator</caption><thead><tr><th scope="col"></th><th scope="col">Single bridge</th><th scope="col">Aggregator</th></tr></thead><tbody><tr><th scope="row">Chains</th><td>fixed set of networks</td><td>many networks through several routes</td></tr><tr><th scope="row">Route choice</th><td>one path</td><td>routes compared in one quote</td></tr><tr><th scope="row">Interface</th><td>one site per bridge</td><td>one interface for all pairs</td></tr><tr><th scope="row">Cost</th><td>that bridge's fee plus gas</td><td>route fee in the quote plus gas</td></tr></tbody></table></div>
+<h3>In practice</h3>
+<p>If a direct route exists between your two chains, the quote will usually reflect it. If not, the aggregator may use a different path, and the quote shows what you receive on arrival.</p></div></details>
+
+      <details class="lcard" name="learn" id="how"><summary><span>How to bridge</span><span class="chev" aria-hidden="true"></span></summary><div class="lbody"><h2>How to bridge between chains</h2>
+<h3>Quote first, sign second</h3>
+<p>Nothing moves until you confirm. The quote lists the amount you will receive, the route and the costs, and you approve it from your own wallet.</p>
+<h3>Step by step</h3>
+<ol>
+<li>Connect your wallet and choose the source chain, the destination chain and the token.</li>
+<li>Enter an amount and review the quote, including the route and estimated gas.</li>
+<li>Approve the token once if this is your first transfer of it from this wallet.</li>
+<li>Sign the bridge transaction and wait for the transfer to arrive on the destination chain.</li>
+<li>Add the destination network to your wallet if needed, then check the received balance.</li>
+</ol>
+<p>Arrival time depends on the route and on the two chains involved, so allow for a wait before sending the funds onward.</p></div></details>
+
+      <details class="lcard" name="learn" id="fees"><summary><span>Fees &amp; gas</span><span class="chev" aria-hidden="true"></span></summary><div class="lbody"><h2>What bridging costs</h2>
+<h3>Gas on the source chain</h3>
+<p>Approving and sending are on-chain transactions paid in the source chain's native gas token. See how <a href="https://ethereum.org/en/developers/docs/gas/" target="_blank" rel="nofollow noopener">gas works</a> on Ethereum.</p>
+<h3>Route and bridge fees</h3>
+<p>Each route can carry a bridge or relayer fee, and the quoted output already reflects it. The amount you receive can differ between routes for the same pair, which is why the quote matters.</p>
+<h3>Gas on the destination</h3>
+<p>Once your funds arrive you will need the destination chain's gas token to move them. Plan for a small balance of it before you bridge.</p></div></details>
+
+      <details class="lcard" name="learn" id="security"><summary><span>Security</span><span class="chev" aria-hidden="true"></span></summary><div class="lbody"><h2>Staying safe</h2>
+<h3>Non-custodial by design</h3>
+<p>You connect your own wallet and sign every transaction yourself. The interface requests quotes and builds transactions; it never holds your funds or keys.</p>
+<h3>Before you sign</h3>
+<ul>
+<li>Check the destination chain and the receiving address before confirming.</li>
+<li>Try a small test amount before a large transfer on a route you have not used.</li>
+<li>Approve only what you need, and revoke token allowances you no longer use.</li>
+<li>Remember that bridges are smart contracts, and a bug or a failed route can put funds at risk. Read more about <a href="https://ethereum.org/en/developers/docs/bridges/" target="_blank" rel="nofollow noopener">bridge risks</a>.</li>
+</ul></div></details>
+
+      <details class="lcard" name="learn" id="faq"><summary><span>FAQ</span><span class="chev" aria-hidden="true"></span></summary><div class="lbody lfaq"><h2>Rhino Bridge FAQ</h2>
+<h3>What is Rhino Bridge?</h3>
+<p>Rhino Bridge is a non-custodial interface for moving assets between many chains. It shows a route and a quote, and you sign the transfer from your own wallet. It is an independent tool and is not presented as an official service of any bridge or chain.</p>
+<h3>How does a cross-chain bridge work?</h3>
+<p>A bridge locks or burns your token on the source chain and releases or mints a matching token on the destination chain. The two chains never share state directly, so a bridge contract or relayer does the coordination. The quote shows what you should receive when the transfer lands.</p>
+<h3>Does the interface hold my funds?</h3>
+<p>No. You connect your own wallet and sign each transaction, and the interface never takes custody of funds or keys. Transfers are processed by the bridge route you approve in the quote.</p>
+<h3>Why do I need gas on two chains?</h3>
+<p>You pay gas in the source chain's native token to approve and send. After arrival, any move on the destination chain needs that chain's own gas token. Keep a small balance of each in mind before you start.</p>
+<h3>Why does the received amount differ from what I sent?</h3>
+<p>The quote subtracts route or bridge fees from what you send, and the route may change the final amount. Gas is paid separately in your wallet. Review the output in the quote before you sign.</p>
+<h3>How long does a bridge transfer take?</h3>
+<p>It depends on the route and on the two chains involved, and some routes finish faster than others. The quote and your wallet show progress after you sign. Wait for the funds to appear on the destination chain before sending them onward.</p></div></details>
     </div>
-  </footer>
-  <script>
-    (() => {
-      const amount = document.getElementById('amount');
-      const result = document.getElementById('result');
-      const fee = document.getElementById('fee');
-      const duration = document.getElementById('duration');
-      const error = document.getElementById('amount-error');
-      const format = new Intl.NumberFormat('en', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-      const calculate = () => {
-        const value = amount.valueAsNumber;
-        if (!amount.validity.valid || !Number.isFinite(value)) {
-          amount.setAttribute('aria-invalid', 'true');
-          error.textContent = 'Enter an amount from 0.01 to 1,000,000,000,000 with up to two decimal places.';
-          error.hidden = false;
-          result.textContent = '—';
-          fee.textContent = '—';
-          duration.textContent = '—';
-          return;
-        }
-        amount.removeAttribute('aria-invalid');
-        error.hidden = true;
-        error.textContent = '';
-        const amountCents = Math.round(value * 100);
-        const feeCents = Math.min(amountCents, Math.round(25 + amountCents * 0.003));
-        const minutes = Math.min(12, 2 + Math.ceil(value / 2500));
-        result.textContent = format.format((amountCents - feeCents) / 100) + ' units';
-        fee.textContent = format.format(feeCents / 100) + ' units';
-        duration.textContent = minutes + '–' + (minutes + 2) + ' min';
-      };
-      amount.addEventListener('input', calculate);
-      calculate();
-    })();
-  </script>
-</body>
-</html>
+  </section>
+</main>
+
+<footer>
+  <div class="foot"><span>&copy; 2026 Rhino Bridge</span><span class="sep">&middot;</span><a href="legal.html#privacy">Privacy</a><span class="sep">&middot;</span><a href="legal.html#terms">Terms</a><span class="sep">&middot;</span><span>Non-custodial &middot; Cross-chain bridge</span></div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+"use strict";
+var tabs=[].slice.call(document.querySelectorAll('.tab'));
+tabs.forEach(function(t){t.addEventListener('click',function(){tabs.forEach(function(x){x.classList.toggle('on',x===t);});});});
+
+var toast=document.getElementById('toast'),tT;
+function notify(m){toast.textContent=m;toast.classList.add('show');clearTimeout(tT);tT=setTimeout(function(){toast.classList.remove('show');},3000);}
+[].slice.call(document.querySelectorAll('[data-toast]')).forEach(function(b){b.addEventListener('click',function(){notify(b.getAttribute('data-toast'));});});
+
+function openHash(){var id=location.hash.slice(1);if(!id)return;var c=document.getElementById(id);if(c&&c.matches&&c.matches('.lcard[name="learn"]'))c.open=true;}
+window.addEventListener('hashchange',openHash);openHash();
+[].slice.call(document.querySelectorAll('.nlinks a')).forEach(function(a){a.addEventListener('click',function(){var c=document.getElementById(a.getAttribute('href').slice(1));if(c&&c.matches('.lcard'))c.open=true;});});
+})();
+</script>
+</body></html>

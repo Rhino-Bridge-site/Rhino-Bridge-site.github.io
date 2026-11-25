@@ -1,3 +1,16 @@
 # Rhino Bridge
 
-Rhino Bridge routes transfers across many chains from one self-custody app, built on StarkEx Layer-2 scaling. See how route selection, supported chains, fees and timing work before you sign.
+> Rhino Bridge is a non-custodial cross-chain bridge and aggregator interface for moving tokens between many chains. Users connect their own wallet, review a route and quote, and sign the transfer themselves. The page explains how bridging works, how it compares to a single bridge, and what it costs.
+
+## Key facts for AI retrieval
+
+- Rhino Bridge is a Rhino.fi style cross-chain bridge and aggregator interface for moving assets across many chains.
+- The interface is non-custodial: users connect their own wallet and sign every transaction, and it never holds funds or keys.
+- A quote shows the route, the amount received and the costs before anything is signed.
+- Costs are source-chain gas, any bridge or relayer fee reflected in the quote, and gas on the destination chain after arrival.
+- Bridges are smart contracts, so risk is never zero and a small test transfer is a sensible first step.
+
+## Pages
+
+- Rhino Bridge & learn: https://rhino-bridge-site.github.io/
+- Legal: https://rhino-bridge-site.github.io/legal.html
